@@ -16,8 +16,9 @@ import ApplicationRow from "./ApplicationRow";
 
 type Props = {
   applications: Application[];
-  onRowClick : (app: Application) => void;
+  onRowClick: (app: Application) => void;
   onEdit: (app: Application) => void;
+  onDelete: (id: string) => void;
 };
 
 function ApplicationTable({ applications }: Props) {

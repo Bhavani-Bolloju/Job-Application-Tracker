@@ -19,9 +19,18 @@ type Props = {
 };
 
 function ApplicationRow({ application }: Props) {
-  
-  const {company, role, status, platform, appliedDate, followupDate} = application;  
-  
+  const {
+    company,
+    role,
+    status,
+    platform,
+    appliedDate,
+    followupDate
+    // onEdit,
+    // onDelete,
+    // onRowClick
+  } = application;
+
   return (
     <TableRow>
       <TableCell className="font-medium">{company}</TableCell>
