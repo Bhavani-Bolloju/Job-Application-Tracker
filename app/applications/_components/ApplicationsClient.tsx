@@ -51,6 +51,8 @@ function ApplicationsClient({ applications }: Props) {
     router.refresh();
   }
 
+  console.log("application client");
+
   return (
     <div className="p-6">
       <div className="flex items-center justify-between mb-6">

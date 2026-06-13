@@ -7,7 +7,7 @@ import {
   SheetHeader,
   SheetTitle
 } from "@/components/ui/sheet";
-import StatusBadge from "./StatusBadge";
+
 import FormMode from "./drawer/FormMode";
 
 type Mode = "view" | "add" | "edit";
@@ -25,6 +25,10 @@ export default function ApplicationDrawer({
   application,
   onClose
 }: Props) {
+  
+  console.log("application drawer")
+  
+  
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-full sm:w-135 overflow-y-auto">

@@ -4,32 +4,27 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 
 import StatusBadge from "./StatusBadge";
 import { format } from "date-fns";
-
 import { Application } from "@/lib/types";
 
 type Props = {
   application: Application;
+  onRowClick: (app: Application) => void;
+  onEdit: (app: Application) => void;
+  onDelete: (id: string) => void;
 };
 
-function ApplicationRow({ application }: Props) {
-  const {
-    company,
-    role,
-    status,
-    platform,
-    appliedDate,
-    followupDate
-    // onEdit,
-    // onDelete,
-    // onRowClick
-  } = application;
+function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
+  const { id, company, role, status, platform, appliedDate, followupDate } =
+    application;
+
+  console.log("application row", id, company);
 
   return (
     <TableRow>
@@ -66,9 +61,21 @@ function ApplicationRow({ application }: Props) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem>Edit</DropdownMenuItem>
+            <DropdownMenuItem
+              className="w-full"
+              onClick={() => onEdit(application)}
+            >
+              Edit
+            </DropdownMenuItem>
+
             <DropdownMenuSeparator />
-            <DropdownMenuItem variant="destructive">Delete</DropdownMenuItem>
+            <DropdownMenuItem
+              variant="destructive"
+              className="w-full"
+              onClick={() => onDelete(id)}
+            >
+              Delete
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </TableCell>

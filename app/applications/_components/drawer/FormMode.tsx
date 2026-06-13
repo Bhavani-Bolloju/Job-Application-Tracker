@@ -1,6 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { Application } from "@/lib/types";
 import { Input } from "@/components/ui/input";
 import { FieldLabel, Field, FieldError } from "@/components/ui/field";
@@ -55,6 +56,8 @@ function FormMode({ application, onClose }: Props) {
       application ? `/api/applications/${application.id}` : "/api/applications";
     const method = application ? "PUT" : "POST";
 
+    console.log(url, method);
+
     await fetch(url, {
       method,
       headers: { "Content-Type": "application/json" },
@@ -64,6 +67,7 @@ function FormMode({ application, onClose }: Props) {
     onClose();
   }
 
+  console.log("form mode");
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <Field>
@@ -81,9 +85,7 @@ function FormMode({ application, onClose }: Props) {
           id="role"
           {...register("role", { required: "Role is required" })}
         />
-        {errors.role && (
-          <FieldError>{errors.role.message}</FieldError>
-        )}
+        {errors.role && <FieldError>{errors.role.message}</FieldError>}
       </Field>
 
       <Field>

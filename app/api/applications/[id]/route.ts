@@ -8,14 +8,17 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   const session = await auth();
+
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const body = await request.json();
 
+  const { id } = await params;
+
   const application = await prisma.application.update({
-    where: { id: params.id, userId: session.user.id },
+    where: { id: id, userId: session.user.id },
     data: {
       company: body.company,
       role: body.role,
@@ -49,3 +52,4 @@ export async function DELETE(
 
   return NextResponse.json({ success: true });
 }
+

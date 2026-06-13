@@ -14,6 +14,8 @@ import { Application } from "@/lib/types";
 
 import ApplicationRow from "./ApplicationRow";
 
+console.log("application table");
+
 type Props = {
   applications: Application[];
   onRowClick: (app: Application) => void;
@@ -21,7 +23,12 @@ type Props = {
   onDelete: (id: string) => void;
 };
 
-function ApplicationTable({ applications }: Props) {
+function ApplicationTable({
+  applications,
+  onRowClick,
+  onEdit,
+  onDelete
+}: Props) {
   if (applications.length == 0) {
     return (
       <div className="text-center py-12 text-gray-500">
@@ -29,6 +36,8 @@ function ApplicationTable({ applications }: Props) {
       </div>
     );
   }
+
+  console.log("application table");
 
   return (
     <Table>
@@ -45,7 +54,13 @@ function ApplicationTable({ applications }: Props) {
       </TableHeader>
       <TableBody>
         {applications.map((app) => (
-          <ApplicationRow key={app.id} application={app} />
+          <ApplicationRow
+            key={app.id}
+            application={app}
+            onEdit={onEdit}
+            onRowClick={onRowClick}
+            onDelete={onDelete}
+          />
         ))}
       </TableBody>
     </Table>
