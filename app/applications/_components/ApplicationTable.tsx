@@ -14,11 +14,11 @@ import { Application } from "@/lib/types";
 
 import ApplicationRow from "./ApplicationRow";
 
-console.log("application table");
+// console.log("application table");
 
 type Props = {
   applications: Application[];
-  onRowClick: (app: Application) => void;
+  onRowClick: (id: string) => void;
   onEdit: (app: Application) => void;
   onDelete: (id: string) => void;
 };
@@ -37,7 +37,7 @@ function ApplicationTable({
     );
   }
 
-  console.log("application table");
+  // console.log("application table");
 
   return (
     <Table>

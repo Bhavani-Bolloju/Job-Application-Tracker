@@ -56,7 +56,7 @@ function FormMode({ application, onClose }: Props) {
       application ? `/api/applications/${application.id}` : "/api/applications";
     const method = application ? "PUT" : "POST";
 
-    console.log(url, method);
+    // console.log(url, method);
 
     await fetch(url, {
       method,
@@ -67,7 +67,7 @@ function FormMode({ application, onClose }: Props) {
     onClose();
   }
 
-  console.log("form mode");
+  // console.log("form mode");
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <Field>

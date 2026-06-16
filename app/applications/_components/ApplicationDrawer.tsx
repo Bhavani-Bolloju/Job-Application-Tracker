@@ -25,10 +25,8 @@ export default function ApplicationDrawer({
   application,
   onClose
 }: Props) {
-  
-  console.log("application drawer")
-  
-  
+  // console.log("application drawer")
+
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-full sm:w-135 overflow-y-auto">

@@ -15,7 +15,7 @@ import { Application } from "@/lib/types";
 
 type Props = {
   application: Application;
-  onRowClick: (app: Application) => void;
+  onRowClick: (id: string) => void;
   onEdit: (app: Application) => void;
   onDelete: (id: string) => void;
 };
@@ -24,10 +24,16 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
   const { id, company, role, status, platform, appliedDate, followupDate } =
     application;
 
-  console.log("application row", id, company);
+  // console.log("application row", id, company);
 
   return (
-    <TableRow>
+    <TableRow
+      onClick={(e) => {
+        console.log("table row");
+        e.stopPropagation();
+        onRowClick(id);
+      }}
+    >
       <TableCell className="font-medium">{company}</TableCell>
       <TableCell>{role}</TableCell>
       <TableCell>
@@ -42,7 +48,14 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
       <TableCell className="text-right">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="size-8">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="size-8"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -63,7 +76,10 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
           <DropdownMenuContent align="end">
             <DropdownMenuItem
               className="w-full"
-              onClick={() => onEdit(application)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit(application);
+              }}
             >
               Edit
             </DropdownMenuItem>
@@ -72,7 +88,10 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
             <DropdownMenuItem
               variant="destructive"
               className="w-full"
-              onClick={() => onDelete(id)}
+              onClick={(e) => {
+                e.stopPropagation();
+                onDelete(id);
+              }}
             >
               Delete
             </DropdownMenuItem>

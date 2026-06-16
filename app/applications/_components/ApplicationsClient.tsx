@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Application } from "@/lib/types";
 import ApplicationTable from "./ApplicationTable";
 import ApplicationDrawer from "./ApplicationDrawer";
-import { useRouter } from "next/navigation";
+import { useRouter, redirect } from "next/navigation";
 
 type Mode = "view" | "edit" | "add";
 
@@ -16,17 +16,12 @@ function ApplicationsClient({ applications }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<Mode>("add");
   const [selected, setSelected] = useState<Application | null>(null);
-  const [deleteApplicationId, setDeleteApplicationId] = useState<string | null>(
-    null
-  );
+
 
   const router = useRouter();
 
-  function handleRowClick(app: Application) {
-    // setSelected(app);
-    // setMode("view");
-    // setIsOpen(true);
-    console.log("redirect user to new page", app);
+  function handleRowClick(id: string) {
+    redirect(`/applications/${id}`);
   }
 
   function handleEdit(app: Application) {
@@ -41,9 +36,18 @@ function ApplicationsClient({ applications }: Props) {
     setIsOpen(true);
   }
 
-  function handleDelete(id: string) {
+  async function handleDelete(id: string) {
     // console.log(id);
-    setDeleteApplicationId(id);
+    // setDeleteApplicationId(id);
+    const url = `/api/applications/${id}`;
+
+    await fetch(url, {
+      method: "DELETE"
+    });
+
+    console.log(id, "delete successfully");
+
+    router.refresh();
   }
 
   function handleClose() {
@@ -51,7 +55,7 @@ function ApplicationsClient({ applications }: Props) {
     router.refresh();
   }
 
-  console.log("application client");
+  // console.log("application client");
 
   return (
     <div className="p-6">
