@@ -34,7 +34,7 @@ function ApplicationTable({
       <div className="text-center py-12 text-gray-500">
         No applications yet. Add your first one!
       </div>
-    );
+    );  
   }
 
   // console.log("application table");

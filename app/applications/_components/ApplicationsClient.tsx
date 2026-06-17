@@ -17,7 +17,6 @@ function ApplicationsClient({ applications }: Props) {
   const [mode, setMode] = useState<Mode>("add");
   const [selected, setSelected] = useState<Application | null>(null);
 
-
   const router = useRouter();
 
   function handleRowClick(id: string) {

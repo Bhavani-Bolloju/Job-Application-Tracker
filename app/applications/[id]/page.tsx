@@ -2,6 +2,8 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 
+import ApplicationDetail from "../_components/detail/ApplicationDetail";
+
 type Props = {
   params: Promise<{ id: string }>;
 };
@@ -23,8 +25,8 @@ async function page({ params }: Props) {
   console.log(application, id, "single application");
 
   return (
-    <div>
-      <h2>Loading individual application</h2>
+    <div className="px-10 py-5">
+      <ApplicationDetail />
     </div>
   );
 }
