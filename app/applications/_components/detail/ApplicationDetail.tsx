@@ -1,9 +1,20 @@
+"use client"
 import ApplicationHeader from "./ApplicationHeader";
+import ApplicationDetailsCard from "./ApplicationDetailsCard";
 
-function ApplicationDetail() {
+import { Application } from "@/lib/types";
+
+type Props = {
+  application: Application;
+};
+
+function ApplicationDetail({ application }: Props) {
+ 
+
   return (
     <div>
-      <ApplicationHeader />
+      <ApplicationHeader application={application} />
+      <ApplicationDetailsCard application={application}/>
     </div>
   );
 }

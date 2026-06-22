@@ -22,11 +22,11 @@ async function page({ params }: Props) {
     include: { notes: true, contacts: true }
   });
 
-  console.log(application, id, "single application");
+  // console.log(application, id, "single application");
 
   return (
     <div className="px-10 py-5">
-      <ApplicationDetail />
+      {application && <ApplicationDetail application={application} />}
     </div>
   );
 }

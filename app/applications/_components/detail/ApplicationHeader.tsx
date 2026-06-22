@@ -1,14 +1,23 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Pencil, ExternalLink, ChevronLeft, Calendar } from "lucide-react";
-// import
+import { Application } from "@/lib/types";
+import { format } from "date-fns";
 
-function ApplicationHeader() {
+type Props = {
+  application: Application;
+};
+
+function ApplicationHeader({ application }: Props) {
+  const { company, role, appliedDate } = application;
+
+  const formatDate = format(new Date(appliedDate), "PP");
+
   return (
     <div>
       <div className="flex items-stretch gap-5">
         <Link
-          href="/app/api/applications"
+          href="/applications"
           className="flex items-center gap-2 py-2 px-4 border border-gray-200 mr-auto"
         >
           <ChevronLeft />
@@ -35,14 +44,14 @@ function ApplicationHeader() {
           logo
         </div>
         <div className="col-start-2 col-end-3 row-start-1 row-end-2 self-start">
-          company name
+          {company}
         </div>
         <div className="col-start-2 col-end-3 row-start-2 row-end-3 self-start">
-          role
+          {role}
         </div>
         <div className="col-start-2 col-end-3 row-start-3 row-end-4 self-start flex items-center gap-2">
-          <Calendar />
-          <span>applied date</span>
+          <Calendar className="w-4" />
+          <span>{formatDate}</span>
         </div>
         <div className="col-start-3 col-end-4 row-start-1 row-end-2 whitespace-nowrap justify-self-end">
           status

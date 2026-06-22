@@ -19,7 +19,15 @@ const statusLabels: Record<Status, string> = {
   REJECTED: "Rejected"
 };
 
-export default function StatusBadge({ status }: { status: Status }) {
-  return <Badge className={statusStyles[status]}>{statusLabels[status]}</Badge>;
+type StatusProps = {
+  status: Status;
+};
+
+export default function StatusBadge({ status }: StatusProps) {
+  return (
+    <Badge className={`${statusStyles[status]} text-base`}>
+      {statusLabels[status]}
+    </Badge>
+  );
 }
 
