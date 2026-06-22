@@ -36,8 +36,7 @@ function ApplicationsClient({ applications }: Props) {
   }
 
   async function handleDelete(id: string) {
-    // console.log(id);
-    // setDeleteApplicationId(id);
+
     const url = `/api/applications/${id}`;
 
     await fetch(url, {

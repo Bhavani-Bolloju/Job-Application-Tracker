@@ -33,7 +33,12 @@ function NoteSection({ notes, id }: Props) {
     setIsOpen(value);
   };
 
-  console.log(notes);
+  const handleDelete = async function (id: string) {
+    // console.log(id, "delete note item");
+    await fetch(`/api/notes/${id}`, { method: "DELETE" });
+    
+    router.refresh();
+  };
 
   return (
     <div className="mt-8">
@@ -49,7 +54,19 @@ function NoteSection({ notes, id }: Props) {
         />
       </div>
       <ul>
-        
+        {notes.length > 0 ?
+          <>
+            {notes.map((note) => (
+              <NoteCard
+                key={note.id}
+                id={note.id}
+                content={note.content}
+                onDelete={handleDelete}
+                date={note.createdAt}
+              />
+            ))}
+          </>
+        : <div className="border-2 border-gray-300 border-t-0 text-center p-3 capitalize">empty list</div>}
       </ul>
     </div>
   );
