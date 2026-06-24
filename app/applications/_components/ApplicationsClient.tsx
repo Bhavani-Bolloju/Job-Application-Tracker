@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Application } from "@/lib/types";
+import { Application, Mode } from "@/lib/types";
 import ApplicationTable from "./ApplicationTable";
 import ApplicationDrawer from "./ApplicationDrawer";
 import { useRouter, redirect } from "next/navigation";
 
-type Mode = "view" | "edit" | "add";
 
 type Props = {
   applications: Application[];

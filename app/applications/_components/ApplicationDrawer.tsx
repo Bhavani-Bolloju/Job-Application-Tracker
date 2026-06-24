@@ -10,7 +10,7 @@ import {
 
 import FormMode from "./drawer/FormMode";
 
-type Mode = "view" | "add" | "edit";
+import { Mode } from "@/lib/types";
 
 type Props = {
   isOpen: boolean;

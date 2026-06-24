@@ -1,8 +1,13 @@
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Pencil, ExternalLink, ChevronLeft, Calendar } from "lucide-react";
-import { Application } from "@/lib/types";
+import { Application, Mode } from "@/lib/types";
 import { format } from "date-fns";
+
+import ApplicationDrawer from "../ApplicationDrawer";
+
+import { useRouter } from "next/navigation";
 
 type Props = {
   application: Application;
@@ -10,8 +15,22 @@ type Props = {
 
 function ApplicationHeader({ application }: Props) {
   const { company, role, appliedDate } = application;
+  const [isOpen, setIsOpen] = useState(false);
+  const [mode, setMode] = useState<Mode>("add");
 
   const formatDate = format(new Date(appliedDate), "PP");
+
+  const router = useRouter();
+
+  function handleEdit() {
+    setMode("edit");
+    setIsOpen(true);
+  }
+
+  function handleClose() {
+    setIsOpen(false);
+    router.refresh();
+  }
 
   return (
     <div>
@@ -26,6 +45,7 @@ function ApplicationHeader({ application }: Props) {
         <Button
           variant="outline"
           className="flex items-center gap-2 py-2 px-4 border border-gray-200 rounded-none self-stretch h-auto"
+          onClick={handleEdit}
         >
           <Pencil />
           <span> Edit</span>
@@ -57,6 +77,13 @@ function ApplicationHeader({ application }: Props) {
           status
         </div>
       </div>
+
+      <ApplicationDrawer
+        isOpen={isOpen}
+        mode={mode}
+        application={application}
+        onClose={handleClose}
+      />
     </div>
   );
 }

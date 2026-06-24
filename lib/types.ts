@@ -56,3 +56,4 @@ export type Contact = {
   applicationId: string;
 };
 
+export type Mode = "view" | "edit" | "add";
