@@ -43,11 +43,16 @@ export type Note = {
   applicationId: string;
 };
 
+export type ApplicationContactFormProps = {
+  name: string;
+  role: string;
+  contactURL: string;
+};
 export type Contact = {
   id: string;
   name: string;
-  email: string | null;
-  role: string | null;
+  role: string;
+  contactURL: string;
   applicationId: string;
 };
 

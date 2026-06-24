@@ -21,12 +21,12 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
 type Props = {
-  onAdd: (note: string) => void;
+  onFormSubmit: (note: string) => void;
   open: boolean;
   onDialogStatus: (value: boolean) => void;
 };
 
-function AddNoteCardForm({ onAdd, open, onDialogStatus }: Props) {
+function AddNoteCardForm({ onFormSubmit, open, onDialogStatus }: Props) {
   const [inputNote, setInputNote] = useState("");
 
   const addNotes = function (e: React.ChangeEvent<HTMLInputElement>) {
@@ -34,8 +34,8 @@ function AddNoteCardForm({ onAdd, open, onDialogStatus }: Props) {
   };
 
   const handleSubmit = function (e: React.SubmitEvent) {
-    e.preventDefault()
-    onAdd(inputNote);
+    e.preventDefault();
+    onFormSubmit(inputNote);
     onDialogStatus(false);
   };
 
@@ -64,7 +64,9 @@ function AddNoteCardForm({ onAdd, open, onDialogStatus }: Props) {
           </FieldGroup>
           <DialogFooter>
             <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline" onClick={() => onDialogStatus(false)}>
+                Cancel
+              </Button>
             </DialogClose>
             <Button type="submit">Confirm</Button>
           </DialogFooter>

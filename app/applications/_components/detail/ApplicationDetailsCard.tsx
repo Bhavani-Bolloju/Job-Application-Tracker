@@ -3,6 +3,7 @@ import React from "react";
 import DetailRow from "./DetailRow";
 import { List } from "lucide-react";
 import NoteSection from "./NoteSection";
+import ContactSection from "./ContactSection";
 
 // import { format } from "date-fns";
 
@@ -55,7 +56,8 @@ function ApplicationDetailsCard({ application }: Props) {
         <DetailRow title="platform" value={platform} />
         <DetailRow title="job URL" value={url} />
       </ul>
-      <NoteSection notes={notes} id={id} />
+      <NoteSection notes={notes} applicationId={id} />
+      <ContactSection contacts={contacts} applicationId={id} />
     </div>
   );
 }
