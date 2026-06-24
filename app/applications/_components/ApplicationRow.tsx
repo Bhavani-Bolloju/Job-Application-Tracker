@@ -9,7 +9,7 @@ import {
   DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 
-import { Ellipsis } from 'lucide-react';
+import { Ellipsis } from "lucide-react";
 
 import StatusBadge from "./StatusBadge";
 import { format } from "date-fns";
@@ -35,6 +35,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
         e.stopPropagation();
         onRowClick(id);
       }}
+      className="hover:cursor-pointer"
     >
       <TableCell className="font-medium">{company}</TableCell>
       <TableCell>{role}</TableCell>
@@ -58,7 +59,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
                 e.stopPropagation();
               }}
             >
-             <Ellipsis/>
+              <Ellipsis />
               <span className="sr-only">Open menu</span>
             </Button>
           </DropdownMenuTrigger>

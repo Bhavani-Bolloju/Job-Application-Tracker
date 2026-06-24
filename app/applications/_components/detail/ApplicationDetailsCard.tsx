@@ -5,7 +5,7 @@ import { List } from "lucide-react";
 import NoteSection from "./NoteSection";
 import ContactSection from "./ContactSection";
 
-// import { format } from "date-fns";
+import { format } from "date-fns";
 
 import { Application } from "@/lib/types";
 
@@ -38,8 +38,11 @@ function ApplicationDetailsCard({ application }: Props) {
     typeValue = typeValue.replace("_", " ").toLowerCase();
   }
 
+  const formatCreatedAt = format(new Date(createdAt), "PP");
+  const formatUpdatedAt = format(new Date(updatedAt), "PP");
+
   return (
-    <div>
+    <div className="mt-8">
       <div className="flex items-center gap-2 p-5 border-2 border-gray-300">
         <List className="w-5" />
         <h3>Application Details</h3>
@@ -58,6 +61,10 @@ function ApplicationDetailsCard({ application }: Props) {
       </ul>
       <NoteSection notes={notes} applicationId={id} />
       <ContactSection contacts={contacts} applicationId={id} />
+      <div className="flex justify-between items-center text-gray-600 mt-8 text-lg">
+        <span> Created on {formatCreatedAt} </span>
+        <span> Last updated on {formatUpdatedAt} </span>
+      </div>
     </div>
   );
 }
