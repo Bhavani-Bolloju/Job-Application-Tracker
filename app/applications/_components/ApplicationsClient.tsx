@@ -5,7 +5,13 @@ import { Application, Mode } from "@/lib/types";
 import ApplicationTable from "./ApplicationTable";
 import ApplicationDrawer from "./ApplicationDrawer";
 import { useRouter, redirect } from "next/navigation";
+import FilterSection from "./filter/FilterSection";
+import { BriefcaseBusiness } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
+import { Plus } from "lucide-react";
+
+import { FilterProvider } from "../context/FilterContext";
 
 type Props = {
   applications: Application[];
@@ -35,14 +41,11 @@ function ApplicationsClient({ applications }: Props) {
   }
 
   async function handleDelete(id: string) {
-
     const url = `/api/applications/${id}`;
 
     await fetch(url, {
       method: "DELETE"
     });
-
-    console.log(id, "delete successfully");
 
     router.refresh();
   }
@@ -56,21 +59,31 @@ function ApplicationsClient({ applications }: Props) {
 
   return (
     <div className="p-6">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">Applications</h1>
-        <button
+      <div className="flex items-center justify-between px-6">
+        <h1 className="mb-4 flex items-center gap-2">
+          <BriefcaseBusiness />
+          <span className="text-3xl capitalize"> my applications</span>
+        </h1>
+        <Button
           onClick={handleAddNew}
-          className="bg-black text-white px-4 py-2 rounded-lg text-sm hover:cursor-pointer"
+          className="flex items-center gap-1 py-3 px-4 h-auto hover:cursor-pointer"
         >
-          + Add New
-        </button>
+          <Plus />
+          <span>Add application</span>
+        </Button>
       </div>
-      <ApplicationTable
-        applications={applications}
-        onRowClick={handleRowClick}
-        onEdit={handleEdit}
-        onDelete={handleDelete}
-      />
+
+      <FilterProvider>
+        <FilterSection applications={applications} />
+
+        <ApplicationTable
+          applications={applications}
+          onRowClick={handleRowClick}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+        />
+      </FilterProvider>
+
       <ApplicationDrawer
         isOpen={isOpen}
         mode={mode}
