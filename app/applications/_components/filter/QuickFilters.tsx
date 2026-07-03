@@ -39,14 +39,14 @@ function QuickFilters({ applications }: Props) {
     onStatusChange,
     selectedPlatform,
     onPlatformChange,
-    onToggleMoreFilter
+    onToggleMoreFilter,
+    isMoreFilterOpen
   } = useFilter();
 
   const handleSearchQuery = function (e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     onSearchQueryChange(value);
   };
-
 
   return (
     <FieldGroup className="flex flex-row gap-5 items-stretch px-6 pt-2 pb-4">
@@ -134,7 +134,9 @@ function QuickFilters({ applications }: Props) {
       >
         <ListFilter className="w-4.5" />
         <span className="capitalize">more filters</span>
-        <ChevronDown className="w-4.5" />
+        <ChevronDown
+          className={`w-4.5 ${isMoreFilterOpen ? "-rotate-180" : "rotate-0"} transition-all duration-150 ease-linear`}
+        />
       </Button>
     </FieldGroup>
   );
