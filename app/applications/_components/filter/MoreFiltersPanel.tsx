@@ -19,14 +19,15 @@ function MoreFiltersPanel() {
     appliedDate,
     followupDate,
     onAppliedDateChange,
-    onFollowupDateChange
+    onFollowupDateChange,
+    onApplyMoreFilters,
+    onCancelMoreFilters
   } = useFilter();
 
   // console.log(appliedDate, "applied date more filters");
   // console.log(followupDate, "follow up date more filters");
 
   // TODO: Close popover automatically after a complete range selection.
-
   return (
     <div className="mt-3 border-t-2 py-2">
       <div className="mb-5 px-6">More filters</div>
@@ -103,10 +104,16 @@ function MoreFiltersPanel() {
             </PopoverContent>
           </Popover>
         </div>
-        <Button variant="outline" className="h-auto capitalize px-4 ml-auto">
+        <Button
+          variant="outline"
+          className="h-auto capitalize px-4 ml-auto"
+          onClick={onCancelMoreFilters}
+        >
           cancel
         </Button>
-        <Button className="h-auto capitalize px-4">apply filter</Button>
+        <Button className="h-auto capitalize px-4" onClick={onApplyMoreFilters}>
+          apply filter
+        </Button>
       </div>
     </div>
   );

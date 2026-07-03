@@ -27,7 +27,13 @@ function ApplicationTable({
   onEdit,
   onDelete
 }: Props) {
-  const { searchQuery, selectedStatus, selectedPlatform } = useFilter();
+  const {
+    searchQuery,
+    selectedStatus,
+    selectedPlatform,
+    draftAppliedDate,
+    draftFollowupDate
+  } = useFilter();
 
   let filteredApplications = applications;
 
@@ -57,6 +63,27 @@ function ApplicationTable({
       </div>
     );
   }
+
+  if (draftAppliedDate && draftAppliedDate.from && draftAppliedDate.to) {
+    const { from, to } = draftAppliedDate;
+
+    filteredApplications = filteredApplications.filter(
+      (application) =>
+        application.appliedDate >= from && application.appliedDate <= to
+    );
+  }
+  if (draftFollowupDate && draftFollowupDate.from && draftFollowupDate.to) {
+    const { from, to } = draftFollowupDate;
+
+    filteredApplications = filteredApplications.filter(
+      (application) =>
+        application.followupDate &&
+        application.followupDate >= from &&
+        application.followupDate <= to
+    );
+  }
+
+  // console.log(draftAppliedDate, draftFollowupDate, "table");
 
   return (
     <Table className="px-6">

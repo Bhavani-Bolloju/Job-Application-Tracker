@@ -133,7 +133,7 @@ function QuickFilters({ applications }: Props) {
         onClick={onToggleMoreFilter}
       >
         <ListFilter className="w-4.5" />
-        <span>more filters</span>
+        <span className="capitalize">more filters</span>
         <ChevronDown className="w-4.5" />
       </Button>
     </FieldGroup>

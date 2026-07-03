@@ -8,6 +8,8 @@ type FilterContextType = {
   selectedStatus: Status | "all";
   selectedPlatform: string | "all";
 
+  draftAppliedDate: DateRange | undefined;
+  draftFollowupDate: DateRange | undefined;
   appliedDate: DateRange | undefined;
   followupDate: DateRange | undefined;
 
@@ -16,11 +18,15 @@ type FilterContextType = {
   onSearchQueryChange: (value: string) => void;
   onStatusChange: (status: Status | "all") => void;
   onPlatformChange: (platform: string) => void;
+  onDraftAppliedDateChange: (date: DateRange | undefined) => void;
+  onDraftFollowupDateChange: (date: DateRange | undefined) => void;
   onAppliedDateChange: (date: DateRange | undefined) => void;
   onFollowupDateChange: (date: DateRange | undefined) => void;
   onToggleMoreFilter: () => void;
   onClearAllFilters: () => void;
   onClearFilter: (type: string) => void;
+  onApplyMoreFilters: () => void;
+  onCancelMoreFilters: () => void;
 };
 export const FilterContext = createContext<FilterContextType | null>(null);
 
@@ -33,14 +39,19 @@ export const FilterProvider = function ({
   const [selectedStatus, setSelectedStatus] = useState<Status | "all">("all");
   const [selectedPlatform, setSelectedPlatform] = useState("all");
   const [isMoreFilterOpen, setIsMoreFilterOpen] = useState(false);
-  const [appliedDate, setAppliedDate] = useState<DateRange | undefined>({
-    from: undefined,
-    to: undefined
-  });
-  const [followupDate, setFollowUpDate] = useState<DateRange | undefined>({
-    from: undefined,
-    to: undefined
-  });
+  const [draftAppliedDate, setDraftAppliedDate] = useState<
+    DateRange | undefined
+  >(undefined);
+  const [draftFollowupDate, setDraftFollowUpDate] = useState<
+    DateRange | undefined
+  >(undefined);
+
+  const [appliedDate, setAppliedDate] = useState<DateRange | undefined>(
+    draftAppliedDate
+  );
+  const [followupDate, setFollowUpDate] = useState<DateRange | undefined>(
+    draftFollowupDate
+  );
 
   const handleSearchQuery = function (value: string) {
     setSearchQuery(value);
@@ -64,6 +75,18 @@ export const FilterProvider = function ({
     setFollowUpDate(date);
   };
 
+  const handleApplyMoreFilter = function () {
+    setDraftAppliedDate(appliedDate);
+    setDraftFollowUpDate(followupDate);
+  };
+
+  const handleCancelMoreFilter = function () {
+    setAppliedDate(undefined);
+    setFollowUpDate(undefined);
+    setDraftAppliedDate(undefined);
+    setDraftFollowUpDate(undefined);
+  };
+
   const handleClearFilter = function (type: string) {
     if (type === "query") {
       setSearchQuery("");
@@ -72,15 +95,11 @@ export const FilterProvider = function ({
     } else if (type === "platform") {
       setSelectedPlatform("all");
     } else if (type === "appliedDate") {
-      setAppliedDate({
-        from: undefined,
-        to: undefined
-      });
+      setDraftAppliedDate(undefined);
+      setAppliedDate(undefined);
     } else if (type === "followupDate") {
-      setFollowUpDate({
-        from: undefined,
-        to: undefined
-      });
+      setDraftFollowUpDate(undefined);
+      setFollowUpDate(undefined);
     }
   };
 
@@ -88,12 +107,17 @@ export const FilterProvider = function ({
     setSearchQuery("");
     setSelectedStatus("all");
     setSelectedPlatform("all");
+    setDraftAppliedDate(undefined);
+    setDraftFollowUpDate(undefined);
+    setIsMoreFilterOpen(false);
   };
 
   const value: FilterContextType = {
     searchQuery,
     selectedStatus,
     selectedPlatform,
+    draftAppliedDate,
+    draftFollowupDate,
     appliedDate,
     followupDate,
     isMoreFilterOpen,
@@ -102,10 +126,14 @@ export const FilterProvider = function ({
     onStatusChange: handleStatus,
     onPlatformChange: handlePlatform,
     onAppliedDateChange: handleAppliedDate,
+    onDraftAppliedDateChange: handleAppliedDate,
     onFollowupDateChange: handleFollowupDate,
+    onDraftFollowupDateChange: handleFollowupDate,
     onToggleMoreFilter: handleToggleMoreFilter,
     onClearAllFilters: handleClearAllFilters,
-    onClearFilter: handleClearFilter
+    onClearFilter: handleClearFilter,
+    onApplyMoreFilters: handleApplyMoreFilter,
+    onCancelMoreFilters: handleCancelMoreFilter
   };
 
   return <FilterContext value={value}>{children}</FilterContext>;
