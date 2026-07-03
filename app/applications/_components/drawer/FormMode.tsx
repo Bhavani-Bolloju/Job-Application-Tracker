@@ -1,24 +1,23 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+import { useForm, Controller } from "react-hook-form";
 import { Application } from "@/lib/types";
 import { Input } from "@/components/ui/input";
 import { FieldLabel, Field, FieldError } from "@/components/ui/field";
 // import { Textarea } from "@/components/ui/textarea";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger
+} from "@/components/ui/popover";
 
-type FormValues = {
-  company: string;
-  role: string;
-  status: string;
-  platform: string;
-  type: string;
-  location: string;
-  salary: string;
-  url: string;
-  appliedDate: string;
-  followupDate: string;
-};
+import { Calendar } from "@/components/ui/calendar";
+import { FormValues } from "@/lib/types";
+
+import { Button } from "@/components/ui/button";
+import { format } from "date-fns";
 
 type Props = {
   application: Application | null;
@@ -28,6 +27,7 @@ type Props = {
 function FormMode({ application, onClose }: Props) {
   const {
     register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting }
   } = useForm<FormValues>({
@@ -40,16 +40,21 @@ function FormMode({ application, onClose }: Props) {
       location: application?.location ?? "",
       salary: application?.salary ?? "",
       url: application?.url ?? "",
-      appliedDate:
-        application?.appliedDate ?
-          new Date(application.appliedDate).toISOString().split("T")[0]
-        : new Date().toISOString().split("T")[0],
-      followupDate:
-        application?.followupDate ?
-          new Date(application.followupDate).toISOString().split("T")[0]
-        : ""
+      appliedDate: application?.appliedDate ?? new Date(),
+      followupDate: application?.followupDate ?? undefined
+      // appliedDate:
+      //   application?.appliedDate ?
+      //     new Date(application.appliedDate).toISOString().split("T")[0]
+      //   : new Date().toISOString().split("T")[0],
+      // followupDate:
+      //   application?.followupDate ?
+      //     new Date(application.followupDate).toISOString().split("T")[0]
+      //   : ""
     }
   });
+
+  const [openAppliedDate, setOpenAppliedDate] = useState(false);
+  const [openFollowupDate, setOpenFollowupDate] = useState(false);
 
   async function onSubmit(data: FormValues) {
     const url =
@@ -137,15 +142,74 @@ function FormMode({ application, onClose }: Props) {
         <Input id="url" {...register("url")} />
       </Field>
 
-      <Field>
-        <FieldLabel htmlFor="appliedDate">Applied Date</FieldLabel>
-        <Input id="appliedDate" type="date" {...register("appliedDate")} />
-      </Field>
+      <Controller
+        control={control}
+        name="appliedDate"
+        render={({ field }) => (
+          <Field>
+            <FieldLabel htmlFor="appliedDate">Applied Date</FieldLabel>
 
-      <Field>
-        <FieldLabel htmlFor="followupDate">Follow Up Date</FieldLabel>
-        <Input id="followupDate" type="date" {...register("followupDate")} />
-      </Field>
+            <Popover open={openAppliedDate} onOpenChange={setOpenAppliedDate}>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  id="appliedDate"
+                  className="justify-start font-normal"
+                >
+                  {field.value ?
+                    format(field.value, "PPP")
+                  : <span>Pick a date</span>}
+                </Button>
+              </PopoverTrigger>
+
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={field.value}
+                  onSelect={(date) => {
+                    field.onChange(date);
+                    setOpenAppliedDate(false);
+                  }}
+                />
+              </PopoverContent>
+            </Popover>
+          </Field>
+        )}
+      />
+      <Controller
+        control={control}
+        name="followupDate"
+        render={({ field }) => (
+          <Field>
+            <FieldLabel htmlFor="followupDate">Follow Up Date</FieldLabel>
+
+            <Popover open={openFollowupDate} onOpenChange={setOpenFollowupDate}>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  id="followupDate"
+                  className="justify-start font-normal"
+                >
+                  {field.value ?
+                    format(field.value, "PPP")
+                  : <span>Pick a date</span>}
+                </Button>
+              </PopoverTrigger>
+
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={field.value}
+                  onSelect={(date) => {
+                    field.onChange(date);
+                    setOpenFollowupDate(false);
+                  }}
+                />
+              </PopoverContent>
+            </Popover>
+          </Field>
+        )}
+      />
 
       <div className="flex gap-2 pt-4">
         <button

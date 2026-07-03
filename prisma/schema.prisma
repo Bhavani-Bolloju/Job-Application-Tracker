@@ -68,7 +68,7 @@ model Note {
 model Contact {
   id            String      @id @default(cuid())
   name          String
-  email         String?
+  contactURL    String?
   role          String?
   applicationId String
   application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)

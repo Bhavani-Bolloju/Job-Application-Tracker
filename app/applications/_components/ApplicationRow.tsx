@@ -9,6 +9,8 @@ import {
   DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 
+import { Ellipsis } from "lucide-react";
+
 import StatusBadge from "./StatusBadge";
 import { format } from "date-fns";
 import { Application } from "@/lib/types";
@@ -33,6 +35,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
         e.stopPropagation();
         onRowClick(id);
       }}
+      className="hover:cursor-pointer"
     >
       <TableCell className="font-medium">{company}</TableCell>
       <TableCell>{role}</TableCell>
@@ -56,20 +59,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
                 e.stopPropagation();
               }}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
-                />
-              </svg>
+              <Ellipsis />
               <span className="sr-only">Open menu</span>
             </Button>
           </DropdownMenuTrigger>

@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 
 import ApplicationsClient from "./_components/ApplicationsClient";
 
+
 async function ApplicationsPage() {
   const session = await auth();
 
@@ -20,7 +21,11 @@ async function ApplicationsPage() {
     }
   });
 
-  return <ApplicationsClient applications={applications} />;
+  return (
+    <div>
+      <ApplicationsClient applications={applications} />
+    </div>
+  );
 }
 
 export default ApplicationsPage;

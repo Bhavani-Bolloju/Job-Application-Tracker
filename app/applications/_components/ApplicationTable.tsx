@@ -1,7 +1,5 @@
 "use client";
 
-// import { MoreHorizontalIcon } from "lucide-react";
-
 import {
   Table,
   TableBody,
@@ -14,7 +12,7 @@ import { Application } from "@/lib/types";
 
 import ApplicationRow from "./ApplicationRow";
 
-// console.log("application table");
+import { useFilter } from "../context/FilterContext";
 
 type Props = {
   applications: Application[];
@@ -29,7 +27,36 @@ function ApplicationTable({
   onEdit,
   onDelete
 }: Props) {
-  if (applications.length == 0) {
+  const {
+    searchQuery,
+    selectedStatus,
+    selectedPlatform,
+    draftAppliedDate,
+    draftFollowupDate
+  } = useFilter();
+
+  let filteredApplications = applications;
+
+  filteredApplications = filteredApplications.filter((application) =>
+    application.company.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  if (selectedStatus !== "all") {
+    filteredApplications = filteredApplications.filter(
+      (application) =>
+        application.status.toLowerCase() == selectedStatus.toLowerCase()
+    );
+  }
+
+  if (selectedPlatform !== "all") {
+    filteredApplications = filteredApplications.filter(
+      (application) =>
+        application?.platform &&
+        application?.platform.toLowerCase() == selectedPlatform.toLowerCase()
+    );
+  }
+
+  if (filteredApplications.length == 0) {
     return (
       <div className="text-center py-12 text-gray-500">
         No applications yet. Add your first one!
@@ -37,10 +64,29 @@ function ApplicationTable({
     );
   }
 
-  // console.log("application table");
+  if (draftAppliedDate && draftAppliedDate.from && draftAppliedDate.to) {
+    const { from, to } = draftAppliedDate;
+
+    filteredApplications = filteredApplications.filter(
+      (application) =>
+        application.appliedDate >= from && application.appliedDate <= to
+    );
+  }
+  if (draftFollowupDate && draftFollowupDate.from && draftFollowupDate.to) {
+    const { from, to } = draftFollowupDate;
+
+    filteredApplications = filteredApplications.filter(
+      (application) =>
+        application.followupDate &&
+        application.followupDate >= from &&
+        application.followupDate <= to
+    );
+  }
+
+  // console.log(draftAppliedDate, draftFollowupDate, "table");
 
   return (
-    <Table>
+    <Table className="px-6">
       <TableHeader>
         <TableRow>
           <TableHead>Company</TableHead>
@@ -53,7 +99,7 @@ function ApplicationTable({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {applications.map((app) => (
+        {filteredApplications.map((app) => (
           <ApplicationRow
             key={app.id}
             application={app}
