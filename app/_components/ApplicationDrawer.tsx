@@ -8,7 +8,7 @@ import {
   SheetTitle
 } from "@/components/ui/sheet";
 
-import FormMode from "./drawer/FormMode";
+import FormMode from "../applications/_components/drawer/FormMode";
 
 import { Mode } from "@/lib/types";
 
@@ -43,4 +43,3 @@ export default function ApplicationDrawer({
     </Sheet>
   );
 }
-

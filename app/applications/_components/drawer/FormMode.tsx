@@ -42,14 +42,6 @@ function FormMode({ application, onClose }: Props) {
       url: application?.url ?? "",
       appliedDate: application?.appliedDate ?? new Date(),
       followupDate: application?.followupDate ?? undefined
-      // appliedDate:
-      //   application?.appliedDate ?
-      //     new Date(application.appliedDate).toISOString().split("T")[0]
-      //   : new Date().toISOString().split("T")[0],
-      // followupDate:
-      //   application?.followupDate ?
-      //     new Date(application.followupDate).toISOString().split("T")[0]
-      //   : ""
     }
   });
 
@@ -236,4 +228,3 @@ function FormMode({ application, onClose }: Props) {
 }
 
 export default FormMode;
-

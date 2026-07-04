@@ -9,12 +9,12 @@ export default function LoginPage() {
         <form
           action={async () => {
             "use server";
-            await signIn("google", { redirectTo: "/dashboard" });
+            await signIn("google", { redirectTo: "/" });
           }}
         >
           <button
             type="submit"
-            className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-6 py-3 shadow-sm hover:shadow-md transition"
+            className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-6 py-3 shadow-sm hover:shadow-md transition hover:cursor-pointer"
           >
             Sign in with Google
           </button>
@@ -23,3 +23,4 @@ export default function LoginPage() {
     </div>
   );
 }
+

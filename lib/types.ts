@@ -16,9 +16,9 @@ export type User = {
   image: string;
   createdAt: Date;
   updateAt: Date;
-  // applications: Application[];
+  applications: Application[];
   // accounts: Accounts[];
-  // sessions: Session[]
+  // sessions: Session[];
 };
 export type Application = {
   id: string;
@@ -73,4 +73,3 @@ export type FormValues = {
   appliedDate: Date;
   followupDate: Date;
 };
-

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Application, Mode } from "@/lib/types";
 import ApplicationTable from "./ApplicationTable";
-import ApplicationDrawer from "./ApplicationDrawer";
+
 import { useRouter, redirect } from "next/navigation";
 import FilterSection from "./filter/FilterSection";
 import { BriefcaseBusiness } from "lucide-react";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
 import { FilterProvider } from "../context/FilterContext";
+import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
 
 type Props = {
   applications: Application[];
@@ -95,4 +96,3 @@ function ApplicationsClient({ applications }: Props) {
 }
 
 export default ApplicationsClient;
-
