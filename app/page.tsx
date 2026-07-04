@@ -1,9 +1,9 @@
-export default function Home() {
+import DashboardClient from "./dashboard/_components/DashboardClient";
+
+export default function Dashboard() {
   return (
     <div>
-      <main>
-        <h1 className="capitalize">Job application tracker</h1>
-      </main>
+      <DashboardClient />
     </div>
   );
 }
