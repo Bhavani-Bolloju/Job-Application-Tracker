@@ -7,11 +7,11 @@ export const STATUSES = [
 ] as const;
 
 export const cardColors = {
-  APPLIED: { "icon-text": "text-blue-700", "icon-bg": "bg-blue-50" },
-  INTERVIEWED: { "icon-text": "text-amber-700", "icon-bg": "bg-amber-50" },
-  OFFER: { "icon-text": "text-emerald-700", "icon-bg": "bg-emerald-50" },
-  REJECTED: { "icon-text": "text-red-700", "icon-bg": "bg-red-50" },
-  WISHLIST: { "icon-text": "text-violet-700", "icon-bg": "bg-violet-50" }
+  APPLIED: { "icon-text": "text-blue-600", "icon-bg": "bg-blue-100" },
+  INTERVIEWED: { "icon-text": "text-orange-600", "icon-bg": "bg-orange-100" },
+  OFFER: { "icon-text": "text-emerald-600", "icon-bg": "bg-emerald-100" },
+  REJECTED: { "icon-text": "text-red-600", "icon-bg": "bg-red-100" },
+  WISHLIST: { "icon-text": "text-violet-600", "icon-bg": "bg-violet-100" }
 } as const;
 
 export type Status = (typeof STATUSES)[number];
