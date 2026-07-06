@@ -28,12 +28,19 @@ export default async function Dashboard() {
     }
   });
 
+  const recentApplications = await prisma.application.findMany({
+    where: { userId: session.user.id },
+    orderBy: { updatedAt: "desc" },
+    take: 5
+  });
+
   return (
     <div>
       <DashboardClient
         user={session?.user}
         applications={applications}
         statusCount={statusCount}
+        recentApplications={recentApplications}
       />
     </div>
   );

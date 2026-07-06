@@ -16,15 +16,19 @@ type Props = {
   user: Session["user"] | undefined;
   applications: Application[];
   statusCount: StatusCount[];
+  recentApplications: Application[];
 };
 
-function DashboardClient({ user, applications, statusCount }: Props) {
+function DashboardClient({ user, applications, statusCount, recentApplications }: Props) {
   return (
     <div className="py-6 px-20">
       <DashboardHeader user={user} />
       <StatusCards statusCount={statusCount} />
+      <div className="flex justify-between gap-5">
+        
       <StatusChart />
-      <RecentActivity />
+      <RecentActivity recentApplications={recentApplications} />
+      </div>
       <DashboardFooter />
     </div>
   );
