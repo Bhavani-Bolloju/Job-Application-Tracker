@@ -14,6 +14,14 @@ export const cardColors = {
   WISHLIST: { "icon-text": "text-violet-600", "icon-bg": "bg-violet-100" }
 } as const;
 
+export const chartColors = {
+  APPLIED: "rgb(37, 99, 235)", // blue-600
+  INTERVIEWED: "rgb(234, 88, 12)", // orange-600
+  OFFER: "rgb(5, 150, 105)", // emerald-600
+  REJECTED: "rgb(220, 38, 38)", // red-600
+  WISHLIST: "rgb(124, 58, 237)" // violet-600
+} as const;
+
 export type Status = (typeof STATUSES)[number];
 
 export type User = {

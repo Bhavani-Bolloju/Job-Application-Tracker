@@ -7,10 +7,8 @@ type Props = {
 };
 
 function RecentActivity({ recentApplications }: Props) {
-  console.log(recentApplications);
-
   return (
-    <div className="basis-2/6 rounded-md shadow-lg py-4 px-8">
+    <div className="flex-1 rounded-md shadow-lg py-4 px-8">
       <h2 className="text-2xl mb-2">Recent activity</h2>
       <ul className="divide-y-2">
         {recentApplications.map((application) => (

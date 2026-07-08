@@ -14,20 +14,19 @@ import type { Session } from "next-auth";
 
 type Props = {
   user: Session["user"] | undefined;
-  applications: Application[];
+  // applications: Application[];
   statusCount: StatusCount[];
   recentApplications: Application[];
 };
 
-function DashboardClient({ user, applications, statusCount, recentApplications }: Props) {
+function DashboardClient({ user, statusCount, recentApplications }: Props) {
   return (
     <div className="py-6 px-20">
       <DashboardHeader user={user} />
       <StatusCards statusCount={statusCount} />
       <div className="flex justify-between gap-5">
-        
-      <StatusChart />
-      <RecentActivity recentApplications={recentApplications} />
+        <StatusChart statusCount = {statusCount} />
+        <RecentActivity recentApplications={recentApplications} />
       </div>
       <DashboardFooter />
     </div>
