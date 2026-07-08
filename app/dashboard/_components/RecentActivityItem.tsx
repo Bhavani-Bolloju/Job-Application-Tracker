@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Status } from "@/lib/types";
+import { Status, cardColors } from "@/lib/types";
 import { formatDistanceToNow } from "date-fns";
 
 type Props = {
@@ -24,7 +24,12 @@ function RecentActivityItem({ role, company, status, appliedDate }: Props) {
       <div className="col-start-2 col-span-1 row-start-2 row-span-1">
         {company}
       </div>
-      <div className="col-start-3 col-span-1 row-start-1">{status}</div>
+      <div
+        className={`col-start-3 col-span-1 row-start-1 text-center ${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]} rounded-sm`}
+        // style={{ text: chartColors[status] }}
+      >
+        {status[0] + status.slice(1).toLowerCase()}
+      </div>
       <div className="col-start-3 row-start-2">{formatAppliedDate}</div>
     </li>
   );
