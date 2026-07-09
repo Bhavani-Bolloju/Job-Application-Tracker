@@ -3,6 +3,8 @@ import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 
+import Link from "next/link";
+
 function DashboardFooter() {
   return (
     <div className="flex gap-5 mt-5 items-center border-2 rounded-md p-5 bg-gray-50">
@@ -11,9 +13,11 @@ function DashboardFooter() {
         <p className="font-semibold mb-1">Want to see all your applications?</p>
         <p>View, search and filter all you job applications in one place</p>
       </div>
-      <Button className="ml-auto p-5 hover:cursor-pointer">
-        View all applications
-      </Button>
+      <Link href="/applications" className="ml-auto">
+        <Button className="p-5 hover:cursor-pointer">
+          View all applications
+        </Button>
+      </Link>
     </div>
   );
 }
