@@ -18,10 +18,30 @@ export default async function Dashboard() {
     }
   });
 
+  const statusCount = await prisma.application.groupBy({
+    by: ["status"],
+    where: {
+      userId: session.user.id
+    },
+    _count: {
+      status: true
+    }
+  });
+
+  const recentApplications = await prisma.application.findMany({
+    where: { userId: session.user.id },
+    orderBy: { updatedAt: "desc" },
+    take: 5,
+  });
+
   return (
     <div>
-      <DashboardClient user={session?.user} applications={applications} />
+      <DashboardClient
+        user={session?.user}
+        applications={applications}
+        statusCount={statusCount}
+        recentApplications={recentApplications}
+      />
     </div>
   );
 }
-

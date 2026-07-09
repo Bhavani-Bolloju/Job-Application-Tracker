@@ -5,7 +5,7 @@ import { Pencil, ExternalLink, ChevronLeft, Calendar } from "lucide-react";
 import { Application, Mode } from "@/lib/types";
 import { format } from "date-fns";
 
-import ApplicationDrawer from "../ApplicationDrawer";
+import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
 
 import { useRouter } from "next/navigation";
 
@@ -95,4 +95,3 @@ function ApplicationHeader({ application }: Props) {
 }
 
 export default ApplicationHeader;
-

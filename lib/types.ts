@@ -6,6 +6,22 @@ export const STATUSES = [
   "REJECTED"
 ] as const;
 
+export const cardColors = {
+  APPLIED: { "icon-text": "text-blue-600", "icon-bg": "bg-blue-100" },
+  INTERVIEWED: { "icon-text": "text-orange-600", "icon-bg": "bg-orange-100" },
+  OFFER: { "icon-text": "text-emerald-600", "icon-bg": "bg-emerald-100" },
+  REJECTED: { "icon-text": "text-red-600", "icon-bg": "bg-red-100" },
+  WISHLIST: { "icon-text": "text-violet-600", "icon-bg": "bg-violet-100" }
+} as const;
+
+export const chartColors = {
+  APPLIED: "rgb(37, 99, 235)", // blue-600
+  INTERVIEWED: "rgb(234, 88, 12)", // orange-600
+  OFFER: "rgb(5, 150, 105)", // emerald-600
+  REJECTED: "rgb(220, 38, 38)", // red-600
+  WISHLIST: "rgb(124, 58, 237)" // violet-600
+} as const;
+
 export type Status = (typeof STATUSES)[number];
 
 export type User = {
@@ -72,4 +88,11 @@ export type FormValues = {
   url: string;
   appliedDate: Date;
   followupDate: Date;
+};
+
+export type StatusCount = {
+  status: Status;
+  _count: {
+    status: number;
+  };
 };
