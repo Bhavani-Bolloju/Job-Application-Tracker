@@ -14,6 +14,8 @@ import { Plus } from "lucide-react";
 import { FilterProvider } from "../context/FilterContext";
 import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
 
+import Breadcrumbs from "@/app/_components/Breadcrumbs";
+
 type Props = {
   applications: Application[];
 };
@@ -59,8 +61,12 @@ function ApplicationsClient({ applications }: Props) {
   // console.log("application client");
 
   return (
-    <div className="p-6">
-      <div className="flex items-center justify-between px-6">
+    <div className="p-6 px-10">
+      <div className="mb-5">
+        <Breadcrumbs />
+      </div>
+
+      <div className="flex items-center justify-between mb-5">
         <h1 className="mb-4 flex items-center gap-2">
           <BriefcaseBusiness />
           <span className="text-3xl capitalize"> my applications</span>

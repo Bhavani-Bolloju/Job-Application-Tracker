@@ -86,7 +86,7 @@ function ApplicationTable({
   // console.log(draftAppliedDate, draftFollowupDate, "table");
 
   return (
-    <Table className="px-6">
+    <Table className="mt-5">
       <TableHeader>
         <TableRow>
           <TableHead>Company</TableHead>
@@ -114,4 +114,3 @@ function ApplicationTable({
 }
 
 export default ApplicationTable;
-
