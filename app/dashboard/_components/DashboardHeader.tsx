@@ -21,11 +21,11 @@ function DashboardHeader({ user }: { user: Session["user"] | undefined }) {
   }
 
   return (
-    <div className="mb-5">
+    <div className="mb-8">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-2xl">Hi, {user?.name} 👋</p>
-          <p>Track your job applications </p>
+          <p className="text-page-title font-bold">Hi, {user?.name} 👋</p>
+          <p className="">Track your job applications </p>
         </div>
         <Button
           onClick={handleAddNew}
@@ -46,4 +46,3 @@ function DashboardHeader({ user }: { user: Session["user"] | undefined }) {
 }
 
 export default DashboardHeader;
-

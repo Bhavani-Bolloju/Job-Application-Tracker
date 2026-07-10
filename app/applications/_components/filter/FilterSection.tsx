@@ -4,14 +4,13 @@ import FilterToolbar from "./FilterToolbar";
 import ActiveFiltersBar from "./ActiveFiltersBar";
 import { Application } from "@/lib/types";
 
-
 type Props = {
   applications: Application[];
 };
 
 function FilterSection({ applications }: Props) {
   return (
-    <div className="border-2 rounded-lg shadow-sm shadow-gray-100 pt-3">
+    <div className="border-2 border-gray-200 rounded-lg shadow-sm shadow-gray-100 pt-3">
       <FilterToolbar applications={applications} />
       <ActiveFiltersBar />
     </div>
@@ -19,6 +18,3 @@ function FilterSection({ applications }: Props) {
 }
 
 export default FilterSection;
-
-
-

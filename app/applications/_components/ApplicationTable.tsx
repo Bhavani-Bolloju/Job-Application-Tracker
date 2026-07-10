@@ -86,9 +86,9 @@ function ApplicationTable({
   // console.log(draftAppliedDate, draftFollowupDate, "table");
 
   return (
-    <Table className="mt-5">
-      <TableHeader>
-        <TableRow>
+    <Table className="mt-8 p-5 border-2">
+      <TableHeader className="py-5">
+        <TableRow className="font-medium text-base">
           <TableHead>Company</TableHead>
           <TableHead>Role</TableHead>
           <TableHead>Status</TableHead>

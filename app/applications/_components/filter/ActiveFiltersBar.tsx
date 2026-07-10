@@ -20,8 +20,8 @@ function ActiveFiltersBar() {
   return (
     <div className="border-t-2 py-3">
       <div className="px-6 flex items-start">
-        <span className="mr-3">Active Filters:</span>
-        <div className="flex flex-wrap justify-start items-center gap-5">
+        <span className="mr-3 font-medium">Active Filters:</span>
+        <div className="flex flex-wrap justify-start items-center gap-5 text-gray-700">
           {searchQuery !== "" && (
             <div className="border-2 px-2 flex gap-1 items-center">
               <span>Company: </span>
@@ -30,7 +30,7 @@ function ActiveFiltersBar() {
                 className="hover:cursor-pointer ml-2 self-center"
                 onClick={() => onClearFilter("query")}
               >
-                <X className="w-3 text-gray-500" />
+                <X className="w-4 h-auto text-gray-600" />
               </button>
             </div>
           )}
@@ -72,7 +72,7 @@ function ActiveFiltersBar() {
                 className="hover:cursor-pointer ml-2"
                 onClick={() => onClearFilter("appliedDate")}
               >
-                <X className="w-3 text-gray-500" />
+                <X className="w-5 h-auto text-gray-600" />
               </button>
             </div>
           )}
@@ -112,4 +112,3 @@ function ActiveFiltersBar() {
 }
 
 export default ActiveFiltersBar;
-

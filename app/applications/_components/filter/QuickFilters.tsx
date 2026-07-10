@@ -61,7 +61,7 @@ function QuickFilters({ applications }: Props) {
         <Input
           type="search"
           placeholder="Search Company..."
-          className=" ml-5 border-0 focus:outline-none focus:ring-0 shadow-none focus:border-0  focus-visible:ring-0 rounded-none p-0 text-inherit text-base"
+          className=" ml-5 border-0 focus:outline-none focus:ring-0 shadow-none focus:border-0  focus-visible:ring-0 rounded-none p-0 text-inherit text-base "
           value={searchQuery}
           onChange={handleSearchQuery}
         />

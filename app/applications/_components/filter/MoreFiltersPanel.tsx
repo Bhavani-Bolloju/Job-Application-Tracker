@@ -25,19 +25,18 @@ function MoreFiltersPanel() {
     isMoreFilterOpen
   } = useFilter();
 
-
   // TODO: Close popover automatically after a complete range selection.
   return (
     <div
       className={`grid ${isMoreFilterOpen ? "grid-rows-[1fr] border-t-2 py-2" : "grid-rows-[0fr]"} transition-all duration-200 ease-in-out`}
     >
       <div className="overflow-hidden ">
-        <div className="mb-5 px-6">More filters</div>
+        <div className="mb-5 px-6 font-medium">More filters</div>
         <div className="flex items-stretch gap-5 px-6 pb-3">
           <div className="relative border-2 rounded-lg flex items-center justify-center  h-12 ">
             <FieldLabel
               htmlFor="applied-date"
-              className="absolute -top-3 translate-y-0  left-2 bg-white px-2 capitalize"
+              className="absolute -top-3 translate-y-0  left-2 px-2 capitalize "
             >
               applied date
             </FieldLabel>
@@ -46,7 +45,7 @@ function MoreFiltersPanel() {
                 <Button
                   variant="outline"
                   id="applied-date"
-                  className="justify-start px-2.5 border-none mx-5 hover:cursor-pointer"
+                  className="justify-start px-2.5 border-none mx-5 hover:cursor-pointer text-gray-600"
                 >
                   <CalendarIcon />
                   {appliedDate?.from ?
@@ -82,7 +81,7 @@ function MoreFiltersPanel() {
                 <Button
                   variant="outline"
                   id="follow-up-date"
-                  className="justify-start px-2.5 border-0 mx-5 hover:cursor-pointer"
+                  className="justify-start px-2.5 border-0 mx-5 hover:cursor-pointer text-gray-600"
                 >
                   <CalendarIcon />
                   {followupDate?.from ?
@@ -126,4 +125,3 @@ function MoreFiltersPanel() {
 }
 
 export default MoreFiltersPanel;
-

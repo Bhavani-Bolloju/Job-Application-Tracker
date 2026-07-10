@@ -78,17 +78,19 @@ function StatusChart({ statusCount }: Props) {
   };
 
   return (
-    <div className="basis-3/6 shadow-lg py-4 px-8">
-      <h2 className="text-2xl mb-5">Applications by status</h2>
-      <div className="h-100 flex ">
+    <div className="basis-3/6 py-4 px-8 rounded-md shadow-md shadow-gray-200 border border-gray-50 ">
+      <h2 className="text-section-title font-semibold mb-5">
+        Applications by status
+      </h2>
+      <div className="h-100 flex justify-around">
         <div className="h-full relative w-full basis-2/3">
           <Doughnut data={data} options={options} className="h-full w-full" />
           <div className="absolute top-1/2 left-1/2 -translate-1/2 flex flex-col items-center">
-            <span className="text-3xl font-medium">{total}</span>
-            <span>Total</span>
+            <span className="text-section-title font-medium">{total}</span>
+            <span className="text-sm">Total</span>
           </div>
         </div>
-        <ul className="flex-1 flex flex-col justify-center items-center">
+        <ul className="w-fit flex flex-col justify-center items-start">
           {statusCount.map((label) => (
             <StatusChartLabelItem
               key={label.status}
@@ -104,4 +106,3 @@ function StatusChart({ statusCount }: Props) {
 }
 
 export default StatusChart;
-

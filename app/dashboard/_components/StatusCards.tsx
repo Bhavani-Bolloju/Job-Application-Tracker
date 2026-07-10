@@ -36,7 +36,7 @@ function StatusCards({ statusCount }: Props) {
   const statusObj = Object.fromEntries(statusCountMap);
 
   return (
-    <ul className="grid grid-cols-[repeat(5,minmax(100px,180px))] gap-5 mb-5">
+    <ul className="grid grid-cols-[repeat(auto-fit,14rem)] gap-5 mb-5">
       {STATUSES.map((status) => {
         return (
           <StatusCard

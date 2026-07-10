@@ -1,7 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Status } from "@/lib/types";
-
-// type Status = "WISHLIST" | "APPLIED" | "INTERVIEWED" | "OFFER" | "REJECTED";
+import { Status, cardColors } from "@/lib/types";
 
 const statusStyles: Record<Status, string> = {
   WISHLIST: "bg-gray-100 text-gray-700 hover:bg-gray-100",
@@ -25,9 +23,10 @@ type StatusProps = {
 
 export default function StatusBadge({ status }: StatusProps) {
   return (
-    <Badge className={`${statusStyles[status]} text-base`}>
+    <Badge
+      className={`${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]} text-base`}
+    >
       {statusLabels[status]}
     </Badge>
   );
 }
-

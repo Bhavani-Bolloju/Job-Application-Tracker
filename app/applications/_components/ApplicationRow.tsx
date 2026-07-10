@@ -13,7 +13,9 @@ import { Ellipsis } from "lucide-react";
 
 import StatusBadge from "./StatusBadge";
 import { format } from "date-fns";
-import { Application } from "@/lib/types";
+import { Application, cardColors } from "@/lib/types";
+
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
   application: Application;
@@ -25,8 +27,6 @@ type Props = {
 function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
   const { id, company, role, status, platform, appliedDate, followupDate } =
     application;
-
-  // console.log("application row", id, company);
 
   return (
     <TableRow
@@ -40,7 +40,11 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
       <TableCell className="font-medium">{company}</TableCell>
       <TableCell>{role}</TableCell>
       <TableCell>
-        <StatusBadge status={status} />
+        <Badge
+          className={`${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]}`}
+        >
+          {status[0] + status.slice(1).toLowerCase()}
+        </Badge>
       </TableCell>
       <TableCell>{platform}</TableCell>
       <TableCell>{format(new Date(appliedDate), "MMM d")}</TableCell>
@@ -93,4 +97,3 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
 }
 
 export default ApplicationRow;
-

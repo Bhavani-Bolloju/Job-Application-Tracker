@@ -20,12 +20,7 @@ async function ApplicationsPage() {
     }
   });
 
-
-  return (
-    <div>
-      <ApplicationsClient applications={applications} />
-    </div>
-  );
+  return <ApplicationsClient applications={applications} />;
 }
 
 export default ApplicationsPage;

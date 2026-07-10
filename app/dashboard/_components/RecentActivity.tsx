@@ -8,8 +8,8 @@ type Props = {
 
 function RecentActivity({ recentApplications }: Props) {
   return (
-    <div className="flex-1 rounded-md shadow-lg py-4 px-8">
-      <h2 className="text-2xl mb-2">Recent activity</h2>
+    <div className="flex-1 py-4 px-8 rounded-md shadow-sm shadow-gray-200 border border-gray-50 ">
+      <h2 className="text-section-title font-semibold mb-2">Recent activity</h2>
       <ul className="divide-y-2">
         {recentApplications.map((application) => (
           <RecentActivityItem
@@ -26,4 +26,3 @@ function RecentActivity({ recentApplications }: Props) {
 }
 
 export default RecentActivity;
-

@@ -14,7 +14,6 @@ import type { Session } from "next-auth";
 
 type Props = {
   user: Session["user"] | undefined;
-  // applications: Application[];
   statusCount: StatusCount[];
   recentApplications: Application[];
 };
