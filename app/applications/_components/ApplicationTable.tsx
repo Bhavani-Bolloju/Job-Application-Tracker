@@ -83,11 +83,10 @@ function ApplicationTable({
     );
   }
 
-  // console.log(draftAppliedDate, draftFollowupDate, "table");
 
   return (
-    <Table className="mt-8 p-5 border-2">
-      <TableHeader className="py-5">
+    <Table className="mt-8  border-2 rounded-t-sm shadow-md">
+      <TableHeader className="h-14 rounded-2xl">
         <TableRow className="font-medium text-base">
           <TableHead>Company</TableHead>
           <TableHead>Role</TableHead>
@@ -98,7 +97,7 @@ function ApplicationTable({
           <TableHead className="text-right">Actions</TableHead>
         </TableRow>
       </TableHeader>
-      <TableBody>
+      <TableBody className="py-5">
         {filteredApplications.map((app) => (
           <ApplicationRow
             key={app.id}

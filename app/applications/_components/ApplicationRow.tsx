@@ -35,7 +35,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
         e.stopPropagation();
         onRowClick(id);
       }}
-      className="hover:cursor-pointer"
+      className="hover:cursor-pointer h-14"
     >
       <TableCell className="font-medium">{company}</TableCell>
       <TableCell>{role}</TableCell>

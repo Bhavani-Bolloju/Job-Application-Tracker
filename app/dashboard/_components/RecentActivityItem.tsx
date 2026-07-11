@@ -3,6 +3,8 @@ import React from "react";
 import { Status, cardColors } from "@/lib/types";
 import { formatDistanceToNow } from "date-fns";
 
+import { Badge } from "@/components/ui/badge";
+
 type Props = {
   role: string;
   company: string;
@@ -24,12 +26,14 @@ function RecentActivityItem({ role, company, status, appliedDate }: Props) {
       <div className="col-start-2 col-span-1 row-start-2 row-span-1 text-sm">
         {company}
       </div>
-      <div
-        className={`col-start-3 col-span-1 row-start-1 text-center ${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]} rounded-sm text-sm font-medium`}
-        // style={{ text: chartColors[status] }}
-      >
-        {status[0] + status.slice(1).toLowerCase()}
+      <div className={`col-start-3 col-span-1 row-start-1 text-center`}>
+        <Badge
+          className={`${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]} font-medium`}
+        >
+          {status[0] + status.slice(1).toLowerCase()}
+        </Badge>
       </div>
+
       <div className="col-start-3 row-start-2 text-sm">{formatAppliedDate}</div>
     </li>
   );

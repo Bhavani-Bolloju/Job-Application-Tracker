@@ -9,9 +9,8 @@ import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
 
 import { useRouter } from "next/navigation";
 
-import StatusBadge from "../StatusBadge";
-
-import { Status } from "@/lib/types";
+import { cardColors } from "@/lib/types";
+import { Badge } from "@/components/ui/badge";
 
 type Props = {
   application: Application;
@@ -66,21 +65,25 @@ function ApplicationHeader({ application }: Props) {
         )}
       </div>
       <div className="grid grid-cols-[auto_1fr_auto] my-5 gap-x-10">
-        <div className="col-start-1 col-end-2 row-start-1 row-end-4 bg-red-200 px-10 flex items-center justify-center text-5xl rounded-lg">
+        <div className="col-start-1 col-end-2 row-start-1 row-end-4 bg-red-200 px-10 flex items-center justify-center text-4xl rounded-lg uppercase">
           {company[0]}
         </div>
-        <div className="col-start-2 col-end-3 row-start-1 row-end-2 self-start text-lg">
+        <div className="col-start-2 col-end-3 row-start-1 row-end-2 self-start capitalize font-medium text-page-title">
           {company}
         </div>
-        <div className="col-start-2 col-end-3 row-start-2 row-end-3 self-start">
+        <div className="col-start-2 col-end-3 row-start-2 row-end-3 self-start text-card-title ">
           {role}
         </div>
-        <div className="col-start-2 col-end-3 row-start-3 row-end-4 self-start flex items-center gap-2 mt-5">
+        <div className="col-start-2 col-end-3 row-start-3 row-end-4 self-start flex items-center gap-2 mt-3">
           <Calendar className="w-4" />
-          <span>{formatDate}</span>
+          <span className="text-sm">{formatDate}</span>
         </div>
         <div className="col-start-3 col-end-4 row-start-1 row-end-2 whitespace-nowrap justify-self-end">
-          <StatusBadge status={status as Status} />
+          <Badge
+            className={`${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]} font-medium text-base`}
+          >
+            {status[0] + status.slice(1).toLowerCase()}
+          </Badge>
         </div>
       </div>
 
