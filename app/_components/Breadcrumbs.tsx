@@ -11,7 +11,7 @@ import Link from "next/link";
 
 function Breadcrumbs() {
   return (
-    <Breadcrumb className="text-sm mb-5">
+    <Breadcrumb className="text-sm mb-4">
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>

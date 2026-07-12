@@ -70,6 +70,7 @@ function FormMode({ application, onClose }: Props) {
       <Field>
         <FieldLabel htmlFor="company">Company *</FieldLabel>
         <Input
+          className="text-body!"
           id="company"
           {...register("company", { required: "Company is required" })}
         />
@@ -79,6 +80,7 @@ function FormMode({ application, onClose }: Props) {
       <Field>
         <FieldLabel htmlFor="role">Role *</FieldLabel>
         <Input
+          className="text-body!"
           id="role"
           {...register("role", { required: "Role is required" })}
         />
@@ -90,7 +92,7 @@ function FormMode({ application, onClose }: Props) {
         <select
           id="status"
           {...register("status", { required: true })}
-          className="w-full border rounded-md px-3 py-2 text-sm"
+          className="w-full border rounded-md px-3 py-2 text-body!"
         >
           <option value="WISHLIST">Wishlist</option>
           <option value="APPLIED">Applied</option>
@@ -102,7 +104,7 @@ function FormMode({ application, onClose }: Props) {
 
       <Field>
         <FieldLabel htmlFor="platform">Platform</FieldLabel>
-        <Input id="platform" {...register("platform")} />
+        <Input id="platform" {...register("platform")} className="text-body!" />
       </Field>
 
       <Field>
@@ -110,7 +112,7 @@ function FormMode({ application, onClose }: Props) {
         <select
           id="type"
           {...register("type")}
-          className="w-full border rounded-md px-3 py-2 text-sm"
+          className="w-full border rounded-md px-3 py-2 text-body!"
         >
           <option value="">Select type</option>
           <option value="FULL_TIME">Full Time</option>
@@ -121,17 +123,17 @@ function FormMode({ application, onClose }: Props) {
 
       <Field>
         <FieldLabel htmlFor="location">Location</FieldLabel>
-        <Input id="location" {...register("location")} />
+        <Input id="location" {...register("location")} className="text-body!" />
       </Field>
 
       <Field>
         <FieldLabel htmlFor="salary">Salary</FieldLabel>
-        <Input id="salary" {...register("salary")} />
+        <Input id="salary" {...register("salary")} className="text-body!" />
       </Field>
 
       <Field>
         <FieldLabel htmlFor="url">Job URL</FieldLabel>
-        <Input id="url" {...register("url")} />
+        <Input id="url" {...register("url")} className="text-body!" />
       </Field>
 
       <Controller
@@ -146,11 +148,11 @@ function FormMode({ application, onClose }: Props) {
                 <Button
                   variant="outline"
                   id="appliedDate"
-                  className="justify-start font-normal"
+                  className="justify-start font-normal text-base!"
                 >
                   {field.value ?
                     format(field.value, "PPP")
-                  : <span>Pick a date</span>}
+                  : <span className="text-sm">Pick a date</span>}
                 </Button>
               </PopoverTrigger>
 
@@ -180,7 +182,7 @@ function FormMode({ application, onClose }: Props) {
                 <Button
                   variant="outline"
                   id="followupDate"
-                  className="justify-start font-normal"
+                  className="justify-start font-normal text-base"
                 >
                   {field.value ?
                     format(field.value, "PPP")

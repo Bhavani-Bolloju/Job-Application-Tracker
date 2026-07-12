@@ -79,7 +79,7 @@ function StatusChart({ statusCount }: Props) {
 
   return (
     <div className="basis-3/6 py-4 px-8 rounded-md shadow-md shadow-gray-200 border border-gray-50 ">
-      <h2 className="text-section-title font-semibold mb-4">
+      <h2 className="text-section-title font-semibold mb-5">
         Applications by status
       </h2>
       <div className="h-100 flex justify-around">

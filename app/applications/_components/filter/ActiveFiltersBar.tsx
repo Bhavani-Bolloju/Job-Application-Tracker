@@ -18,7 +18,7 @@ function ActiveFiltersBar() {
   } = useFilter();
 
   return (
-    <div className="border-t-2 py-3">
+    <div className="border-t border-gray-200 py-3">
       <div className="px-6 flex items-start">
         <span className="mr-3 font-medium text-card-title">
           Active Filters:

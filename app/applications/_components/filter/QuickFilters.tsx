@@ -56,7 +56,7 @@ function QuickFilters({ applications }: Props) {
       >
         <Search
           aria-hidden="true"
-          className="absolute top-1/2 -translate-y-1/2 left-2 w-4 text-gray-500"
+          className="absolute top-1/2 -translate-y-1/2 left-2 w-4 text-gray-200"
         />
         <Input
           type="search"

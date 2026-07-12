@@ -31,12 +31,12 @@ export default function ApplicationDrawer({
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-full sm:w-135 overflow-y-auto">
         <SheetHeader>
-          <SheetTitle>
+          <SheetTitle className="text-section-title">
             {mode === "add" ? "Add Application" : application?.company}
           </SheetTitle>
         </SheetHeader>
 
-        <div className="mt-2 p-5">
+        <div className="px-5 mb-5">
           <FormMode application={application} onClose={onClose} />
         </div>
       </SheetContent>

@@ -58,13 +58,11 @@ function ApplicationsClient({ applications }: Props) {
     router.refresh();
   }
 
-  // console.log("application client");
-
   return (
     <div className="p-6 px-10 font-geist">
       <Breadcrumbs />
 
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex items-center justify-between mb-8">
         <h1 className="mb-4 flex items-center gap-2 ">
           <BriefcaseBusiness />
           <span className="capitalize text-page-title "> my applications</span>

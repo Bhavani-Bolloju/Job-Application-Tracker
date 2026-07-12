@@ -28,7 +28,7 @@ function MoreFiltersPanel() {
   // TODO: Close popover automatically after a complete range selection.
   return (
     <div
-      className={`grid ${isMoreFilterOpen ? "grid-rows-[1fr] border-t-2 py-2" : "grid-rows-[0fr]"} transition-all duration-200 ease-in-out`}
+      className={`grid ${isMoreFilterOpen ? "grid-rows-[1fr] border-t border-gray-100 py-2" : "grid-rows-[0fr]"} transition-all duration-200 ease-in-out`}
     >
       <div className="overflow-hidden ">
         <div className="mb-5 px-6 font-medium text-card-title">

@@ -10,7 +10,7 @@ type Props = {
 
 function FilterSection({ applications }: Props) {
   return (
-    <div className="border-2 border-gray-200 rounded-lg shadow-sm shadow-gray-100 pt-3">
+    <div className=" mb-8 rounded-md border-2 border-gray-100">
       <FilterToolbar applications={applications} />
       <ActiveFiltersBar />
     </div>
