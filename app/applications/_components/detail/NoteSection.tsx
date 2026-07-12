@@ -41,10 +41,10 @@ function NoteSection({ notes, applicationId }: Props) {
   };
 
   return (
-    <section className="mt-8">
-      <div className="flex justify-between p-5 border-2 border-gray-300">
-        <h3 className="flex gap-2 items-center">
-          <Notebook className="w-4" />
+    <section className="mt-8 rounded-md shadow-sm shadow-gray-200 border-2 border-gray-100 ">
+      <div className="flex justify-between p-5 border-b-2 border-gray-100">
+        <h3 className="flex gap-2 items-center text-section-title overflow-hidden ">
+          <Notebook className="w-5 h-auto" />
           <span>Notes</span>
         </h3>
         <AddNoteCardForm
@@ -53,7 +53,7 @@ function NoteSection({ notes, applicationId }: Props) {
           onDialogStatus={handleDialog}
         />
       </div>
-      <ul>
+      <ul className="divide-y-2 divide-gray-100">
         {notes.length > 0 ?
           <>
             {notes.map((note) => (
@@ -66,14 +66,10 @@ function NoteSection({ notes, applicationId }: Props) {
               />
             ))}
           </>
-        : <div className="border-2 border-gray-300 border-t-0 text-center p-3 capitalize">
-            empty list
-          </div>
-        }
+        : <div className=" text-center p-3 capitalize text-sm">empty list</div>}
       </ul>
     </section>
   );
 }
 
 export default NoteSection;
-

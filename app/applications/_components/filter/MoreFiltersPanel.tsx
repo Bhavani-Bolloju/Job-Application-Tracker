@@ -31,12 +31,14 @@ function MoreFiltersPanel() {
       className={`grid ${isMoreFilterOpen ? "grid-rows-[1fr] border-t-2 py-2" : "grid-rows-[0fr]"} transition-all duration-200 ease-in-out`}
     >
       <div className="overflow-hidden ">
-        <div className="mb-5 px-6 font-medium">More filters</div>
+        <div className="mb-5 px-6 font-medium text-card-title">
+          More filters
+        </div>
         <div className="flex items-stretch gap-5 px-6 pb-3">
           <div className="relative border-2 rounded-lg flex items-center justify-center  h-12 ">
             <FieldLabel
               htmlFor="applied-date"
-              className="absolute -top-3 translate-y-0  left-2 px-2 capitalize "
+              className="absolute -top-3 translate-y-0  left-2 px-2 capitalize text-sm"
             >
               applied date
             </FieldLabel>
@@ -55,7 +57,7 @@ function MoreFiltersPanel() {
                         {format(appliedDate.to, "LLL dd, y")}
                       </>
                     : format(appliedDate.from, "LLL dd, y")
-                  : <span>Pick a date</span>}
+                  : <span className="text-sm">Pick a date</span>}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
@@ -91,7 +93,7 @@ function MoreFiltersPanel() {
                         {format(followupDate.to, "LLL dd, y")}
                       </>
                     : format(followupDate.from, "LLL dd, y")
-                  : <span>Pick a date</span>}
+                  : <span className="text-sm">Pick a date</span>}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">

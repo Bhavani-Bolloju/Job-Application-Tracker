@@ -20,8 +20,10 @@ function ActiveFiltersBar() {
   return (
     <div className="border-t-2 py-3">
       <div className="px-6 flex items-start">
-        <span className="mr-3 font-medium">Active Filters:</span>
-        <div className="flex flex-wrap justify-start items-center gap-5 text-gray-700">
+        <span className="mr-3 font-medium text-card-title">
+          Active Filters:
+        </span>
+        <div className="flex flex-wrap justify-start items-center gap-5 text-gray-700 text-sm">
           {searchQuery !== "" && (
             <div className="border-2 px-2 flex gap-1 items-center">
               <span>Company: </span>

@@ -52,7 +52,7 @@ function QuickFilters({ applications }: Props) {
     <FieldGroup className="flex flex-row gap-5 items-stretch px-6 pt-2 pb-4">
       <Field
         orientation="horizontal"
-        className="relative h-12 px-3 flex border-2 rounded-lg basis-72"
+        className="relative h-12 px-3 flex border-2 rounded-lg basis-72 text-body"
       >
         <Search
           aria-hidden="true"
@@ -61,7 +61,7 @@ function QuickFilters({ applications }: Props) {
         <Input
           type="search"
           placeholder="Search Company..."
-          className=" ml-5 border-0 focus:outline-none focus:ring-0 shadow-none focus:border-0  focus-visible:ring-0 rounded-none p-0 text-inherit text-base "
+          className=" ml-5 border-0 focus:outline-none focus:ring-0 shadow-none focus:border-0  focus-visible:ring-0 rounded-none p-0 font-geist text-body md:text-body placeholder:text-sm "
           value={searchQuery}
           onChange={handleSearchQuery}
         />
@@ -70,12 +70,12 @@ function QuickFilters({ applications }: Props) {
       <div className="relative border-2 rounded-lg flex items-center justify-center basis-50">
         <FieldLabel
           htmlFor="status"
-          className="absolute -top-3 translate-y-0  left-2 bg-white px-2 capitalize"
+          className="absolute -top-3 translate-y-0  left-2 bg-white px-2 capitalize text-sm"
         >
           status
         </FieldLabel>
         <Select value={selectedStatus} onValueChange={onStatusChange}>
-          <SelectTrigger className="w-full focus-visible:ring-0 border-0 rounded-none capitalize ">
+          <SelectTrigger className="w-full focus-visible:ring-0 border-0 rounded-none capitalize text-base ">
             <SelectValue placeholder="Select status" />
           </SelectTrigger>
           <SelectContent>
@@ -98,7 +98,7 @@ function QuickFilters({ applications }: Props) {
       <div className="relative border-2 rounded-lg flex items-center justify-center basis-50 ">
         <FieldLabel
           htmlFor="platform"
-          className="absolute -top-3 translate-y-0  left-2 bg-white px-2 capitalize"
+          className="absolute -top-3 translate-y-0  left-2 bg-white px-2 capitalize text-sm"
         >
           platform
         </FieldLabel>

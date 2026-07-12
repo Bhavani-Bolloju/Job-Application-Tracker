@@ -22,7 +22,7 @@ function NoteCard({ content, date, onDelete, id }: Props) {
   const relativeDate = formatDistanceToNow(new Date(date), { addSuffix: true });
 
   return (
-    <li className="flex items-center border-2 border-gray-300 border-t-0 px-5 py-3">
+    <li className="flex items-center px-5 py-3">
       <div>{content}</div>
       <div className="flex items-center gap-1 ml-auto mr-3 text-sm text-gray-500">
         <span>{formattedDate}</span>
@@ -72,4 +72,3 @@ function NoteCard({ content, date, onDelete, id }: Props) {
 }
 
 export default NoteCard;
-

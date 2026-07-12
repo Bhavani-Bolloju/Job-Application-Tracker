@@ -49,9 +49,9 @@ function ContactSection({ contacts, applicationId }: Props) {
   // console.log(contacts, applicationId, "contact details -- section");
 
   return (
-    <section className="mt-8">
-      <div className="flex justify-between p-5 border-2 border-gray-300">
-        <h3 className="flex items-center gap-2">
+    <section className="mt-8 rounded-md shadow-sm shadow-gray-200 border-2 border-gray-100 ">
+      <div className="flex justify-between p-5 border-b-2 border-gray-100">
+        <h3 className="flex items-center gap-2 text-section-title capitalize">
           <ContactRound className="w-5" />
           <span>contacts</span>
         </h3>
@@ -61,7 +61,7 @@ function ContactSection({ contacts, applicationId }: Props) {
           onFormSubmit={handleFormSubmit}
         />
       </div>
-      <ul>
+      <ul className="divide-y-2 divide-gray-100">
         {contacts?.length > 0 ?
           <>
             {contacts.map((contact) => (
@@ -75,7 +75,7 @@ function ContactSection({ contacts, applicationId }: Props) {
               />
             ))}
           </>
-        : <div className="border-2 border-gray-300 border-t-0 text-center p-3 capitalize">
+        : <div className="text-center p-3 capitalize text-sm">
             empty list
           </div>
         }
@@ -85,4 +85,3 @@ function ContactSection({ contacts, applicationId }: Props) {
 }
 
 export default ContactSection;
-

@@ -25,7 +25,7 @@ function ApplicationDetail({ application }: Props) {
       <ApplicationDetailsCard application={application} />
       <NoteSection notes={notes} applicationId={id} />
       <ContactSection contacts={contacts} applicationId={id} />
-      <div className="flex justify-between items-center text-gray-600 mt-8 text-lg">
+      <div className="flex justify-between items-center mt-5">
         <span> Created on {formatCreatedAt} </span>
         <span> Last updated on {formatUpdatedAt} </span>
       </div>

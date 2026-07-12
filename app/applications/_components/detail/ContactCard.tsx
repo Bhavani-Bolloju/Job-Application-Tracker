@@ -9,27 +9,28 @@ import {
   DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 
-
 type Props = ApplicationContactFormProps & {
-  onDelete: (id: string) => void
+  onDelete: (id: string) => void;
   id: string;
-}
+};
 
-function ContactCard({ name, role, contactURL, onDelete,id }: Props) {
+function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
   return (
-    <li className="border-2 border-gray-300 border-t-0 px-5 py-3">
+    <li className=" px-5 py-3">
       <div className="flex items-center gap-5 ">
         <div className="flex items-end gap-1">
           <UserRound className="w-5" />
           <span className="capitalize">{name}</span>
         </div>
-        <a
-          href={contactURL}
-          className="ml-auto inline-block"
-          title="view profile"
-        >
-          <Link className="w-4" />
-        </a>
+        {contactURL && (
+          <a
+            href={contactURL}
+            className="ml-auto inline-block"
+            title="view profile"
+          >
+            <Link className="w-4" />
+          </a>
+        )}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -45,17 +46,6 @@ function ContactCard({ name, role, contactURL, onDelete,id }: Props) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            {/* <DropdownMenuItem
-            className="w-full"
-            onClick={(e) => {
-              e.stopPropagation();
-              onEdit(application);
-            }}
-          >
-            Edit
-          </DropdownMenuItem> */}
-
-            {/* <DropdownMenuSeparator /> */}
             <DropdownMenuItem
               variant="destructive"
               className="w-full"
@@ -69,10 +59,9 @@ function ContactCard({ name, role, contactURL, onDelete,id }: Props) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div>{role}</div>
+      <div className="text-sm ml-6.5">{role}</div>
     </li>
   );
 }
 
 export default ContactCard;
-

@@ -19,6 +19,14 @@
   --text-body: 1rem; /* 16px */
   --text-sm: 0.875rem; /* 14px */
 
+  /*status colors*/
+
+  --color-APPLIED: "rgb(37, 99, 235)";
+  --color-INTERVIEWED: "rgb(234, 88, 12)";
+  --color-OFFER: "rgb(5, 150, 105)";
+  --color-REJECTED: "rgb(220, 38, 38)";
+  --color-WISHLIST: "rgb(124, 58, 237)";
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -92,7 +100,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
+/* .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -124,7 +132,7 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-}
+} */
 
 @layer base {
   * {

@@ -64,8 +64,8 @@ export type Note = {
 
 export type ApplicationContactFormProps = {
   name: string;
-  role: string;
-  contactURL: string;
+  role: string | null;
+  contactURL: string | null;
 };
 export type Contact = {
   id: string;

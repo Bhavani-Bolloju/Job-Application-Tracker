@@ -83,11 +83,10 @@ function ApplicationTable({
     );
   }
 
-
   return (
-    <Table className="mt-8  border-2 rounded-t-sm shadow-md">
-      <TableHeader className="h-14 rounded-2xl">
-        <TableRow className="font-medium text-base">
+    <Table className="mt-8  border-2 rounded-md shadow-md">
+      <TableHeader className="h-14 rounded-2xl border-0">
+        <TableRow className="font-medium text-base capitalize">
           <TableHead>Company</TableHead>
           <TableHead>Role</TableHead>
           <TableHead>Status</TableHead>

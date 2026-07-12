@@ -35,12 +35,12 @@ function ApplicationDetailsCard({ application }: Props) {
  
 
   return (
-    <div className="mt-8">
-      <div className="flex items-center gap-2 p-5 border-2 border-gray-300">
+    <div className="mt-8 rounded-md shadow-sm shadow-gray-200 border-2 border-gray-50 ">
+      <div className="flex items-center gap-2 p-5 border-b-2 border-gray-100">
         <List className="w-5" />
         <h3 className="text-section-title">Application Details</h3>
       </div>
-      <ul>
+      <ul className="divide-y-2 divide-gray-100">
         <DetailRow title="company" value={company} />
         <DetailRow title="role" value={role} />
         <DetailRow title="status" value={status} />

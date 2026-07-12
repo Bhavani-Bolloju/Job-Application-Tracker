@@ -9,7 +9,7 @@ import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
 
 import { useRouter } from "next/navigation";
 
-import { cardColors } from "@/lib/types";
+import { chartColors } from "@/lib/types";
 import { Badge } from "@/components/ui/badge";
 
 type Props = {
@@ -64,8 +64,8 @@ function ApplicationHeader({ application }: Props) {
           </a>
         )}
       </div>
-      <div className="grid grid-cols-[auto_1fr_auto] my-5 gap-x-10">
-        <div className="col-start-1 col-end-2 row-start-1 row-end-4 bg-red-200 px-10 flex items-center justify-center text-4xl rounded-lg uppercase">
+      <div className="grid grid-cols-[auto_1fr_auto] my-5 gap-x-10 mt-8">
+        <div className="col-start-1 col-end-2 row-start-1 row-end-4 px-10 flex items-center justify-center text-4xl uppercase rounded-md shadow-md shadow-gray-200 ">
           {company[0]}
         </div>
         <div className="col-start-2 col-end-3 row-start-1 row-end-2 self-start capitalize font-medium text-page-title">
@@ -79,11 +79,17 @@ function ApplicationHeader({ application }: Props) {
           <span className="text-sm">{formatDate}</span>
         </div>
         <div className="col-start-3 col-end-4 row-start-1 row-end-2 whitespace-nowrap justify-self-end">
-          <Badge
+          <span
+            style={{ backgroundColor: chartColors[status] }}
+            className="inline-block px-3 py-1 rounded-sm text-white text-sm font-medium uppercase"
+          >
+            {status[0] + status.slice(1).toLowerCase()}
+          </span>
+          {/* <Badge
             className={`${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]} font-medium text-base`}
           >
             {status[0] + status.slice(1).toLowerCase()}
-          </Badge>
+          </Badge> */}
         </div>
       </div>
 

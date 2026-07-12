@@ -44,7 +44,7 @@ function AddNoteCardForm({ onFormSubmit, open, onDialogStatus }: Props) {
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="text-blue-700 border-blue-700 hover:cursor-pointer"
+          className="text-blue-700 border-2 border-blue-700 bg-none hover:cursor-pointer"
           onClick={() => onDialogStatus(true)}
         >
           <Plus />
@@ -77,4 +77,3 @@ function AddNoteCardForm({ onFormSubmit, open, onDialogStatus }: Props) {
 }
 
 export default AddNoteCardForm;
-
