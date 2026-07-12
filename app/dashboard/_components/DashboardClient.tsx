@@ -23,7 +23,7 @@ function DashboardClient({ user, statusCount, recentApplications }: Props) {
     <div className="py-6 px-20">
       <DashboardHeader user={user} />
       <StatusCards statusCount={statusCount} />
-      <div className="flex justify-between gap-5">
+      <div className="flex justify-between gap-8 mb-8">
         <StatusChart statusCount = {statusCount} />
         <RecentActivity recentApplications={recentApplications} />
       </div>

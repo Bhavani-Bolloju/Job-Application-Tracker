@@ -24,7 +24,7 @@ function DashboardHeader({ user }: { user: Session["user"] | undefined }) {
     <div className="mb-8">
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-page-title font-bold">Hi, {user?.name} 👋</p>
+          <p className="text-page-title font-bold mb-1">Hi, {user?.name} 👋</p>
           <p className="">Track your job applications </p>
         </div>
         <Button

@@ -79,7 +79,7 @@ function StatusChart({ statusCount }: Props) {
 
   return (
     <div className="basis-3/6 py-4 px-8 rounded-md shadow-md shadow-gray-200 border border-gray-50 ">
-      <h2 className="text-section-title font-semibold mb-5">
+      <h2 className="text-section-title font-semibold mb-4">
         Applications by status
       </h2>
       <div className="h-100 flex justify-around">
@@ -90,7 +90,7 @@ function StatusChart({ statusCount }: Props) {
             <span className="text-sm">Total</span>
           </div>
         </div>
-        <ul className="w-fit flex flex-col justify-center items-start">
+        <ul className="w-fit flex flex-col justify-center items-start gap-y-2 ">
           {statusCount.map((label) => (
             <StatusChartLabelItem
               key={label.status}
