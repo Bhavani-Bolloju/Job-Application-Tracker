@@ -7,7 +7,7 @@ import Link from "next/link";
 
 function DashboardFooter() {
   return (
-    <div className="flex gap-5 p-5 items-center rounded-md shadow-md shadow-gray-200 border-2 border-gray-200">
+    <div className="flex gap-5 px-8 py-5 items-center rounded-md shadow-md shadow-gray-200 border-2 border-border bg-stone-50">
       <Image src="/search-list.png" alt="search list" width={70} height={70} />
       <div>
         <p className="font-medium mb-1">Want to see all your applications?</p>

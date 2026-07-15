@@ -32,11 +32,9 @@ function DetailRow({ title, value }: RowProps) {
 
   return (
     <li className="flex items-center w-full">
-      <span className=" basis-1/5 py-3 px-5 bg-gray-50 capitalize text-sm">
-        {title}
-      </span>
+      <span className="basis-1/5 capitalize text-sm p-4">{title}</span>
       <span
-        className={`flex-1 px-5 py-3 ${title === "job URL" && value && "text-blue-700 flex items-center gap-2 hover:cursor-pointer hover:text-blue-800 hover:underline text-base "} border-l-2 border-gray-100`}
+        className={`flex-1 py-3 ${title === "job URL" && value && "text-blue-700 flex items-center gap-2 hover:cursor-pointer hover:text-blue-800 hover:underline text-base "} border-l-2 border-gray-100 p-4`}
       >
         <span>{content}</span>
         {title === "job URL" && value && <ExternalLink className="w-3.5" />}

@@ -10,7 +10,7 @@ type Props = {
 
 function StatusChartLabelItem({ status, count, total }: Props) {
   return (
-    <li className="grid grid-cols-[20px_1fr] grid-rows-2 gap-x-3 text-sm">
+    <li className="grid grid-cols-[20px_1fr] grid-rows-2 gap-x-3 text-sm w-fit ">
       <span
         className={`w-3 h-3 rounded-full col-start-1 row-start-1 row-span-2 self-start justify-self-end mt-1`}
         style={{ backgroundColor: chartColors[status] }}
@@ -18,7 +18,7 @@ function StatusChartLabelItem({ status, count, total }: Props) {
       <span className="col-start-2 row-start-1 self-start justify-self-start font-medium">
         {status[0] + status.slice(1).toLowerCase()}
       </span>
-      <div className="col-start-2 row-start-2 text-gray-600 flex">
+      <div className="col-start-2 row-start-2 flex text-text-muted">
         <span>{count}</span>({" "}
         <span className="flex">
           <span>{Math.ceil((count / total) * 100)}</span>

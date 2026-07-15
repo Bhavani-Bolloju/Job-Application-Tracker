@@ -78,28 +78,30 @@ function StatusChart({ statusCount }: Props) {
   };
 
   return (
-    <div className="basis-3/6 py-4 px-8 rounded-md shadow-md shadow-gray-200 border border-gray-50 ">
-      <h2 className="text-section-title font-semibold mb-5">
+    <div className="basis-3/6 p-8 rounded-md shadow-md shadow-border border border-border bg-bg--1 ">
+      <h2 className="text-section-title font-semibold mb-5 text-text-secondary">
         Applications by status
       </h2>
-      <div className="h-100 flex justify-around">
-        <div className="h-full relative w-full basis-2/3">
-          <Doughnut data={data} options={options} className="h-full w-full" />
+      <div className="h-100 flex">
+        <div className="relative basis-1 ">
+          <Doughnut data={data} options={options} className="h-full" />
           <div className="absolute top-1/2 left-1/2 -translate-1/2 flex flex-col items-center">
-            <span className="text-section-title font-medium">{total}</span>
-            <span className="text-sm">Total</span>
+            <span className="text-3xl font-medium">{total}</span>
+            <span className="text-base text-text-muted">Total</span>
           </div>
         </div>
-        <ul className="w-fit flex flex-col justify-center items-start gap-y-2 ">
-          {statusCount.map((label) => (
-            <StatusChartLabelItem
-              key={label.status}
-              status={label.status}
-              count={label._count.status}
-              total={total}
-            />
-          ))}
-        </ul>
+        <div className="w-full flex items-center justify-center">
+          <ul className=" flex flex-col gap-y-2 ">
+            {statusCount.map((label) => (
+              <StatusChartLabelItem
+                key={label.status}
+                status={label.status}
+                count={label._count.status}
+                total={total}
+              />
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

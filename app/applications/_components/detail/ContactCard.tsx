@@ -16,7 +16,7 @@ type Props = ApplicationContactFormProps & {
 
 function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
   return (
-    <li className=" px-5 py-3">
+    <li className="p-3">
       <div className="flex items-center gap-5 ">
         <div className="flex items-end gap-1">
           <UserRound className="w-5" />
@@ -41,7 +41,7 @@ function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
                 e.stopPropagation();
               }}
             >
-              <EllipsisVertical />
+              <EllipsisVertical className="w-5 text-gray-950" />
               <span className="sr-only">Open menu</span>
             </Button>
           </DropdownMenuTrigger>

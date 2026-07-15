@@ -10,7 +10,6 @@ import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
 import { useRouter } from "next/navigation";
 
 import { chartColors } from "@/lib/types";
-import { Badge } from "@/components/ui/badge";
 
 type Props = {
   application: Application;
@@ -37,44 +36,44 @@ function ApplicationHeader({ application }: Props) {
 
   return (
     <div>
-      <div className="flex items-stretch gap-5">
+      <div className="flex items-stretch gap-4">
         <Link
           href="/applications"
-          className="flex items-center gap-2 py-2 px-4 border border-gray-200 mr-auto"
+          className="flex items-center gap-2 py-2 px-4 border-2 border-border rounded-md mr-auto"
         >
           <ChevronLeft />
           <span>Back</span>
         </Link>
         <Button
           variant="outline"
-          className="flex items-center gap-2 py-2 px-4 border border-gray-200 rounded-none self-stretch h-auto"
+          className="flex items-center gap-2 py-2 px-4 border-2 border-border! rounded-md self-stretch h-auto"
           onClick={handleEdit}
         >
-          <Pencil />
+          <Pencil className="w-4" />
           <span> Edit</span>
         </Button>
         {url && (
           <a
             href={url}
             target="_blank"
-            className="flex items-center gap-2 py-2 px-4 border border-gray-200"
+            className="flex items-center gap-2 py-2 px-4 border border-border rounded-md"
           >
-            <ExternalLink />
+            <ExternalLink className="w-4" />
             <span>Open job Posting</span>
           </a>
         )}
       </div>
-      <div className="grid grid-cols-[auto_1fr_auto] my-5 gap-x-10 mt-8">
-        <div className="col-start-1 col-end-2 row-start-1 row-end-4 px-10 flex items-center justify-center text-4xl uppercase rounded-md shadow-md shadow-gray-200 ">
+      <div className="grid grid-cols-[auto_1fr_auto] my-5 gap-x-5 mt-8">
+        <div className="col-start-1 col-end-2 row-start-1 row-end-4 px-10 flex items-center justify-center text-4xl uppercase rounded-md shadow-md shadow-gray-200 border border-border ">
           {company[0]}
         </div>
         <div className="col-start-2 col-end-3 row-start-1 row-end-2 self-start capitalize font-medium text-page-title">
           {company}
         </div>
         <div className="col-start-2 col-end-3 row-start-2 row-end-3 self-start text-card-title ">
-          {role}
+          {role}  
         </div>
-        <div className="col-start-2 col-end-3 row-start-3 row-end-4 self-start flex items-center gap-2 mt-3">
+        <div className="col-start-2 col-end-3 row-start-3 row-end-4 self-start flex items-center gap-2 mt-4">
           <Calendar className="w-4" />
           <span className="text-sm">{formatDate}</span>
         </div>

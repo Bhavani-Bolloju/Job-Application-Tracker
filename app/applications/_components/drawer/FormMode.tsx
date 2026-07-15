@@ -186,7 +186,7 @@ function FormMode({ application, onClose }: Props) {
                 >
                   {field.value ?
                     format(field.value, "PPP")
-                  : <span>Pick a date</span>}
+                  : <span className="text-sm">Pick a date</span>}
                 </Button>
               </PopoverTrigger>
 

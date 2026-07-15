@@ -36,7 +36,7 @@ function ApplicationDetailsCard({ application }: Props) {
 
   return (
     <div className="mt-8 rounded-md shadow-sm shadow-gray-200 border-2 border-gray-50 ">
-      <div className="flex items-center gap-2 p-5 border-b-2 border-gray-100">
+      <div className="flex items-center gap-2 p-6 border-b-2 border-gray-100">
         <List className="w-5" />
         <h3 className="text-section-title">Application Details</h3>
       </div>

@@ -59,9 +59,8 @@ function ApplicationsClient({ applications }: Props) {
   }
 
   return (
-    <div className="p-6 px-10 font-geist">
+    <div className="py-8 px-12">
       <Breadcrumbs />
-
       <div className="flex items-center justify-between mb-8">
         <h1 className="mb-4 flex items-center gap-2 ">
           <BriefcaseBusiness />
@@ -69,7 +68,7 @@ function ApplicationsClient({ applications }: Props) {
         </h1>
         <Button
           onClick={handleAddNew}
-          className="flex items-center gap-1 py-3 px-4 h-auto hover:cursor-pointer"
+          className="flex items-center gap-1 py-3 px-5 h-auto hover:cursor-pointer"
         >
           <Plus />
           <span>Add application</span>

@@ -28,14 +28,12 @@ function MoreFiltersPanel() {
   // TODO: Close popover automatically after a complete range selection.
   return (
     <div
-      className={`grid ${isMoreFilterOpen ? "grid-rows-[1fr] border-t border-gray-100 py-2" : "grid-rows-[0fr]"} transition-all duration-200 ease-in-out`}
+      className={`grid ${isMoreFilterOpen ? "grid-rows-[1fr] py-5 px-5 border-t-2 border-border" : "grid-rows-[0fr]"} transition-all duration-200 ease-in-out`}
     >
       <div className="overflow-hidden ">
-        <div className="mb-5 px-6 font-medium text-card-title">
-          More filters
-        </div>
-        <div className="flex items-stretch gap-5 px-6 pb-3">
-          <div className="relative border-2 rounded-lg flex items-center justify-center  h-12 ">
+        <div className="mb-5 font-medium text-card-title">More filters</div>
+        <div className="flex items-stretch gap-5 ">
+          <div className="relative border-2 rounded-lg flex items-center justify-center h-12 ">
             <FieldLabel
               htmlFor="applied-date"
               className="absolute -top-3 translate-y-0  left-2 px-2 capitalize text-sm"

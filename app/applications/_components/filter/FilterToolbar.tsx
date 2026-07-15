@@ -7,15 +7,12 @@ type Props = {
   applications: Application[];
 };
 function FilterToolbar({ applications }: Props) {
- 
-
   return (
     <div>
       <QuickFilters applications={applications} />
-       <MoreFiltersPanel />
+      <MoreFiltersPanel />
     </div>
   );
 }
 
 export default FilterToolbar;
-

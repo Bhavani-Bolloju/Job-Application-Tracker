@@ -41,8 +41,8 @@ function NoteSection({ notes, applicationId }: Props) {
   };
 
   return (
-    <section className="mt-8 rounded-md shadow-sm shadow-gray-200 border-2 border-gray-100 ">
-      <div className="flex justify-between p-5 border-b-2 border-gray-100">
+    <section className="mt-8 rounded-md shadow-sm shadow-gray-200 border border-border ">
+      <div className="flex justify-between p-6 border-b-2 border-gray-100">
         <h3 className="flex gap-2 items-center text-section-title overflow-hidden ">
           <Notebook className="w-5 h-auto" />
           <span>Notes</span>
@@ -53,7 +53,7 @@ function NoteSection({ notes, applicationId }: Props) {
           onDialogStatus={handleDialog}
         />
       </div>
-      <ul className="divide-y-2 divide-gray-100">
+      <ul className="divide-y-2 divide-border">
         {notes.length > 0 ?
           <>
             {notes.map((note) => (

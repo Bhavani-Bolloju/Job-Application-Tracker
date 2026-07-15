@@ -84,30 +84,32 @@ function ApplicationTable({
   }
 
   return (
-    <Table className="rounded-md border-2 border-gray-200 overflow-hidden px-2">
-      <TableHeader className="h-14 rounded-t-2xl">
-        <TableRow className="font-medium text-base capitalize">
-          <TableHead>Company</TableHead>
-          <TableHead>Role</TableHead>
-          <TableHead>Status</TableHead>
-          <TableHead>Platform</TableHead>
-          <TableHead>Applied</TableHead>
-          <TableHead>Follow up</TableHead>
-          <TableHead className="text-right">Actions</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody className="py-5">
-        {filteredApplications.map((app) => (
-          <ApplicationRow
-            key={app.id}
-            application={app}
-            onEdit={onEdit}
-            onRowClick={onRowClick}
-            onDelete={onDelete}
-          />
-        ))}
-      </TableBody>
-    </Table>
+    <div className="rounded-md shadow-sm shadow-gray-200 border border-border">
+      <Table className="">
+        <TableHeader className="">
+          <TableRow className="font-medium text-base capitalize text-red-500">
+            <TableHead className="p-5">Company</TableHead>
+            <TableHead>Role</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Platform</TableHead>
+            <TableHead>Applied</TableHead>
+            <TableHead>Follow up</TableHead>
+            <TableHead className="text-right">Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody className="py-5">
+          {filteredApplications.map((app) => (
+            <ApplicationRow
+              key={app.id}
+              application={app}
+              onEdit={onEdit}
+              onRowClick={onRowClick}
+              onDelete={onDelete}
+            />
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 }
 

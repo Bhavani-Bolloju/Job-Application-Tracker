@@ -22,7 +22,7 @@ function NoteCard({ content, date, onDelete, id }: Props) {
   const relativeDate = formatDistanceToNow(new Date(date), { addSuffix: true });
 
   return (
-    <li className="flex items-center px-5 py-3">
+    <li className="flex items-center p-4">
       <div>{content}</div>
       <div className="flex items-center gap-1 ml-auto mr-3 text-sm text-gray-500">
         <span>{formattedDate}</span>
@@ -34,12 +34,11 @@ function NoteCard({ content, date, onDelete, id }: Props) {
           <Button
             variant="ghost"
             size="icon"
-            className="w-4"
             onClick={(e) => {
               e.stopPropagation();
             }}
           >
-            <EllipsisVertical />
+            <EllipsisVertical className="w-5 text-gray-950" />
             <span className="sr-only">Open menu</span>
           </Button>
         </DropdownMenuTrigger>

@@ -5,8 +5,22 @@
 /* @custom-variant dark (&:is(.dark *)); */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--surface-0);
+  --color-foreground: var(--text-primary);
+
+  --color-bg--1: var(--surface-1);
+  --color-bg--2: var(--surface-2);
+  --color-bg--3: var(--surface-3);
+  --color-bg--4: var(--surface-4);
+
+
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-accent-1: var(--surface-accent-1);
+  --color-accent-2: var(--surface-accent-2);
+  --color-accent-3: var(--surface-accent-3);
+
   /* --font-sans: var(--font-sans); */
   --font-mono: var(--font-geist-mono);
   --font-geist: var(--font-geist-sans);
@@ -42,7 +56,7 @@
   --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
-  --color-border: var(--border);
+  --color-border: var(--surface-4);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -66,8 +80,21 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --surface-0: #fafafa; /* app bg color - zinc 50 */
+  --surface-1: white; /*surface*/
+  --surface-2: #f8fafc; /*elevated surface - stone 50*/
+  --surface-3: #f4f4f5; /*interactive color, muted surface - zinc 100*/
+  --surface-4: #e4e4e7; /*border - zinc 200*/
+  --text-primary: #27272a; /*body zinc 800*/
+  --text-secondary: #18181b; /*headings, page titles zinc 900*/
+  --text-muted: #71717a; /*muted zinc 500*/
+
+  --surface-accent-1: #3730a3; /*indig0 - 800*/
+  --surface-accent-2: #4338ca; /*indig0 - 700*/
+  --surface-accent-3: #4f46e5; /*indig0 - 600*/
+
+  /* --background: red;
+  --foreground: yellow; */
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -82,7 +109,7 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
+  /* --input: oklch(0.922 0 0); */
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
