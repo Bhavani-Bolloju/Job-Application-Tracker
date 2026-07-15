@@ -27,7 +27,7 @@ function DashboardHeader({ user }: { user: Session["user"] | undefined }) {
           <p className="text-page-title font-bold mb-1 text-text-secondary">
             Hi, {user?.name} 👋
           </p>
-          <p className="">Track your job applications </p>
+          <p>Track your job applications </p>
         </div>
         <Button
           onClick={handleAddNew}
