@@ -13,8 +13,8 @@
   --color-bg--3: var(--surface-3);
   --color-bg--4: var(--surface-4);
 
-
   --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
   --color-text-muted: var(--text-muted);
 
   --color-accent-1: var(--surface-accent-1);
@@ -55,7 +55,7 @@
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
-  --color-input: var(--input);
+  /* --color-input: var(--input); */
   --color-border: var(--surface-4);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
@@ -87,6 +87,7 @@
   --surface-4: #e4e4e7; /*border - zinc 200*/
   --text-primary: #27272a; /*body zinc 800*/
   --text-secondary: #18181b; /*headings, page titles zinc 900*/
+  --text-tertiary: #3f3f46; /*headings, page titles zinc 700*/
   --text-muted: #71717a; /*muted zinc 500*/
 
   --surface-accent-1: #3730a3; /*indig0 - 800*/
@@ -109,7 +110,8 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  /* --input: oklch(0.922 0 0); */
+  /* --input: var(--surface-4); */
+  /* --input: red; */
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
@@ -171,5 +173,7 @@
   html {
     @apply font-geist;
   }
+
+
 }
 

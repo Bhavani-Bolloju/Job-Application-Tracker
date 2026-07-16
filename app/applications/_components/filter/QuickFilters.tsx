@@ -49,19 +49,19 @@ function QuickFilters({ applications }: Props) {
   };
 
   return (
-    <FieldGroup className="flex flex-row gap-5 items-stretch py-5 px-5">
+    <FieldGroup className="flex flex-row gap-5 items-stretch py-5 px-5 ">
       <Field
         orientation="horizontal"
         className="relative flex px-2 py-2 border-2 rounded-lg basis-72 text-body"
       >
         <Search
           aria-hidden="true"
-          className="absolute top-1/2 -translate-y-1/2 left-2 w-4 text-gray-400"
+          className=" absolute top-1/2 -translate-y-1/2 left-2 w-5 text-text-muted"
         />
         <Input
           type="search"
           placeholder="Search Company..."
-          className=" ml-5 border-0 focus:outline-none focus:ring-0 shadow-none focus:border-0  focus-visible:ring-0 rounded-none px-2 font-geist text-body md:text-body placeholder:text-sm "
+          className=" ml-5 border-0 focus:outline-none focus:ring-0 shadow-none focus:border-0  focus-visible:ring-0 rounded-none px-2 font-geist text-body md:text-body placeholder:text-sm placeholder:text-text-muted "
           value={searchQuery}
           onChange={handleSearchQuery}
         />
@@ -70,7 +70,7 @@ function QuickFilters({ applications }: Props) {
       <div className="relative border-2 rounded-lg flex items-center justify-center basis-50">
         <FieldLabel
           htmlFor="status"
-          className="absolute -top-3 translate-y-0  left-2 bg-white px-2 capitalize text-sm"
+          className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
         >
           status
         </FieldLabel>
@@ -79,7 +79,7 @@ function QuickFilters({ applications }: Props) {
             <SelectValue placeholder="Select status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup>
+            <SelectGroup className="">
               <SelectItem value="all">All</SelectItem>
 
               {STATUSES.map((status) => {
@@ -98,16 +98,16 @@ function QuickFilters({ applications }: Props) {
       <div className="relative border-2 rounded-lg flex items-center justify-center basis-50 ">
         <FieldLabel
           htmlFor="platform"
-          className="absolute -top-3 translate-y-0  left-2 bg-white px-2 capitalize text-sm"
+          className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
         >
           platform
         </FieldLabel>
         <Select value={selectedPlatform} onValueChange={onPlatformChange}>
-          <SelectTrigger className="w-full focus-visible:ring-0 border-0 rounded-none capitalize">
+          <SelectTrigger className="w-full focus-visible:ring-0 border-0 rounded-none capitalize text-base">
             <SelectValue placeholder="Select platform" />
           </SelectTrigger>
           <SelectContent>
-            <SelectGroup>
+            <SelectGroup className="">
               <SelectItem value="all">All</SelectItem>
 
               {uniquePlatforms.size > 0 &&
@@ -129,6 +129,7 @@ function QuickFilters({ applications }: Props) {
 
       <Button
         className="flex self-stretch h-auto hover:cursor-pointer"
+        variant="outline"
         onClick={onToggleMoreFilter}
       >
         <ListFilter className="w-4.5" />

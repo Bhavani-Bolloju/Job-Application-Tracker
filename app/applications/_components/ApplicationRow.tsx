@@ -37,8 +37,10 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
       }}
       className="hover:cursor-pointer border-b border-border"
     >
-      <TableCell className="font-medium  text-base px-5 py-4">{company}</TableCell>
-      <TableCell>{role}</TableCell>
+      <TableCell className="font-medium text-base px-5 py-4 text-text-secondary ">
+        {company}
+      </TableCell>
+      <TableCell className="text-text-secondary">{role}</TableCell>
       <TableCell>
         <Badge
           className={`${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]}`}
@@ -46,13 +48,15 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
           {status[0] + status.slice(1).toLowerCase()}
         </Badge>
       </TableCell>
-      <TableCell>{platform}</TableCell>
-      <TableCell>{format(new Date(appliedDate), "MMM d")}</TableCell>
+      <TableCell className="text-text-tertiary">{platform}</TableCell>
+      <TableCell className="text-text-tertiary">
+        {format(new Date(appliedDate), "MMM d")}
+      </TableCell>
       <TableCell>
         {" "}
         {followupDate ? format(new Date(followupDate), "MMM d") : "—"}{" "}
       </TableCell>
-      <TableCell className="text-right">
+      <TableCell className="text-right ">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button

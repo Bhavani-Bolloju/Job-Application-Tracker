@@ -33,10 +33,10 @@ function MoreFiltersPanel() {
       <div className="overflow-hidden ">
         <div className="mb-5 font-medium text-card-title">More filters</div>
         <div className="flex items-stretch gap-5 ">
-          <div className="relative border-2 rounded-lg flex items-center justify-center h-12 ">
+          <div className="relative border-2 border-border rounded-lg flex items-center justify-center h-12 min-w-70 ">
             <FieldLabel
               htmlFor="applied-date"
-              className="absolute -top-3 translate-y-0  left-2 px-2 capitalize text-sm"
+              className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
             >
               applied date
             </FieldLabel>
@@ -45,20 +45,26 @@ function MoreFiltersPanel() {
                 <Button
                   variant="outline"
                   id="applied-date"
-                  className="justify-start px-2.5 border-none mx-5 hover:cursor-pointer text-gray-600"
+                  className="w-full justify-start px-2.5 border-none mx-5 hover:cursor-pointer bg-bg--1 "
                 >
-                  <CalendarIcon />
                   {appliedDate?.from ?
                     appliedDate.to ?
                       <>
+                        <CalendarIcon />
                         {format(appliedDate.from, "LLL dd, y")} -{" "}
                         {format(appliedDate.to, "LLL dd, y")}
                       </>
                     : format(appliedDate.from, "LLL dd, y")
-                  : <span className="text-sm">Pick a date</span>}
+                  : <>
+                      <CalendarIcon className="text-text-muted" />
+                      <span className="text-sm text-text-muted">
+                        Pick a date
+                      </span>
+                    </>
+                  }
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent className="w-auto p-0 " align="start">
                 <Calendar
                   mode="range"
                   defaultMonth={appliedDate?.from}
@@ -69,10 +75,10 @@ function MoreFiltersPanel() {
               </PopoverContent>
             </Popover>
           </div>
-          <div className="relative border-2 rounded-lg flex items-center justify-center ">
+          <div className="relative border-2 border-border rounded-lg flex items-center justify-center min-w-70 bg-bg--1 ">
             <FieldLabel
               htmlFor="follow-up-date"
-              className="absolute -top-3 translate-y-0  left-2 bg-white px-2 capitalize"
+              className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
             >
               Follow-up date
             </FieldLabel>
@@ -81,17 +87,23 @@ function MoreFiltersPanel() {
                 <Button
                   variant="outline"
                   id="follow-up-date"
-                  className="justify-start px-2.5 border-0 mx-5 hover:cursor-pointer text-gray-600"
+                  className="justify-start px-2.5 border-0 mx-5 hover:cursor-pointer w-full bg-bg--1 "
                 >
-                  <CalendarIcon />
                   {followupDate?.from ?
                     followupDate.to ?
                       <>
+                        <CalendarIcon />
                         {format(followupDate.from, "LLL dd, y")} -{" "}
                         {format(followupDate.to, "LLL dd, y")}
                       </>
                     : format(followupDate.from, "LLL dd, y")
-                  : <span className="text-sm">Pick a date</span>}
+                  : <>
+                      <CalendarIcon className="text-text-muted" />
+                      <span className="text-sm text-text-muted">
+                        Pick a date
+                      </span>
+                    </>
+                  }
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
@@ -107,13 +119,13 @@ function MoreFiltersPanel() {
           </div>
           <Button
             variant="outline"
-            className="h-auto capitalize px-4 ml-auto"
+            className="h-auto capitalize py-2 px-5 ml-auto hover:cursor-pointer"
             onClick={onCancelMoreFilters}
           >
             cancel
           </Button>
           <Button
-            className="h-auto capitalize px-4"
+            className="h-auto capitalize px-5 hover:cursor-pointer bg-accent-1 hover:bg-accent-2"
             onClick={onApplyMoreFilters}
           >
             apply filter
