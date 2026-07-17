@@ -8,7 +8,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
+  DialogDescription
 } from "@/components/ui/dialog";
 import { Field, FieldGroup } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -45,12 +46,12 @@ function AddContactCardForm({ open, onDialogStatus, onFormSubmit }: Props) {
   };
 
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={onDialogStatus}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
           onClick={() => onDialogStatus(true)}
-          className="text-blue-700 border-blue-700 hover:cursor-pointer"
+          className="bg-accent-3 text-bg--1 hover:cursor-pointer hover:bg-accent-2 hover:text-bg--1"
         >
           <Plus />
           <span>Add contact</span>
@@ -58,42 +59,70 @@ function AddContactCardForm({ open, onDialogStatus, onFormSubmit }: Props) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-sm">
         <form onSubmit={handleSubmit}>
-          <DialogHeader>
-            <DialogTitle>Add profile Details </DialogTitle>
+          <DialogHeader className="mb-5 gap-0">
+            <DialogTitle className="text-2xl text-text-secondary">
+              Add profile Details{" "}
+            </DialogTitle>
+            <DialogDescription className="text-text-muted">
+              Store recruiter or interviewer information.
+            </DialogDescription>
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name" className="text-text-tertiary mb-1">
+                Name
+              </Label>
               <Input
                 type="text"
                 id="name"
                 name="name"
                 onChange={handleInput}
                 required
+                className="py-3 px-4 sm:text-base! text-text-secondary"
               />
             </Field>
             <Field>
-              <Label htmlFor="role">Role</Label>
-              <Input id="role" name="role" onChange={handleInput} required />
+              <Label htmlFor="role" className="text-text-tertiary mb-1">
+                Role
+              </Label>
+              <Input
+                id="role"
+                name="role"
+                onChange={handleInput}
+                required
+                className="py-3 px-4 sm:text-base! text-text-secondary"
+              />
             </Field>
             <Field>
-              <Label htmlFor="contactURL">Contact URL</Label>
+              <Label htmlFor="contactURL" className="text-text-tertiary mb-1">
+                Contact URL
+              </Label>
               <Input
                 type="url"
                 id="contactURL"
                 name="contactURL"
                 onChange={handleInput}
+                className="py-3 px-4 sm:text-base! text-text-secondary"
                 required
               />
             </Field>
           </FieldGroup>
-          <DialogFooter>
+          <DialogFooter className="mt-5">
             <DialogClose asChild>
-              <Button variant="outline" onClick={() => onDialogStatus(false)}>
+              <Button
+                variant="outline"
+                onClick={() => onDialogStatus(false)}
+                className="hover:cursor-pointer "
+              >
                 Cancel
               </Button>
             </DialogClose>
-            <Button type="submit">Save changes</Button>
+            <Button
+              type="submit"
+              className="bg-accent-3 text-background hover:bg-accent-2 hover:text-background hover:cursor-pointer"
+            >
+              Save changes
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>
@@ -102,4 +131,3 @@ function AddContactCardForm({ open, onDialogStatus, onFormSubmit }: Props) {
 }
 
 export default AddContactCardForm;
-

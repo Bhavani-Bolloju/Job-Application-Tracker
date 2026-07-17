@@ -10,7 +10,8 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
+  DialogDescription
 } from "@/components/ui/dialog";
 
 import { Field, FieldGroup } from "@/components/ui/field";
@@ -40,11 +41,11 @@ function AddNoteCardForm({ onFormSubmit, open, onDialogStatus }: Props) {
   };
 
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={onDialogStatus}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
-          className="text-blue-700 border-2 border-blue-700 bg-none hover:cursor-pointer"
+          className="bg-accent-3 text-bg--1 hover:cursor-pointer hover:bg-accent-2 hover:text-bg--1"
           onClick={() => onDialogStatus(true)}
         >
           <Plus />
@@ -53,22 +54,47 @@ function AddNoteCardForm({ onFormSubmit, open, onDialogStatus }: Props) {
       </DialogTrigger>
       <DialogContent className="sm:max-w-sm">
         <form onSubmit={handleSubmit}>
-          <DialogHeader>
-            <DialogTitle>Add note</DialogTitle>
+          <DialogHeader className="mb-5 gap-0">
+            <DialogTitle className="text-2xl text-text-secondary">
+              Add note
+            </DialogTitle>
+            <DialogDescription className="text-text-muted">
+              Add a note related to this application.
+            </DialogDescription>
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label htmlFor="notes">Note</Label>
-              <Input id="notes" name="notes" required onChange={addNotes} />
+              <Label
+                htmlFor="notes"
+                className="text-text-tertiary mb-1"
+              >
+                Note
+              </Label>
+              <Input
+                id="notes"
+                name="notes"
+                required
+                onChange={addNotes}
+                className="py-3 px-4 sm:text-base! text-text-secondary"
+              />
             </Field>
           </FieldGroup>
-          <DialogFooter>
+          <DialogFooter className="mt-5">
             <DialogClose asChild>
-              <Button variant="outline" onClick={() => onDialogStatus(false)}>
+              <Button
+                className="hover:cursor-pointer"
+                variant="outline"
+                onClick={() => onDialogStatus(false)}
+              >
                 Cancel
               </Button>
             </DialogClose>
-            <Button type="submit">Confirm</Button>
+            <Button
+              type="submit"
+              className="bg-accent-3 text-background hover:bg-accent-2 hover:text-background hover:cursor-pointer"
+            >
+              Confirm
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

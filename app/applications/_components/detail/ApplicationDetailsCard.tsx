@@ -3,9 +3,6 @@ import React from "react";
 import DetailRow from "./DetailRow";
 import { List } from "lucide-react";
 
-
-
-
 import { Application } from "@/lib/types";
 
 type Props = {
@@ -23,7 +20,7 @@ function ApplicationDetailsCard({ application }: Props) {
     salary,
     type,
     platform,
-    url,
+    url
   } = application;
 
   let typeValue = type;
@@ -32,15 +29,13 @@ function ApplicationDetailsCard({ application }: Props) {
     typeValue = typeValue.replace("_", " ").toLowerCase();
   }
 
- 
-
   return (
-    <div className="mt-8 rounded-md shadow-sm shadow-gray-200 border-2 border-gray-50 ">
-      <div className="flex items-center gap-2 p-6 border-b-2 border-gray-100">
+    <div className="mt-8 rounded-md shadow-sm shadow-border border border-border bg-bg--1 ">
+      <div className="flex items-center gap-2 p-6 border-b border-border">
         <List className="w-5" />
         <h3 className="text-section-title">Application Details</h3>
       </div>
-      <ul className="divide-y-2 divide-gray-100">
+      <ul className="divide-y-2 divide-border">
         <DetailRow title="company" value={company} />
         <DetailRow title="role" value={role} />
         <DetailRow title="status" value={status} />
@@ -52,7 +47,6 @@ function ApplicationDetailsCard({ application }: Props) {
         <DetailRow title="platform" value={platform} />
         <DetailRow title="job URL" value={url} />
       </ul>
-  
     </div>
   );
 }

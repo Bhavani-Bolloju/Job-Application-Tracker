@@ -59,7 +59,7 @@ function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="text-sm ml-6.5">{role}</div>
+      <div className="text-sm ml-6.5 text-text-muted">{role}</div>
     </li>
   );
 }

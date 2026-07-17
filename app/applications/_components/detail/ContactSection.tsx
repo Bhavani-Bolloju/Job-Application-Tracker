@@ -49,7 +49,7 @@ function ContactSection({ contacts, applicationId }: Props) {
   // console.log(contacts, applicationId, "contact details -- section");
 
   return (
-    <section className="mt-8 rounded-md shadow-sm shadow-gray-200 border border-border">
+    <section className="mt-8 rounded-md shadow-sm shadow-border border border-border bg-bg--1">
       <div className="flex justify-between p-6 border-b-2 border-border">
         <h3 className="flex items-center gap-2 text-section-title capitalize">
           <ContactRound className="w-5" />

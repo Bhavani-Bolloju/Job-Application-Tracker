@@ -66,11 +66,13 @@ function FormMode({ application, onClose }: Props) {
 
   // console.log("form mode");
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       <Field>
-        <FieldLabel htmlFor="company">Company *</FieldLabel>
+        <FieldLabel htmlFor="company" className="text-text-tertiary">
+          Company *
+        </FieldLabel>
         <Input
-          className="text-body!"
+          className="text-body! px-3 py-2 text-text-secondary"
           id="company"
           {...register("company", { required: "Company is required" })}
         />
@@ -78,9 +80,9 @@ function FormMode({ application, onClose }: Props) {
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="role">Role *</FieldLabel>
+        <FieldLabel htmlFor="role" className="text-text-tertiary">Role *</FieldLabel>
         <Input
-          className="text-body!"
+          className="text-body! px-3 py-2 text-text-secondary"
           id="role"
           {...register("role", { required: "Role is required" })}
         />
@@ -88,7 +90,7 @@ function FormMode({ application, onClose }: Props) {
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="status">Status *</FieldLabel>
+        <FieldLabel htmlFor="status" className="text-text-tertiary">Status *</FieldLabel>
         <select
           id="status"
           {...register("status", { required: true })}
@@ -103,12 +105,12 @@ function FormMode({ application, onClose }: Props) {
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="platform">Platform</FieldLabel>
-        <Input id="platform" {...register("platform")} className="text-body!" />
+        <FieldLabel htmlFor="platform" className="text-text-tertiary">Platform</FieldLabel>
+        <Input id="platform" {...register("platform")}  className="text-body! px-3 py-2 text-text-secondary" />
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="type">Type</FieldLabel>
+        <FieldLabel htmlFor="type" className="text-text-tertiary">Type</FieldLabel>
         <select
           id="type"
           {...register("type")}
@@ -122,18 +124,18 @@ function FormMode({ application, onClose }: Props) {
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="location">Location</FieldLabel>
-        <Input id="location" {...register("location")} className="text-body!" />
+        <FieldLabel htmlFor="location" className="text-text-tertiary">Location</FieldLabel>
+        <Input id="location" {...register("location")}  className="text-body! px-3 py-2 text-text-secondary" />
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="salary">Salary</FieldLabel>
-        <Input id="salary" {...register("salary")} className="text-body!" />
+        <FieldLabel htmlFor="salary" className="text-text-tertiary">Salary</FieldLabel>
+        <Input id="salary" {...register("salary")}  className="text-body! px-3 py-2 text-text-secondary" />
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="url">Job URL</FieldLabel>
-        <Input id="url" {...register("url")} className="text-body!" />
+        <FieldLabel htmlFor="url" className="text-text-tertiary">Job URL</FieldLabel>
+        <Input id="url" {...register("url")}  className="text-body! px-3 py-2 text-text-secondary"/>
       </Field>
 
       <Controller
@@ -141,7 +143,7 @@ function FormMode({ application, onClose }: Props) {
         name="appliedDate"
         render={({ field }) => (
           <Field>
-            <FieldLabel htmlFor="appliedDate">Applied Date</FieldLabel>
+            <FieldLabel htmlFor="appliedDate" className="text-text-tertiary">Applied Date</FieldLabel>
 
             <Popover open={openAppliedDate} onOpenChange={setOpenAppliedDate}>
               <PopoverTrigger asChild>
@@ -175,7 +177,7 @@ function FormMode({ application, onClose }: Props) {
         name="followupDate"
         render={({ field }) => (
           <Field>
-            <FieldLabel htmlFor="followupDate">Follow Up Date</FieldLabel>
+            <FieldLabel htmlFor="followupDate" className="text-text-tertiary">Follow Up Date</FieldLabel>
 
             <Popover open={openFollowupDate} onOpenChange={setOpenFollowupDate}>
               <PopoverTrigger asChild>
@@ -209,7 +211,7 @@ function FormMode({ application, onClose }: Props) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex-1 bg-black text-white py-2 rounded-lg text-sm hover:cursor-pointer"
+          className="flex-1 bg-accent-3 text-background py-2 rounded-lg text-sm hover:cursor-pointer hover:bg-accent-2"
         >
           {isSubmitting ?
             "Saving..."
