@@ -10,6 +10,8 @@ export default async function Dashboard() {
     redirect("/login");
   }
 
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+
   const statusCount = await prisma.application.groupBy({
     by: ["status"],
     where: {
