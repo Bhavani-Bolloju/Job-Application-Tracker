@@ -4,13 +4,15 @@ import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 
 export default async function Dashboard() {
+  // await new Promise((resolve) => setTimeout(resolve, 5000));
+  
+  
   const session = await auth();
 
   if (!session?.user) {
     redirect("/login");
   }
 
-  await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const statusCount = await prisma.application.groupBy({
     by: ["status"],

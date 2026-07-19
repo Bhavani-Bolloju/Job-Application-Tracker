@@ -18,3 +18,4 @@ function FilterSection({ applications }: Props) {
 }
 
 export default FilterSection;
+ 
