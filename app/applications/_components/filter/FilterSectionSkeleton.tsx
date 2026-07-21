@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 
 function FilterSectionSkeleton() {
   return (
-    <div className="mb-8 rounded-md shadow-sm shadow-border border border-border">
-      <Skeleton className="w-full p-5 flex flex-row items-center gap-5 rounded-b-none">
+    <div className="mb-8 rounded-md shadow-sm shadow-border border border-border ">
+      <Skeleton className="w-full p-5 flex flex-row items-center gap-5 rounded-b-none bg-bg--1">
         <Skeleton className="basis-[20%] py-5 bg-background" />
         <Skeleton className="basis-[15%] py-5 bg-background" />
         <Skeleton className="basis-[15%] py-5 bg-background" />

@@ -9,6 +9,8 @@ type Props = {
 };
 
 async function page({ params }: Props) {
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+
   const session = await auth();
 
   if (!session?.user) {
