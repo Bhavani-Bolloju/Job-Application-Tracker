@@ -75,21 +75,16 @@ function ApplicationHeader({ application }: Props) {
         </div>
         <div className="col-start-2 col-end-3 row-start-3 row-end-4 self-start flex items-center mt-4 text-text-muted">
           <Calendar className="w-4 mr-2" />
-          <span className="text-sm">Applied on</span>
-          <span className="text-sm">{formatDate}</span>
+
+          <span className="text-sm">{`Applied on ${formatDate}`}</span>
         </div>
-        <div className="col-start-3 col-end-4 row-start-1 row-end-2 whitespace-nowrap align-self-center">
+        <div className="col-start-3 col-end-4 row-start-1 row-end-2 whitespace-nowrap self-center">
           <span
             style={{ backgroundColor: chartColors[status] }}
             className="inline-block px-2 rounded-lg text-white text-sm font-medium uppercase opacity-80"
           >
             {status[0] + status.slice(1).toLowerCase()}
           </span>
-          {/* <Badge
-            className={`${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]} font-medium text-base`}
-          >
-            {status[0] + status.slice(1).toLowerCase()}
-          </Badge> */}
         </div>
       </div>
 

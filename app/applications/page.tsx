@@ -5,7 +5,6 @@ import { prisma } from "@/lib/prisma";
 import ApplicationsClient from "./_components/ApplicationsClient";
 
 async function ApplicationsPage() {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
 
   const session = await auth();
 
