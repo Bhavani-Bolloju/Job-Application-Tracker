@@ -6,6 +6,8 @@ import {
   DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 
+import DeleteAlertDialog from "@/app/_components/DeleteAlertDialog";
+
 import { EllipsisVertical } from "lucide-react";
 
 import { format, formatDistanceToNow } from "date-fns";
@@ -13,13 +15,17 @@ import { format, formatDistanceToNow } from "date-fns";
 type Props = {
   content: string;
   date: Date;
-  onDelete: (id: string) => void;
+  onDelete: (id: string) => Promise<void>;
   id: string;
 };
 
 function NoteCard({ content, date, onDelete, id }: Props) {
   const formattedDate = format(new Date(date), "PP");
   const relativeDate = formatDistanceToNow(new Date(date), { addSuffix: true });
+
+  const handleDelete = async function () {
+    await onDelete(id);
+  };
 
   return (
     <li className="flex items-center p-4">
@@ -54,16 +60,19 @@ function NoteCard({ content, date, onDelete, id }: Props) {
           </DropdownMenuItem> */}
 
           {/* <DropdownMenuSeparator /> */}
-          <DropdownMenuItem
+
+          <DeleteAlertDialog onDelete={handleDelete} />
+
+          {/* <DropdownMenuItem
             variant="destructive"
             className="w-full"
             onClick={(e) => {
-              e.stopPropagation();
+           
               onDelete(id);
             }}
           >
             Delete
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
     </li>

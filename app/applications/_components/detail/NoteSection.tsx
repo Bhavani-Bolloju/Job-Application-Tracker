@@ -8,6 +8,8 @@ import AddNoteCardForm from "./AddNoteCardForm";
 
 import { useRouter } from "next/navigation";
 
+import { toast } from "sonner";
+
 type Props = {
   notes: Note[];
   applicationId: string;
@@ -20,13 +22,21 @@ function NoteSection({ notes, applicationId }: Props) {
 
   const handleFormSubmit = async function (note: string) {
     const notesObj = { content: note, applicationId };
-    await fetch("/api/notes", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(notesObj)
-    });
 
-    router.refresh();
+    try {
+      const response = await fetch("/api/notes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(notesObj)
+      });
+
+      if (!response.ok) throw new Error("Failed to add Note");
+
+      toast.success("Added Note successfully", { position: "top-left" });
+      router.refresh();
+    } catch {
+      toast.error("Failed to add Note", { position: "top-left" });
+    }
   };
 
   const handleDialog = function (value: boolean) {
@@ -34,8 +44,11 @@ function NoteSection({ notes, applicationId }: Props) {
   };
 
   const handleDelete = async function (id: string) {
-    // console.log(id, "delete note item");
-    await fetch(`/api/notes/${id}`, { method: "DELETE" });
+    const response = await fetch(`/api/notes/${id}`, { method: "DELETE" });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete note.");
+    }
 
     router.refresh();
   };
