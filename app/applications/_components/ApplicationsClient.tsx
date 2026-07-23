@@ -46,9 +46,13 @@ function ApplicationsClient({ applications }: Props) {
   async function handleDelete(id: string) {
     const url = `/api/applications/${id}`;
 
-    await fetch(url, {
+    const response = await fetch(url, {
       method: "DELETE"
     });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete application");
+    }
 
     router.refresh();
   }

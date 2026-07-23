@@ -18,7 +18,7 @@ type Props = {
   applications: Application[];
   onRowClick: (id: string) => void;
   onEdit: (app: Application) => void;
-  onDelete: (id: string) => void;
+  onDelete: (id: string) => Promise<void>;
 };
 
 function ApplicationTable({

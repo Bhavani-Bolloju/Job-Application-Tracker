@@ -6,7 +6,7 @@ import { useForm, Controller } from "react-hook-form";
 import { Application } from "@/lib/types";
 import { Input } from "@/components/ui/input";
 import { FieldLabel, Field, FieldError } from "@/components/ui/field";
-// import { Textarea } from "@/components/ui/textarea";
+
 import {
   Popover,
   PopoverContent,
@@ -18,6 +18,8 @@ import { FormValues } from "@/lib/types";
 
 import { Button } from "@/components/ui/button";
 import { format } from "date-fns";
+
+import { toast } from "sonner";
 
 type Props = {
   application: Application | null;
@@ -49,17 +51,30 @@ function FormMode({ application, onClose }: Props) {
   const [openFollowupDate, setOpenFollowupDate] = useState(false);
 
   async function onSubmit(data: FormValues) {
-    const url =
-      application ? `/api/applications/${application.id}` : "/api/applications";
-    const method = application ? "PUT" : "POST";
+    try {
+      const url =
+        application ?
+          `/api/applications/${application.id}`
+        : "/api/applications";
+      const method = application ? "PUT" : "POST";
 
-    // console.log(url, method);
+      const res = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      });
 
-    await fetch(url, {
-      method,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data)
-    });
+      if (!res.ok) {
+        throw new Error();
+      }
+
+      toast.success(
+        `${application ? "Application updated." : "Application added."}`,
+        { position: "top-left" }
+      );
+    } catch {
+      toast.error("Failed to add application.", { position: "top-left" });
+    }
 
     onClose();
   }
@@ -80,7 +95,9 @@ function FormMode({ application, onClose }: Props) {
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="role" className="text-text-tertiary">Role *</FieldLabel>
+        <FieldLabel htmlFor="role" className="text-text-tertiary">
+          Role *
+        </FieldLabel>
         <Input
           className="text-body! px-3 py-2 text-text-secondary"
           id="role"
@@ -90,7 +107,9 @@ function FormMode({ application, onClose }: Props) {
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="status" className="text-text-tertiary">Status *</FieldLabel>
+        <FieldLabel htmlFor="status" className="text-text-tertiary">
+          Status *
+        </FieldLabel>
         <select
           id="status"
           {...register("status", { required: true })}
@@ -105,12 +124,20 @@ function FormMode({ application, onClose }: Props) {
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="platform" className="text-text-tertiary">Platform</FieldLabel>
-        <Input id="platform" {...register("platform")}  className="text-body! px-3 py-2 text-text-secondary" />
+        <FieldLabel htmlFor="platform" className="text-text-tertiary">
+          Platform
+        </FieldLabel>
+        <Input
+          id="platform"
+          {...register("platform")}
+          className="text-body! px-3 py-2 text-text-secondary"
+        />
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="type" className="text-text-tertiary">Type</FieldLabel>
+        <FieldLabel htmlFor="type" className="text-text-tertiary">
+          Type
+        </FieldLabel>
         <select
           id="type"
           {...register("type")}
@@ -124,18 +151,36 @@ function FormMode({ application, onClose }: Props) {
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="location" className="text-text-tertiary">Location</FieldLabel>
-        <Input id="location" {...register("location")}  className="text-body! px-3 py-2 text-text-secondary" />
+        <FieldLabel htmlFor="location" className="text-text-tertiary">
+          Location
+        </FieldLabel>
+        <Input
+          id="location"
+          {...register("location")}
+          className="text-body! px-3 py-2 text-text-secondary"
+        />
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="salary" className="text-text-tertiary">Salary</FieldLabel>
-        <Input id="salary" {...register("salary")}  className="text-body! px-3 py-2 text-text-secondary" />
+        <FieldLabel htmlFor="salary" className="text-text-tertiary">
+          Salary
+        </FieldLabel>
+        <Input
+          id="salary"
+          {...register("salary")}
+          className="text-body! px-3 py-2 text-text-secondary"
+        />
       </Field>
 
       <Field>
-        <FieldLabel htmlFor="url" className="text-text-tertiary">Job URL</FieldLabel>
-        <Input id="url" {...register("url")}  className="text-body! px-3 py-2 text-text-secondary"/>
+        <FieldLabel htmlFor="url" className="text-text-tertiary">
+          Job URL
+        </FieldLabel>
+        <Input
+          id="url"
+          {...register("url")}
+          className="text-body! px-3 py-2 text-text-secondary"
+        />
       </Field>
 
       <Controller
@@ -143,7 +188,9 @@ function FormMode({ application, onClose }: Props) {
         name="appliedDate"
         render={({ field }) => (
           <Field>
-            <FieldLabel htmlFor="appliedDate" className="text-text-tertiary">Applied Date</FieldLabel>
+            <FieldLabel htmlFor="appliedDate" className="text-text-tertiary">
+              Applied Date
+            </FieldLabel>
 
             <Popover open={openAppliedDate} onOpenChange={setOpenAppliedDate}>
               <PopoverTrigger asChild>
@@ -177,7 +224,9 @@ function FormMode({ application, onClose }: Props) {
         name="followupDate"
         render={({ field }) => (
           <Field>
-            <FieldLabel htmlFor="followupDate" className="text-text-tertiary">Follow Up Date</FieldLabel>
+            <FieldLabel htmlFor="followupDate" className="text-text-tertiary">
+              Follow Up Date
+            </FieldLabel>
 
             <Popover open={openFollowupDate} onOpenChange={setOpenFollowupDate}>
               <PopoverTrigger asChild>

@@ -10,29 +10,31 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Ellipsis } from "lucide-react";
-
-import StatusBadge from "./StatusBadge";
 import { format } from "date-fns";
 import { Application, cardColors } from "@/lib/types";
 
 import { Badge } from "@/components/ui/badge";
 
+import DeleteAlertDialog from "@/app/_components/DeleteAlertDialog";
+
 type Props = {
   application: Application;
   onRowClick: (id: string) => void;
   onEdit: (app: Application) => void;
-  onDelete: (id: string) => void;
+  onDelete: (id: string) => Promise<void>;
 };
 
 function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
   const { id, company, role, status, platform, appliedDate, followupDate } =
     application;
 
+  const handleDelete = async function () {
+    await onDelete(id);
+  };
+
   return (
     <TableRow
-      onClick={(e) => {
-        console.log("table row");
-        e.stopPropagation();
+      onClick={() => {
         onRowClick(id);
       }}
       className="hover:cursor-pointer border-b border-border"
@@ -65,6 +67,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
               className="size-8"
               onClick={(e) => {
                 e.stopPropagation();
+                console.log("ellipsis...");
               }}
             >
               <Ellipsis />
@@ -83,16 +86,8 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />
-            <DropdownMenuItem
-              variant="destructive"
-              className="w-full"
-              onClick={(e) => {
-                e.stopPropagation();
-                onDelete(id);
-              }}
-            >
-              Delete
-            </DropdownMenuItem>
+        
+            <DeleteAlertDialog onDelete={handleDelete} />
           </DropdownMenuContent>
         </DropdownMenu>
       </TableCell>
