@@ -33,6 +33,7 @@ function NoteSection({ notes, applicationId }: Props) {
       if (!response.ok) throw new Error("Failed to add Note");
 
       toast.success("Added Note successfully", { position: "top-left" });
+
       router.refresh();
     } catch {
       toast.error("Failed to add Note", { position: "top-left" });

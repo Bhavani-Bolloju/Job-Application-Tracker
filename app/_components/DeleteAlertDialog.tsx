@@ -39,9 +39,9 @@ function DeleteAlertDialog({ onDelete }: Props) {
     try {
       setIsLoading(true);
       await onDelete();
-      toast.success("Application deleted.", { position: "top-left" });
+      toast.success("Deleted successfully.", { position: "top-left" });
     } catch {
-      toast.error("Failed to delete application.", { position: "top-left" });
+      toast.error("Failed to delete.", { position: "top-left" });
     } finally {
       setIsLoading(false);
       setOpen(false);

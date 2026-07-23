@@ -10,6 +10,8 @@ import { useRouter } from "next/navigation";
 
 import ContactCard from "./ContactCard";
 
+import { toast } from "sonner";
+
 type Props = {
   contacts: Contact[];
   applicationId: string;
@@ -27,21 +29,29 @@ function ContactSection({ contacts, applicationId }: Props) {
   const handleFormSubmit = async function (value: ApplicationContactFormProps) {
     const obj = { ...value, applicationId };
 
-    console.log(obj, "handle contact submit");
+    try {
+      const response = await fetch("/api/contacts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(obj)
+      });
 
-    await fetch("/api/contacts", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(obj)
-    });
+      if (!response.ok) throw new Error("");
 
-    router.refresh();
+      toast.success("Added contact successfully", { position: "top-left" });
+
+      router.refresh();
+    } catch {
+      toast.error("Failed to add contact", { position: "top-left" });
+    }
   };
 
   const handleDelete = async function (id: string) {
-    await fetch(`/api/contacts/${id}`, { method: "DELETE" });
+    const response = await fetch(`/api/contacts/${id}`, { method: "DELETE" });
+
+    if (!response.ok) throw new Error("Failed to Delete.");
 
     router.refresh();
   };

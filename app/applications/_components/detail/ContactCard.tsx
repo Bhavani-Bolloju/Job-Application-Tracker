@@ -5,16 +5,21 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuTrigger,
-  DropdownMenuItem
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 
+import DeleteAlertDialog from "@/app/_components/DeleteAlertDialog";
+
 type Props = ApplicationContactFormProps & {
-  onDelete: (id: string) => void;
+  onDelete: (id: string) => Promise<void>;
   id: string;
 };
 
 function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
+  const handleDelete = async function () {
+    await onDelete(id);
+  };
+
   return (
     <li className="p-3">
       <div className="flex items-center gap-5 ">
@@ -46,7 +51,8 @@ function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem
+            <DeleteAlertDialog onDelete={handleDelete} />
+            {/* <DropdownMenuItem
               variant="destructive"
               className="w-full"
               onClick={(e) => {
@@ -55,7 +61,7 @@ function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
               }}
             >
               Delete
-            </DropdownMenuItem>
+            </DropdownMenuItem> */}
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
