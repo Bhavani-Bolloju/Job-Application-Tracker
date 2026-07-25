@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Trash2Icon } from "lucide-react";
+import { Trash2Icon, Ban } from "lucide-react";
 
 import {
   AlertDialog,
@@ -20,13 +20,27 @@ import { toast } from "sonner";
 
 import { Spinner } from "@/components/ui/spinner";
 
-// import { Button } from "@/components/ui/button";
-
 type Props = {
-  onDelete: () => Promise<void>;
+  buttonLabel?: string;
+  confirmLabel?: string;
+  confirmVariant?: string;
+  onConfirm: () => Promise<void>;
+  successMsg: string;
+  failureMsg: string;
+  title: string;
+  description: string;
 };
 
-function DeleteAlertDialog({ onDelete }: Props) {
+function ConfirmAlertDialog({
+  buttonLabel = "delete",
+  onConfirm,
+  successMsg,
+  failureMsg,
+  title,
+  description,
+  confirmVariant = "default",
+  confirmLabel = "delete"
+}: Props) {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,10 +52,10 @@ function DeleteAlertDialog({ onDelete }: Props) {
 
     try {
       setIsLoading(true);
-      await onDelete();
-      toast.success("Deleted successfully.", { position: "top-left" });
+      await onConfirm();
+      toast.success(successMsg, { position: "top-left" });
     } catch {
-      toast.error("Failed to delete.", { position: "top-left" });
+      toast.error(failureMsg, { position: "top-left" });
     } finally {
       setIsLoading(false);
       setOpen(false);
@@ -51,27 +65,28 @@ function DeleteAlertDialog({ onDelete }: Props) {
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <DropdownMenuItem
-        variant="destructive"
-        className="w-full"
+        variant={confirmVariant === "default" ? "destructive" : "default"}
+        className="w-full capitalize"
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
           setOpen(true);
         }}
       >
-        Delete
+        {buttonLabel}
       </DropdownMenuItem>
 
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
-          <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
-            <Trash2Icon />
+          <AlertDialogMedia
+            className={`bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive`}
+          >
+            {confirmVariant === "default" ?
+              <Trash2Icon />
+            : <Ban />}
           </AlertDialogMedia>
-          <AlertDialogTitle>Delete Application?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This will permanently delete this application. Are you sure you want
-            to do this?
-          </AlertDialogDescription>
+          <AlertDialogTitle>{title}</AlertDialogTitle>
+          <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel
@@ -86,12 +101,12 @@ function DeleteAlertDialog({ onDelete }: Props) {
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction
-            variant="destructive"
+            variant={confirmVariant === "default" ? "destructive" : "default"}
             onClick={confirmDelete}
             className={`${isLoading ? "pointer-events-none" : "hover:cursor-pointer"}`}
           >
             {isLoading && <Spinner />}
-            <span>Confirm</span>
+            <span className="capitalize">{confirmLabel}</span>
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
@@ -99,5 +114,5 @@ function DeleteAlertDialog({ onDelete }: Props) {
   );
 }
 
-export default DeleteAlertDialog;
+export default ConfirmAlertDialog;
 

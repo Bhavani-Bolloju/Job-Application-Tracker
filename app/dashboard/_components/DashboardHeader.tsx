@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
 
+import Breadcrumbs from "@/app/_components/Breadcrumbs";
+
 function DashboardHeader({ user }: { user: Session["user"] | undefined }) {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -22,6 +24,10 @@ function DashboardHeader({ user }: { user: Session["user"] | undefined }) {
 
   return (
     <div className="mb-8">
+      <div className="flex justify-between items-center">
+        <Breadcrumbs />
+        <Button className="">logout</Button>
+      </div>
       <div className="flex items-center justify-between">
         <div>
           <p className="text-page-title font-bold mb-1 text-text-secondary">

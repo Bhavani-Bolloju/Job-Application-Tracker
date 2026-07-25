@@ -15,7 +15,7 @@ import { Application, cardColors } from "@/lib/types";
 
 import { Badge } from "@/components/ui/badge";
 
-import DeleteAlertDialog from "@/app/_components/DeleteAlertDialog";
+import ConfirmAlertDialog from "@/app/_components/ConfirmAlertDialog";
 
 type Props = {
   application: Application;
@@ -86,8 +86,14 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />
-        
-            <DeleteAlertDialog onDelete={handleDelete} />
+
+            <ConfirmAlertDialog
+              onConfirm={handleDelete}
+              title="Delete Application?"
+              description="This Application will be permanently removed from this application."
+              successMsg="Application deleted successfully."
+              failureMsg="Failed to delete Application. Please try again."
+            />
           </DropdownMenuContent>
         </DropdownMenu>
       </TableCell>

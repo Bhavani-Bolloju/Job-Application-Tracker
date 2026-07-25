@@ -15,6 +15,7 @@ import { FilterProvider } from "../context/FilterContext";
 import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
 
 import Breadcrumbs from "@/app/_components/Breadcrumbs";
+// import Logout from "@/app/_components/Logout";
 
 type Props = {
   applications: Application[];
@@ -64,7 +65,10 @@ function ApplicationsClient({ applications }: Props) {
 
   return (
     <div className="py-8 px-12">
-      <Breadcrumbs />
+      <div className="flex justify-between items-center">
+        <Breadcrumbs />
+        {/* <Logout /> */}
+      </div>
       <div className="flex items-center justify-between mb-5">
         <h1 className="mb-4 flex items-center gap-3 text-accent-2">
           <BriefcaseBusiness className="w-8 h-auto" />

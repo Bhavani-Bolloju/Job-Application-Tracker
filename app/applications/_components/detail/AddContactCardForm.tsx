@@ -121,7 +121,7 @@ function AddContactCardForm({ open, onDialogStatus, onFormSubmit }: Props) {
               type="submit"
               className="bg-accent-3 text-background hover:bg-accent-2 hover:text-background hover:cursor-pointer"
             >
-              Save changes
+              Confirm
             </Button>
           </DialogFooter>
         </form>

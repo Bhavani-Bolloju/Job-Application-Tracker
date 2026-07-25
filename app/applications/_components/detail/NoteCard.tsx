@@ -2,10 +2,10 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 
-import DeleteAlertDialog from "@/app/_components/DeleteAlertDialog";
+import ConfirmAlertDialog from "@/app/_components/ConfirmAlertDialog";
 
 import { EllipsisVertical } from "lucide-react";
 
@@ -48,30 +48,13 @@ function NoteCard({ content, date, onDelete, id }: Props) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          {/* <DropdownMenuItem
-            className="w-full"
-            onClick={(e) => {
-              e.stopPropagation();
-              onEdit(application);
-            }}
-          >
-            Edit
-          </DropdownMenuItem> */}
-
-          {/* <DropdownMenuSeparator /> */}
-
-          <DeleteAlertDialog onDelete={handleDelete} />
-
-          {/* <DropdownMenuItem
-            variant="destructive"
-            className="w-full"
-            onClick={(e) => {
-           
-              onDelete(id);
-            }}
-          >
-            Delete
-          </DropdownMenuItem> */}
+          <ConfirmAlertDialog
+            onConfirm={handleDelete}
+            successMsg="Note deleted successfully."
+            failureMsg="Failed to delete note. Please try again."
+            title="Delete Note?"
+            description="This note will be permanently removed from this application."
+          />
         </DropdownMenuContent>
       </DropdownMenu>
     </li>

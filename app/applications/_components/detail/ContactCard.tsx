@@ -8,7 +8,7 @@ import {
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 
-import DeleteAlertDialog from "@/app/_components/DeleteAlertDialog";
+import ConfirmAlertDialog from "@/app/_components/ConfirmAlertDialog";
 
 type Props = ApplicationContactFormProps & {
   onDelete: (id: string) => Promise<void>;
@@ -51,17 +51,13 @@ function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DeleteAlertDialog onDelete={handleDelete} />
-            {/* <DropdownMenuItem
-              variant="destructive"
-              className="w-full"
-              onClick={(e) => {
-                e.stopPropagation();
-                onDelete(id);
-              }}
-            >
-              Delete
-            </DropdownMenuItem> */}
+            <ConfirmAlertDialog
+              onConfirm={handleDelete}
+              title="Delete Contact?"
+              description="This contact will be permanently removed from this application."
+              successMsg="Contact deleted successfully."
+              failureMsg="Failed to delete Contact. Please try again."
+            />
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
