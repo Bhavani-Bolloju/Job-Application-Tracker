@@ -7,9 +7,21 @@ import { Plus } from "lucide-react";
 import FilterSectionSkeleton from "./_components/filter/FilterSectionSkeleton";
 import ApplicationTableSkeleton from "./_components/ApplicationTableSkeleton";
 
+
+
 export default function Loading() {
-  return   <div className="py-8 px-12">
-      <Breadcrumbs />
+  return (
+    <div className="py-8 px-12">
+      <div className="flex justify-between items-center">
+        <Breadcrumbs />
+        <Button
+          className="capitalize hover:cursor-pointer border-2 border-accent-2"
+          variant="outline"
+          disabled
+        >
+          Logout
+        </Button>
+      </div>
       <div className="flex items-center justify-between mb-5">
         <h1 className="mb-4 flex items-center gap-3 text-accent-2">
           <BriefcaseBusiness className="w-8 h-auto" />
@@ -31,4 +43,9 @@ export default function Loading() {
 
       <ApplicationTableSkeleton />
     </div>
+  );
 }
+
+
+
+

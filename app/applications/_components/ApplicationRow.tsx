@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { TableCell, TableRow } from "@/components/ui/table";
 
 import { Button } from "@/components/ui/button";
@@ -28,12 +30,19 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
   const { id, company, role, status, platform, appliedDate, followupDate } =
     application;
 
+  const [openDropDown, setOpenDropDown] = useState(false);
+
   const handleDelete = async function () {
     await onDelete(id);
   };
 
+  const closeDropDownHandler = function(){
+   setOpenDropDown(false) 
+  }
+  
+  
   return (
-    <TableRow
+    <TableRow 
       onClick={() => {
         onRowClick(id);
       }}
@@ -59,7 +68,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
         {followupDate ? format(new Date(followupDate), "MMM d") : "—"}{" "}
       </TableCell>
       <TableCell className="text-right ">
-        <DropdownMenu>
+        <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown} >
           <DropdownMenuTrigger asChild>
             <Button
               variant="ghost"
@@ -67,7 +76,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
               className="size-8"
               onClick={(e) => {
                 e.stopPropagation();
-                console.log("ellipsis...");
+                setOpenDropDown(true);
               }}
             >
               <Ellipsis />
@@ -93,7 +102,19 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
               description="This Application will be permanently removed from this application."
               successMsg="Application deleted successfully."
               failureMsg="Failed to delete Application. Please try again."
-            />
+            >
+              <DropdownMenuItem
+                variant="destructive"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+                onSelect={(e) => {
+                  e.preventDefault();
+                }}
+              >
+                Delete
+              </DropdownMenuItem>
+            </ConfirmAlertDialog>
           </DropdownMenuContent>
         </DropdownMenu>
       </TableCell>

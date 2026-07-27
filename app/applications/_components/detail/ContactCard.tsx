@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 
 import ConfirmAlertDialog from "@/app/_components/ConfirmAlertDialog";
@@ -57,7 +58,14 @@ function ContactCard({ name, role, contactURL, onDelete, id }: Props) {
               description="This contact will be permanently removed from this application."
               successMsg="Contact deleted successfully."
               failureMsg="Failed to delete Contact. Please try again."
-            />
+            >
+              <DropdownMenuItem
+                variant="destructive"
+                onSelect={(e) => e.preventDefault()}
+              >
+                Delete
+              </DropdownMenuItem>
+            </ConfirmAlertDialog>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

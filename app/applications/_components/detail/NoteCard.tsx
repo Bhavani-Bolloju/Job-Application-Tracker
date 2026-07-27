@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  DropdownMenuItem
 } from "@/components/ui/dropdown-menu";
 
 import ConfirmAlertDialog from "@/app/_components/ConfirmAlertDialog";
@@ -54,7 +55,16 @@ function NoteCard({ content, date, onDelete, id }: Props) {
             failureMsg="Failed to delete note. Please try again."
             title="Delete Note?"
             description="This note will be permanently removed from this application."
-          />
+          >
+            <DropdownMenuItem
+              variant="destructive"
+              onSelect={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Delete
+            </DropdownMenuItem>
+          </ConfirmAlertDialog>
         </DropdownMenuContent>
       </DropdownMenu>
     </li>

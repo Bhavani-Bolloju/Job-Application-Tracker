@@ -1,3 +1,5 @@
+import React from "react";
+
 import { useState } from "react";
 
 import { Trash2Icon, Ban } from "lucide-react";
@@ -11,17 +13,17 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogMedia,
-  AlertDialogTitle
+  AlertDialogTitle,
+  AlertDialogTrigger
 } from "@/components/ui/alert-dialog";
 
-import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
+// import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 
 import { toast } from "sonner";
 
 import { Spinner } from "@/components/ui/spinner";
 
 type Props = {
-  buttonLabel?: string;
   confirmLabel?: string;
   confirmVariant?: string;
   onConfirm: () => Promise<void>;
@@ -29,22 +31,23 @@ type Props = {
   failureMsg: string;
   title: string;
   description: string;
+  children: React.ReactNode;
 };
 
 function ConfirmAlertDialog({
-  buttonLabel = "delete",
   onConfirm,
   successMsg,
   failureMsg,
   title,
   description,
   confirmVariant = "default",
-  confirmLabel = "delete"
+  confirmLabel = "delete",
+  children
 }: Props) {
   const [open, setOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const confirmDelete = async function (
+  const confirmHandler = async function (
     e: React.MouseEvent<HTMLButtonElement>
   ) {
     e.preventDefault();
@@ -54,7 +57,8 @@ function ConfirmAlertDialog({
       setIsLoading(true);
       await onConfirm();
       toast.success(successMsg, { position: "top-left" });
-    } catch {
+    } catch (error) {
+      console.log(error, "logout error msg");
       toast.error(failureMsg, { position: "top-left" });
     } finally {
       setIsLoading(false);
@@ -64,7 +68,9 @@ function ConfirmAlertDialog({
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <DropdownMenuItem
+      <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
+
+      {/* <DropdownMenuItem
         variant={confirmVariant === "default" ? "destructive" : "default"}
         className="w-full capitalize"
         onClick={(e) => {
@@ -73,8 +79,8 @@ function ConfirmAlertDialog({
           setOpen(true);
         }}
       >
-        {buttonLabel}
-      </DropdownMenuItem>
+        Delete
+      </DropdownMenuItem> */}
 
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
@@ -102,7 +108,7 @@ function ConfirmAlertDialog({
           </AlertDialogCancel>
           <AlertDialogAction
             variant={confirmVariant === "default" ? "destructive" : "default"}
-            onClick={confirmDelete}
+            onClick={confirmHandler}
             className={`${isLoading ? "pointer-events-none" : "hover:cursor-pointer"}`}
           >
             {isLoading && <Spinner />}
@@ -115,4 +121,5 @@ function ConfirmAlertDialog({
 }
 
 export default ConfirmAlertDialog;
+
 

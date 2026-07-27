@@ -5,7 +5,14 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { Plus } from "lucide-react";
 
-import Breadcrumbs from "@/app/_components/Breadcrumbs";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbPage
+} from "@/components/ui/breadcrumb";
+
+import Logout from "@/app/_components/Logout";
 
 function DashboardHeader({ user }: { user: Session["user"] | undefined }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,8 +32,14 @@ function DashboardHeader({ user }: { user: Session["user"] | undefined }) {
   return (
     <div className="mb-8">
       <div className="flex justify-between items-center">
-        <Breadcrumbs />
-        <Button className="">logout</Button>
+        <Breadcrumb className="text-sm mb-4">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbPage>Dashboard</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        <Logout />
       </div>
       <div className="flex items-center justify-between">
         <div>

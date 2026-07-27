@@ -1,7 +1,6 @@
-
+import { logout } from "./actions/auth";
 import ConfirmAlertDialog from "./ConfirmAlertDialog";
-
-import { logout } from "../actions/auth";
+import { Button } from "@/components/ui/button";
 function Logout() {
   const handleLogout = async function () {
     await logout();
@@ -12,14 +11,22 @@ function Logout() {
       onConfirm={handleLogout}
       title="Sign out?"
       description="You'll be signed out of your account and returned to the login page."
-      buttonLabel="Logout"
-      confirmLabel="Logout"
+      confirmLabel="Sign out"
       successMsg="Signed out successfully."
       failureMsg="Failed to sign out. Please try again."
-      confirmVariant="logout"
-    />
+    >
+      <Button
+        className="capitalize hover:cursor-pointer border-2 border-accent-2"
+        variant="outline"
+      >
+        Logout
+      </Button>
+    </ConfirmAlertDialog>
   );
 }
 
 export default Logout;
+
+
+
 

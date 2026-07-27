@@ -21,7 +21,7 @@ function Breadcrumbs() {
         <BreadcrumbSeparator />
 
         <BreadcrumbItem>
-          <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+          <BreadcrumbPage>Applications</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
