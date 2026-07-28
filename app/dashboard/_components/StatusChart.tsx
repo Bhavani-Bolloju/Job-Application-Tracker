@@ -56,7 +56,11 @@ function StatusChart({ statusCount }: Props) {
 
   const backgroundColor = labels.map((label) => chartColors[label]);
 
-  const total = dataValues.reduce((prev, curr) => +prev + +curr);
+  let total = 0;
+
+  if (dataValues.length > 0) {
+    total = dataValues.reduce((prev, curr) => +prev + +curr);
+  }
 
   const data = {
     labels,

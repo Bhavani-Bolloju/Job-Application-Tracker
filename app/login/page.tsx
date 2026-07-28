@@ -1,26 +1,50 @@
 import { signIn } from "@/lib/auth";
+import { Button } from "@/components/ui/button";
 
 
 export default function LoginPage() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="flex flex-col items-center gap-6">
-        <h1 className="text-2xl font-bold">Job Tracker</h1>
-        <p className="text-gray-500">Track your job search in one place</p>
-        <form
-          action={async () => {
-            "use server";
-            await signIn("google", { redirectTo: "/" });
-          }}
+    <div className="min-h-screen flex flex-col items-center justify-center font-geist">
+      <h1 className="text-page-title! font-bold">Job Tracker</h1>
+      <p className="text-text-muted mb-5">Track your job search in one place</p>
+      <form
+        action={async () => {
+          "use server";
+          await signIn("google", { redirectTo: "/" });
+        }}
+        className="flex justify-center"
+      >
+        <Button
+          type="submit"
+          className="flex bg-accent-2 items-center gap-2 rounded-lg px-6 py-5 shadow-sm hover:shadow-md transition hover:cursor-pointer hover:bg-accent-3 text-background "
         >
-          <button
-            type="submit"
-            className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-6 py-3 shadow-sm hover:shadow-md transition hover:cursor-pointer"
-          >
-            Sign in with Google
-          </button>
-        </form>
-      </div>
+          Sign in with Google
+        </Button>
+      </form>
+      <div className="my-2">or</div>
+
+      <form
+        action={async () => {
+          "use server";
+
+          try {
+            await signIn("credentials", {
+              redirectTo: "/"
+            });
+          } catch (error) {
+            console.error(error);
+            throw error;
+          }
+        }}
+      >
+        <Button
+          type="submit"
+          variant="outline"
+          className="hover:cursor-pointer py-5 border-accent-2"
+        >
+          Continue as Guest
+        </Button>
+      </form>
     </div>
   );
 }

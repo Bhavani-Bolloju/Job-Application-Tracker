@@ -15,9 +15,11 @@ import { TriangleAlert } from "lucide-react";
 export default function Error({
   reset
 }: {
-  // error: Error & { digest?: string };
+  error: Error & { digest?: string };
   reset: () => void;
 }) {
+  
+
   return (
     <div className="flex items-center justify-center h-screen">
       <Card className="w-xl">

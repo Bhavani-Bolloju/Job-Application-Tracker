@@ -21,12 +21,16 @@ export async function GET() {
 // POST new application
 export async function POST(request: Request) {
   const session = await auth();
+  
+  console.log(session, "post req application add")
 
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   const userId = session?.user.id;
+  
+  console.log(userId, "userId post req")
   
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
