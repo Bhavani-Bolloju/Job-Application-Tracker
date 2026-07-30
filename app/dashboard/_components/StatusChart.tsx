@@ -9,9 +9,11 @@ import {
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
-import { StatusCount, chartColors } from "@/lib/types";
+import { StatusCount } from "@/lib/types";
 
 import StatusChartLabelItem from "./StatusChartLabelItem";
+
+import { buildStatusChartData } from "@/lib/dashboard";
 
 type Props = {
   statusCount: StatusCount[];
@@ -50,17 +52,8 @@ type Props = {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function StatusChart({ statusCount }: Props) {
-  const labels = statusCount.map((status) => status.status);
-
-  const dataValues = statusCount.map((status) => status._count.status);
-
-  const backgroundColor = labels.map((label) => chartColors[label]);
-
-  let total = 0;
-
-  if (dataValues.length > 0) {
-    total = dataValues.reduce((prev, curr) => +prev + +curr);
-  }
+  const { labels, dataValues, backgroundColor, total } =
+    buildStatusChartData(statusCount);
 
   const data = {
     labels,

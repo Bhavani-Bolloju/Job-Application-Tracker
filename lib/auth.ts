@@ -26,8 +26,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         if (!guest) return null;
 
-        console.log(guest, "guest authorize value");
-
         return guest;
       }
     })
@@ -35,7 +33,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   secret: process.env.AUTH_SECRET,
   callbacks: {
     jwt({ token, user }) {
-      console.log(token, user, "jwt token & user");
       if (user) {
         token.id = user.id;
       }
@@ -53,6 +50,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/login"
   }
 });
+
 
 
 

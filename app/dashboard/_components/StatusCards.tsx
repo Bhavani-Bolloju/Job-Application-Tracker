@@ -13,6 +13,8 @@ type Props = {
   statusCount: StatusCount[];
 };
 
+import { buildStatusCardsData } from "@/lib/dashboard";
+
 const icons = {
   APPLIED: FileText,
   INTERVIEWED: Users,
@@ -21,22 +23,10 @@ const icons = {
   WISHLIST: Heart
 };
 function StatusCards({ statusCount }: Props) {
-  const statusCountMap = new Map();
-
-  for (const { status, _count } of statusCount) {
-    statusCountMap.set(status, _count.status);
-  }
-
-  for (const status of STATUSES) {
-    if (!statusCountMap.has(status)) {
-      statusCountMap.set(status, 0);
-    }
-  }
-
-  const statusObj = Object.fromEntries(statusCountMap);
+  const statusObj = buildStatusCardsData(statusCount);
 
   return (
-    <ul className="grid grid-cols-[repeat(auto-fit,14rem)] gap-x-4 mb-8">
+    <ul className="grid grid-cols-[repeat98(auto-fit,14rem)] gap-x-4 mb-8">
       {STATUSES.map((status) => {
         return (
           <StatusCard

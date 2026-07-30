@@ -14,6 +14,8 @@ import ApplicationRow from "./ApplicationRow";
 
 import { useFilter } from "../context/FilterContext";
 
+import { filterApplications } from "@/lib/applications";
+
 type Props = {
   applications: Application[];
   onRowClick: (id: string) => void;
@@ -35,53 +37,22 @@ function ApplicationTable({
     draftFollowupDate
   } = useFilter();
 
-  let filteredApplications = applications;
+ const filteredApplications = filterApplications(applications, {
+   company: searchQuery,
+   status: selectedStatus,
+   platform: selectedPlatform,
+   appliedDate: draftAppliedDate,
+   followupDate: draftFollowupDate
+ });
 
-  filteredApplications = filteredApplications.filter((application) =>
-    application.company.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  if (selectedStatus !== "all") {
-    filteredApplications = filteredApplications.filter(
-      (application) =>
-        application.status.toLowerCase() == selectedStatus.toLowerCase()
-    );
-  }
-
-  if (selectedPlatform !== "all") {
-    filteredApplications = filteredApplications.filter(
-      (application) =>
-        application?.platform &&
-        application?.platform.toLowerCase() == selectedPlatform.toLowerCase()
-    );
-  }
-
-  if (filteredApplications.length == 0) {
-    return (
-      <div className="text-center py-12 text-gray-500">
-        No applications yet. Add your first one!
-      </div>
-    );
-  }
-
-  if (draftAppliedDate && draftAppliedDate.from && draftAppliedDate.to) {
-    const { from, to } = draftAppliedDate;
-
-    filteredApplications = filteredApplications.filter(
-      (application) =>
-        application.appliedDate >= from && application.appliedDate <= to
-    );
-  }
-  if (draftFollowupDate && draftFollowupDate.from && draftFollowupDate.to) {
-    const { from, to } = draftFollowupDate;
-
-    filteredApplications = filteredApplications.filter(
-      (application) =>
-        application.followupDate &&
-        application.followupDate >= from &&
-        application.followupDate <= to
-    );
-  }
+ if (filteredApplications.length == 0) {
+   return (
+     <div className="text-center py-12 text-gray-500">
+       No applications yet. Add your first one!
+     </div>
+   );
+ }
+  
 
   return (
     <div className="rounded-md shadow-sm shadow-gray-200 border border-border">

@@ -1,9 +1,14 @@
 import { logout } from "./actions/auth";
 import ConfirmAlertDialog from "./ConfirmAlertDialog";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+
 function Logout() {
+  const router = useRouter();
+
   const handleLogout = async function () {
     await logout();
+    router.replace("/login");
   };
 
   return (
@@ -26,6 +31,9 @@ function Logout() {
 }
 
 export default Logout;
+
+
+
 
 
 
