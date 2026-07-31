@@ -24,6 +24,8 @@ const icons = {
 };
 function StatusCards({ statusCount }: Props) {
   const statusObj = buildStatusCardsData(statusCount);
+  
+  console.log(statusObj, "status cards obj");
 
   return (
     <ul className="grid grid-cols-[repeat98(auto-fit,14rem)] gap-x-4 mb-8">
