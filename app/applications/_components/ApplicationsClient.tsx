@@ -6,17 +6,16 @@ import ApplicationTable from "./ApplicationTable";
 
 import { useRouter, redirect } from "next/navigation";
 import FilterSection from "./filter/FilterSection";
-import { BriefcaseBusiness } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
-import { Plus } from "lucide-react";
 
 import { FilterProvider } from "../context/FilterContext";
-import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
+
 
 import Breadcrumbs from "@/app/_components/Breadcrumbs";
 
 import Logout from "@/app/_components/Logout";
+
+import ApplicationHeader from "./ApplicationHeader";
 
 type Props = {
   applications: Application[];
@@ -70,22 +69,14 @@ function ApplicationsClient({ applications }: Props) {
         <Breadcrumbs />
         <Logout />
       </div>
-      <div className="flex items-center justify-between mb-5">
-        <h1 className="mb-4 flex items-center gap-3 text-accent-2">
-          <BriefcaseBusiness className="w-8 h-auto" />
-          <span className="capitalize text-page-title text-text-secondary">
-            {" "}
-            my applications
-          </span>
-        </h1>
-        <Button
-          onClick={handleAddNew}
-          className="flex items-center gap-1 py-3 px-5 h-auto hover:cursor-pointer bg-accent-1 hover:bg-accent-2"
-        >
-          <Plus />
-          <span>Add application</span>
-        </Button>
-      </div>
+
+      <ApplicationHeader
+        onAddNew={handleAddNew}
+        isOpen={isOpen}
+        mode={mode}
+        application={selected}
+        onClose={handleClose}
+      />
 
       <FilterProvider>
         <FilterSection applications={applications} />
@@ -97,13 +88,6 @@ function ApplicationsClient({ applications }: Props) {
           onDelete={handleDelete}
         />
       </FilterProvider>
-
-      <ApplicationDrawer
-        isOpen={isOpen}
-        mode={mode}
-        application={selected}
-        onClose={handleClose}
-      />
     </div>
   );
 }
