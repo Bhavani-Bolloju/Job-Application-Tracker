@@ -1,4 +1,3 @@
-import React from "react";
 import { BriefcaseBusiness } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -34,7 +33,8 @@ function ApplicationHeader({
       </h1>
       <Button
         onClick={onAddNew}
-        className="flex items-center gap-1 py-3 px-5 h-auto hover:cursor-pointer bg-accent-1 hover:bg-accent-2"
+        className="flex items-center gap-1 py-3 px-5 h-auto hover:cursor-pointer bg-accent-1 hover:bg-accent-2 add-application"
+        id="btn-add-application"
       >
         <Plus />
         <span>Add application</span>
