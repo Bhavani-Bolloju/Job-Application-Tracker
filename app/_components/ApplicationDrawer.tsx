@@ -25,7 +25,7 @@ export default function ApplicationDrawer({
   application,
   onClose
 }: Props) {
-  // console.log("application drawer")
+
 
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>

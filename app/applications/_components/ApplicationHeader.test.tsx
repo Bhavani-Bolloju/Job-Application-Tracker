@@ -22,7 +22,7 @@ beforeEach(() => {
 
 describe("applicationHeader", () => {
   describe("rendering", () => {
-    it("the page heading", () => {
+    it("Renders the add applications title", () => {
       const header = screen.getByRole("heading", {
         level: 1,
         name: /my applications/i
@@ -44,4 +44,5 @@ describe("applicationHeader", () => {
     });
   });
 });
+
 

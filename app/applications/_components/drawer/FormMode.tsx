@@ -87,7 +87,8 @@ function FormMode({ application, onClose }: Props) {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       <Field>
         <FieldLabel htmlFor="company" className="text-text-tertiary">
-          Company *
+          Company
+          <span aria-hidden="true">*</span>
         </FieldLabel>
         <Input
           className="text-body! px-3 py-2 text-text-secondary"
@@ -99,7 +100,8 @@ function FormMode({ application, onClose }: Props) {
 
       <Field>
         <FieldLabel htmlFor="role" className="text-text-tertiary">
-          Role *
+          Role
+          <span aria-hidden="true">*</span>
         </FieldLabel>
         <Input
           className="text-body! px-3 py-2 text-text-secondary"
@@ -111,7 +113,8 @@ function FormMode({ application, onClose }: Props) {
 
       <Field>
         <FieldLabel htmlFor="status" className="text-text-tertiary">
-          Status *
+          Status
+          <span aria-hidden="true">*</span>
         </FieldLabel>
         <select
           id="status"
