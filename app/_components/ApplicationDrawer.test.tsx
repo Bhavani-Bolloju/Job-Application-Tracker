@@ -1,69 +1,90 @@
 import { render, screen } from "@testing-library/react";
 import ApplicationDrawer from "./ApplicationDrawer";
-import { format } from "date-fns";
+
+import createApplication from "@/test/factories/createApplication";
+
+import FormMode from "../applications/_components/drawer/FormMode";
+
+vi.mock("../applications/_components/drawer/FormMode", () => ({
+  default: vi.fn(() => <div>Mock FormMode</div>)
+}));
+
+const application = createApplication({
+  company: "Microsoft",
+  status: "APPLIED",
+  role: "font end developer",
+  platform: "LinkedIn",
+  appliedDate: new Date("2026-07-01"),
+  followupDate: new Date("2026-07-10")
+});
 
 const onClose = vi.fn();
 
+const mockedFormMode = vi.mocked(FormMode)
+
+
+
 describe("applicationDrawer", () => {
-  describe("add mode", () => {
-    beforeEach(() => {
-      vi.clearAllMocks();
-
-      render(
-        <ApplicationDrawer
-          isOpen={true}
-          mode="add"
-          application={null}
-          onClose={onClose}
-        />
-      );
-
-      screen.debug();
-    });
-
-    it("Renders the add heading", () => {
-      const header = screen.getByRole("heading", {
-        level: 2,
-        name: /add application/i
-      });
-
-      expect(header).toBeInTheDocument();
-    });
-
-    it("Renders empty form fields", () => {
-      const companyInput = screen.getByRole("textbox", {
-        name: /company/i
-      });
-      const roleInput = screen.getByRole("textbox", {
-        name: /role/i
-      });
-      const statusInput = screen.getByRole("combobox", {
-        name: /status/i
-      });
-
-      const appliedDate = screen.getByRole("button", {
-        name: /applied date/i
-      });
-      const followupDate = screen.getByRole("button", {
-        name: /Follow Up Date/i
-      });
-
-      const today = format(new Date(), "MMMM do, yyyy");
-
-      expect(companyInput).toHaveDisplayValue("");
-      expect(roleInput).toHaveDisplayValue("");
-      expect(statusInput).toHaveDisplayValue(/applied/i);
-      expect(appliedDate).toHaveTextContent(today);
-      expect(followupDate).toHaveTextContent(/Pick a date/i);
-    });
-
-    it("Renders add application button", () => {
-      const addButton = screen.getByRole("button", {
-        name: /add application/i
-      });
-      expect(addButton).toBeInTheDocument();
-    });
+  beforeEach(() => {
+    vi.clearAllMocks();
   });
-  // describe("edit mode", () => {});
+  it("Renders the add heading in add mode", () => {
+    render(
+      <ApplicationDrawer
+        isOpen={true}
+        mode="add"
+        application={null}
+        onClose={onClose}
+      />
+    );
+
+    const header = screen.getByRole("heading", {
+      level: 2,
+      name: /add application/i
+    });
+
+    expect(header).toBeInTheDocument();
+  });
+
+  it("Renders the edit heading in edit mode", () => {
+    render(
+      <ApplicationDrawer
+        isOpen={true}
+        mode="edit"
+        application={application}
+        onClose={onClose}
+      />
+    );
+
+    const header = screen.getByRole("heading", {
+      level: 2,
+      name: /Microsoft/i
+    });
+
+    expect(header).toBeInTheDocument();
+  });
+
+  it("passes props to the form component", () => {
+    render(
+      <ApplicationDrawer
+        isOpen={true}
+        mode="edit"
+        application={application}
+        onClose={onClose}
+      />
+    );
+
+    expect(mockedFormMode.mock.calls[0][0]).toEqual(
+      expect.objectContaining({
+        application,
+        onClose
+      })
+    );
+  });
 });
+
+
+
+
+
 
