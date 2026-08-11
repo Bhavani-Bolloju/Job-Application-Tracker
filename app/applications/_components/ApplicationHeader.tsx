@@ -33,10 +33,10 @@ function ApplicationHeader({
       </h1>
       <Button
         onClick={onAddNew}
-        className="flex items-center gap-1 py-3 px-5 h-auto hover:cursor-pointer bg-accent-1 hover:bg-accent-2 add-application"
+        className="flex items-center gap-1 py-3 px-5 h-auto hover:cursor-pointer bg-accent-2 hover:bg-accent-3 add-application focus-within:bg-accent-3"
         id="btn-add-application"
       >
-        <Plus />
+        <Plus aria-hidden="true" />
         <span>Add application</span>
       </Button>
 
@@ -51,4 +51,9 @@ function ApplicationHeader({
 }
 
 export default ApplicationHeader;
+
+
+
+
+
 

@@ -69,19 +69,6 @@ function ConfirmAlertDialog({
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>{children}</AlertDialogTrigger>
-
-      {/* <DropdownMenuItem
-        variant={confirmVariant === "default" ? "destructive" : "default"}
-        className="w-full capitalize"
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setOpen(true);
-        }}
-      >
-        Delete
-      </DropdownMenuItem> */}
-
       <AlertDialogContent size="sm">
         <AlertDialogHeader>
           <AlertDialogMedia

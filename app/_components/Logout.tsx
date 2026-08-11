@@ -21,7 +21,7 @@ function Logout() {
       failureMsg="Failed to sign out. Please try again."
     >
       <Button
-        className="capitalize hover:cursor-pointer border-2 border-accent-2"
+        className="capitalize hover:cursor-pointer hover:bg-bg--2 border-2 border-accent-2"
         variant="outline"
       >
         Logout
@@ -31,6 +31,9 @@ function Logout() {
 }
 
 export default Logout;
+
+
+
 
 
 

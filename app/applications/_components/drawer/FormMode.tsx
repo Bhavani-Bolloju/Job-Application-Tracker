@@ -93,9 +93,14 @@ function FormMode({ application, onClose }: Props) {
         <Input
           className="text-body! px-3 py-2 text-text-secondary"
           id="company"
+          aria-describedby="company-error"
+          aria-invalid={!!errors.company}
+          required
           {...register("company", { required: "Company is required" })}
         />
-        {errors.company && <FieldError>{errors.company.message}</FieldError>}
+        {errors.company && (
+          <FieldError id="company-error">{errors.company.message}</FieldError>
+        )}
       </Field>
 
       <Field>
@@ -106,9 +111,14 @@ function FormMode({ application, onClose }: Props) {
         <Input
           className="text-body! px-3 py-2 text-text-secondary"
           id="role"
+          aria-describedby="role-error"
+          aria-invalid={!!errors.role}
           {...register("role", { required: "Role is required" })}
+          required
         />
-        {errors.role && <FieldError>{errors.role.message}</FieldError>}
+        {errors.role && (
+          <FieldError id="role-error">{errors.role.message}</FieldError>
+        )}
       </Field>
 
       <Field>
@@ -119,7 +129,7 @@ function FormMode({ application, onClose }: Props) {
         <select
           id="status"
           {...register("status", { required: true })}
-          className="w-full border rounded-md px-3 py-2 text-body!"
+          className="w-full border rounded-md px-3 py-2 text-body! focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 "
         >
           <option value="WISHLIST">Wishlist</option>
           <option value="APPLIED">Applied</option>
@@ -147,7 +157,7 @@ function FormMode({ application, onClose }: Props) {
         <select
           id="type"
           {...register("type")}
-          className="w-full border rounded-md px-3 py-2 text-body!"
+          className="w-full border rounded-md px-3 py-2 text-body! focus-visible:outline-none focus-visible:border-ring  focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           <option value="">Select type</option>
           <option value="FULL_TIME">Full Time</option>
@@ -266,7 +276,7 @@ function FormMode({ application, onClose }: Props) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex-1 bg-accent-3 text-background py-2 rounded-lg text-sm hover:cursor-pointer hover:bg-accent-2"
+          className="flex-1 bg-accent-3 text-background py-2 rounded-lg text-sm hover:cursor-pointer hover:bg-accent-2 focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           {isSubmitting ?
             "Saving..."
@@ -277,7 +287,7 @@ function FormMode({ application, onClose }: Props) {
         <button
           type="button"
           onClick={onClose}
-          className="flex-1 border py-2 rounded-lg text-sm hover:cursor-pointer"
+          className="flex-1 border py-2 rounded-lg text-sm hover:cursor-pointer  focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           Cancel
         </button>

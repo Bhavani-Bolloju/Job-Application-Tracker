@@ -29,11 +29,13 @@ function MoreFiltersPanel() {
   return (
     <div
       className={`grid ${isMoreFilterOpen ? "grid-rows-[1fr] py-5 px-5 border-t-2 border-border" : "grid-rows-[0fr]"} transition-all duration-200 ease-in-out`}
+      id="filters-panel"
+      hidden={!isMoreFilterOpen}
     >
       <div className="overflow-hidden ">
         <div className="mb-5 font-medium text-card-title">More filters</div>
         <div className="flex items-stretch gap-5 ">
-          <div className="relative border-2 border-border rounded-lg flex items-center justify-center h-12 min-w-70 ">
+          <div className="relative border-2 border-border rounded-lg flex items-center justify-center h-12 min-w-70 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50">
             <FieldLabel
               htmlFor="applied-date"
               className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
@@ -45,7 +47,7 @@ function MoreFiltersPanel() {
                 <Button
                   variant="outline"
                   id="applied-date"
-                  className="w-full justify-start px-2.5 border-none mx-5 hover:cursor-pointer bg-bg--1 "
+                  className="w-full justify-start px-2.5 border-none mx-5 hover:cursor-pointer focus-visible:ring-0 bg-bg--1 "
                 >
                   {appliedDate?.from ?
                     appliedDate.to ?
@@ -75,7 +77,7 @@ function MoreFiltersPanel() {
               </PopoverContent>
             </Popover>
           </div>
-          <div className="relative border-2 border-border rounded-lg flex items-center justify-center min-w-70 bg-bg--1 ">
+          <div className="relative border-2 border-border rounded-lg flex items-center justify-center min-w-70 bg-bg--1 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50 ">
             <FieldLabel
               htmlFor="follow-up-date"
               className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
@@ -87,7 +89,7 @@ function MoreFiltersPanel() {
                 <Button
                   variant="outline"
                   id="follow-up-date"
-                  className="justify-start px-2.5 border-0 mx-5 hover:cursor-pointer w-full bg-bg--1 "
+                  className="justify-start focus-visible:ring-0 px-2.5 border-0 mx-5 hover:cursor-pointer w-full bg-bg--1 "
                 >
                   {followupDate?.from ?
                     followupDate.to ?

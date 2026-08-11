@@ -39,14 +39,14 @@ function ApplicationHeader({ application }: Props) {
       <div className="flex items-stretch gap-4">
         <Link
           href="/applications"
-          className="flex items-center gap-1 border-b-2 border-border mr-auto"
+          className="flex items-center gap-1 border-b-2 border-border mr-auto focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           <ChevronLeft className="w-5 h-auto" />
           <span className="font-medium">Back</span>
         </Link>
         <Button
           variant="outline"
-          className="flex items-center gap-2 py-2 px-4 border-2 border-border! rounded-md self-stretch h-auto bg-bg--1 hover:bg-background hover:cursor-pointer"
+          className="flex items-center gap-2 py-2 px-4 border-2 border-border! rounded-md self-stretch h-auto bg-bg--1 hover:bg-background hover:cursor-pointer focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50"
           onClick={handleEdit}
         >
           <Pencil className="w-4 text-zinc-500" />
@@ -56,7 +56,7 @@ function ApplicationHeader({ application }: Props) {
           <a
             href={url}
             target="_blank"
-            className="flex items-center gap-2 py-2 px-4 border border-border rounded-md bg-white hover:bg-background"
+            className="flex items-center gap-2 py-2 px-4 border border-border rounded-md bg-white hover:bg-background focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             <ExternalLink className="w-4 text-zinc-500" />
             <span>Open job Posting</span>

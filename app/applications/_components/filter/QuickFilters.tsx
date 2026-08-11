@@ -52,7 +52,7 @@ function QuickFilters({ applications }: Props) {
     <FieldGroup className="flex flex-row gap-5 items-stretch py-5 px-5 ">
       <Field
         orientation="horizontal"
-        className="relative flex px-2 py-2 border-2 rounded-lg basis-72 text-body"
+        className="relative flex px-2 py-2 border-2 rounded-lg basis-72 text-body focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50"
       >
         <Search
           aria-hidden="true"
@@ -67,7 +67,7 @@ function QuickFilters({ applications }: Props) {
         />
       </Field>
 
-      <div className="relative border-2 rounded-lg flex items-center justify-center basis-50">
+      <div className="relative border-2 rounded-lg flex items-center justify-center basis-50 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50">
         <FieldLabel
           htmlFor="status"
           className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
@@ -75,7 +75,10 @@ function QuickFilters({ applications }: Props) {
           status
         </FieldLabel>
         <Select value={selectedStatus} onValueChange={onStatusChange}>
-          <SelectTrigger className="w-full focus-visible:ring-0 border-0 rounded-none capitalize text-base ">
+          <SelectTrigger
+            className="w-full focus-visible:ring-0 border-0 rounded-none capitalize text-base"
+            id="status"
+          >
             <SelectValue placeholder="Select status" />
           </SelectTrigger>
           <SelectContent>
@@ -95,7 +98,7 @@ function QuickFilters({ applications }: Props) {
         </Select>
       </div>
 
-      <div className="relative border-2 rounded-lg flex items-center justify-center basis-50 ">
+      <div className="relative border-2 rounded-lg flex items-center justify-center basis-50 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50">
         <FieldLabel
           htmlFor="platform"
           className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
@@ -103,7 +106,10 @@ function QuickFilters({ applications }: Props) {
           platform
         </FieldLabel>
         <Select value={selectedPlatform} onValueChange={onPlatformChange}>
-          <SelectTrigger className="w-full focus-visible:ring-0 border-0 rounded-none capitalize text-base">
+          <SelectTrigger
+            className="w-full focus-visible:ring-0 border-0 rounded-none capitalize text-base"
+            id="platform"
+          >
             <SelectValue placeholder="Select platform" />
           </SelectTrigger>
           <SelectContent>
@@ -131,11 +137,14 @@ function QuickFilters({ applications }: Props) {
         className="flex self-stretch h-auto hover:cursor-pointer"
         variant="outline"
         onClick={onToggleMoreFilter}
+        aria-expanded={isMoreFilterOpen}
+        aria-controls="filters-panel"
       >
         <ListFilter className="w-4.5" />
         <span className="capitalize">more filters</span>
         <ChevronDown
           className={`w-4.5 ${isMoreFilterOpen ? "-rotate-180" : "rotate-0"} transition-all duration-150 ease-linear`}
+          aria-hidden={true}
         />
       </Button>
     </FieldGroup>
@@ -143,4 +152,20 @@ function QuickFilters({ applications }: Props) {
 }
 
 export default QuickFilters;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

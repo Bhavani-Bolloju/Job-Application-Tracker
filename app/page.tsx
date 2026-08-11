@@ -32,7 +32,10 @@ export default async function Dashboard() {
     }
   });
 
+  // console.log(recentApplications, "recent applications");
+
   return (
+
     <DashboardClient
       user={session?.user}
       statusCount={statusCount}

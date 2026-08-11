@@ -32,19 +32,19 @@ function ApplicationsClient({ applications }: Props) {
     redirect(`/applications/${id}`);
   }
 
-  function handleEdit(app: Application) {
+  function handleApplicationEdit(app: Application) {
     setSelected(app);
     setMode("edit");
     setIsOpen(true);
   }
 
-  function handleAddNew() {
+  function handleAddNewApplication() {
     setSelected(null);
     setMode("add");
     setIsOpen(true);
   }
 
-  async function handleDelete(id: string) {
+  async function handleDeleteApplica(id: string) {
     const url = `/api/applications/${id}`;
 
     const response = await fetch(url, {
@@ -71,7 +71,7 @@ function ApplicationsClient({ applications }: Props) {
       </div>
 
       <ApplicationHeader
-        onAddNew={handleAddNew}
+        onAddNew={handleAddNewApplication}
         isOpen={isOpen}
         mode={mode}
         application={selected}
@@ -84,8 +84,8 @@ function ApplicationsClient({ applications }: Props) {
         <ApplicationTable
           applications={applications}
           onRowClick={handleRowClick}
-          onEdit={handleEdit}
-          onDelete={handleDelete}
+          onEdit={handleApplicationEdit}
+          onDelete={handleDeleteApplica}
         />
       </FilterProvider>
     </div>
