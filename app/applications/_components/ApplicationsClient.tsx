@@ -44,7 +44,7 @@ function ApplicationsClient({ applications }: Props) {
     setIsOpen(true);
   }
 
-  async function handleDeleteApplica(id: string) {
+  async function handleDeleteApplication(id: string) {
     const url = `/api/applications/${id}`;
 
     const response = await fetch(url, {
@@ -85,7 +85,7 @@ function ApplicationsClient({ applications }: Props) {
           applications={applications}
           onRowClick={handleRowClick}
           onEdit={handleApplicationEdit}
-          onDelete={handleDeleteApplica}
+          onDelete={handleDeleteApplication}
         />
       </FilterProvider>
     </div>

@@ -75,19 +75,20 @@ function StatusChart({ statusCount }: Props) {
   };
 
   return (
-    <div className="basis-3/6 p-8 rounded-md shadow-md shadow-border border border-border bg-bg--1 ">
+    <div className="min-w-0 flex-1 p-8 rounded-md shadow-md shadow-border border border-border bg-bg--1 ">
       <h2 className="text-section-title font-semibold mb-5 text-text-secondary">
         Applications by status
       </h2>
-      <div className="h-100 flex">
-        <div className="relative basis-1 ">
-          <Doughnut data={data} options={options} className="h-full" />
+      <div className="h-100 flex min-w-0">
+        <div className="relative flex-1 min-w-0 h-auto flex items-center">
+          <Doughnut data={data} options={options} className="h-auto" />
+
           <div className="absolute top-1/2 left-1/2 -translate-1/2 flex flex-col items-center">
             <span className="text-3xl font-medium">{total}</span>
             <span className="text-base text-text-muted">Total</span>
           </div>
         </div>
-        <div className="w-full flex items-center justify-center">
+        <div className="flex-1 min-w-0 flex items-center justify-center">
           <ul className=" flex flex-col gap-y-2 ">
             {statusCount.map((label) => (
               <StatusChartLabelItem

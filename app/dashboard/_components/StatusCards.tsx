@@ -28,7 +28,7 @@ function StatusCards({ statusCount }: Props) {
   // console.log(statusObj, "status cards obj");
 
   return (
-    <ul className="grid grid-cols-[repeat(auto-fit,14rem)] gap-x-4 mb-8">
+    <ul className="grid grid-cols-[repeat(auto-fit,14rem)] gap-x-4 gap-y-4 mb-8">
       {STATUSES.map((status) => {
         return (
           <StatusCard
