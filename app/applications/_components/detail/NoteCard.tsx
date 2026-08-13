@@ -30,9 +30,8 @@ function NoteCard({ content, date, onDelete, id }: Props) {
   return (
     <li className="flex items-center p-4">
       <div>{content}</div>
-      <div className="flex items-center gap-1 ml-auto mr-3 text-sm text-text-muted">
-        <span>{formattedDate}</span>
-        <span>({relativeDate})</span>
+      <div className="ml-auto mr-3 text-sm text-text-muted">
+        {`${formattedDate} (${relativeDate})`}
       </div>
 
       <DropdownMenu>

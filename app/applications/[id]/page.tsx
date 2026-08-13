@@ -23,7 +23,7 @@ async function page({ params }: Props) {
   });
 
   return (
-    <div className="px-12 py-8">
+    <div className="px-12 py-8 max-sm:px-8">
       {application && <ApplicationDetail application={application} />}
     </div>
   );
