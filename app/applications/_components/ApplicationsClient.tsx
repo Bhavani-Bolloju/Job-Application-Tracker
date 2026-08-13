@@ -64,8 +64,8 @@ function ApplicationsClient({ applications }: Props) {
   }
 
   return (
-    <div className="py-8 px-12">
-      <div className="flex justify-between items-center">
+    <div className="py-8 px-12 max-md:px-8">
+      <div className="flex justify-between items-center mb-8">
         <Breadcrumbs />
         <Logout />
       </div>

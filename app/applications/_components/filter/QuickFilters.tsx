@@ -49,10 +49,10 @@ function QuickFilters({ applications }: Props) {
   };
 
   return (
-    <FieldGroup className="flex flex-row gap-5 items-stretch py-5 px-5 ">
+    <FieldGroup className="flex flex-row gap-5 items-stretch py-5 px-5 flex-wrap">
       <Field
         orientation="horizontal"
-        className="relative flex px-2 py-2 border-2 rounded-lg basis-72 text-body focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50"
+        className="relative flex px-2 py-2 border-2 rounded-lg sm:basis-72 text-body focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50 w-full"
       >
         <Search
           aria-hidden="true"
@@ -67,7 +67,7 @@ function QuickFilters({ applications }: Props) {
         />
       </Field>
 
-      <div className="relative border-2 rounded-lg flex items-center justify-center basis-50 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50">
+      <div className="relative border-2 rounded-lg flex items-center justify-center sm:basis-50 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50 py-2 w-full">
         <FieldLabel
           htmlFor="status"
           className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
@@ -98,7 +98,7 @@ function QuickFilters({ applications }: Props) {
         </Select>
       </div>
 
-      <div className="relative border-2 rounded-lg flex items-center justify-center basis-50 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50">
+      <div className="relative border-2 rounded-lg flex items-center justify-center sm:basis-50 focus-within:border-ring focus-within:ring-3 focus-within:ring-ring/50 py-2 w-full">
         <FieldLabel
           htmlFor="platform"
           className="absolute -top-3 translate-y-0  left-2  px-2 capitalize text-sm bg-bg--1 text-text-tertiary"
@@ -134,7 +134,7 @@ function QuickFilters({ applications }: Props) {
       </div>
 
       <Button
-        className="flex self-stretch h-auto hover:cursor-pointer"
+        className="flex self-stretch h-auto hover:cursor-pointer py-2"
         variant="outline"
         onClick={onToggleMoreFilter}
         aria-expanded={isMoreFilterOpen}
@@ -152,6 +152,14 @@ function QuickFilters({ applications }: Props) {
 }
 
 export default QuickFilters;
+
+
+
+
+
+
+
+
 
 
 

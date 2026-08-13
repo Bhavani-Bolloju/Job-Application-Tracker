@@ -23,7 +23,7 @@ function ApplicationHeader({
   onClose
 }: Props) {
   return (
-    <div className="flex items-center justify-between mb-5">
+    <div className="flex items-center justify-between mb-5 flex-wrap">
       <h1 className="mb-4 flex items-center gap-3 text-accent-2">
         <BriefcaseBusiness className="w-8 h-auto" />
         <span className="capitalize text-page-title text-text-secondary">
@@ -51,6 +51,7 @@ function ApplicationHeader({
 }
 
 export default ApplicationHeader;
+
 
 
 
