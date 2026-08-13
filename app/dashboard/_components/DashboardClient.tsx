@@ -20,10 +20,10 @@ type Props = {
 
 function DashboardClient({ user, statusCount, recentApplications }: Props) {
   return (
-    <div className="py-8 px-12 bg-background text-foreground">
+    <div className="py-8 px-12 max-sm:px-8 bg-background text-foreground">
       <DashboardHeader user={user} />
       <StatusCards statusCount={statusCount} />
-      <div className="flex gap-8 mb-8">
+      <div className="flex gap-8 mb-8 max-lg:flex-col">
         <StatusChart statusCount={statusCount} />
         <RecentActivity recentApplications={recentApplications} />
       </div>

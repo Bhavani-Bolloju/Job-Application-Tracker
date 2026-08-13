@@ -4,6 +4,26 @@
 
 /* @custom-variant dark (&:is(.dark *)); */
 
+
+:root {
+  --text-page-title: 2rem;
+  --text-section-title: 1.5rem;
+  --text-card-title: 1.125rem;
+  --text-body: 1rem;
+  --text-sm: 0.875rem;
+}
+
+@media (max-width: 638px) {
+  :root {
+    --text-page-title: 1.5rem;
+    --text-section-title: 1.25rem;
+    --text-card-title: 1rem;
+    --text-body: 0.875rem;
+    --text-sm: 0.75rem;
+  }
+}
+
+
 @theme inline {
   --color-background: var(--surface-0);
   --color-foreground: var(--text-primary);
@@ -27,11 +47,11 @@
 
   /* font-sizes */
 
-  --text-page-title: 2rem; /* 32px */
-  --text-section-title: 1.5rem; /* 24px */
-  --text-card-title: 1.125rem; /* 18px */
-  --text-body: 1rem; /* 16px */
-  --text-sm: 0.875rem; /* 14px */
+  --text-page-title: var(--text-page-title); /* 32px */
+  --text-section-title: var(--text-section-title) ; /* 24px */
+  --text-card-title: var(--text-card-title); /* 18px */
+  --text-body: var(--text-body); /* 16px */
+  --text-sm: var(--text-sm); /* 14px */
 
   /*status colors*/
 

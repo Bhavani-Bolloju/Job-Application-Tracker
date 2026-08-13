@@ -23,7 +23,7 @@ function StatusCard({ icon: Icon, statusName, statusCount }: Props) {
         {statusName[0].toUpperCase()}
         {statusName.slice(1).toLowerCase()}
       </div>
-      <div className="col-start-2 col-span-1 row-start-2 row-span-1 text-3xl font-semibold text-text-secondary">
+      <div className="col-start-2 col-span-1 row-start-2 row-span-1 text-3xl max-md:text-2xl font-semibold text-text-secondary">
         {statusCount}
       </div>
     </li>

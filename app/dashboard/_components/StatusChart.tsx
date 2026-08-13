@@ -79,7 +79,7 @@ function StatusChart({ statusCount }: Props) {
       <h2 className="text-section-title font-semibold mb-5 text-text-secondary">
         Applications by status
       </h2>
-      <div className="h-100 flex min-w-0">
+      <div className="h-100 max-sm:h-50 flex min-w-0">
         <div className="relative flex-1 min-w-0 h-auto flex items-center">
           <Doughnut data={data} options={options} className="h-auto" />
 
