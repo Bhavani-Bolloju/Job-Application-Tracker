@@ -18,8 +18,56 @@ A full-stack Next.js application for managing and tracking job application acros
 
 
 ## Screenshots
+
 ## Tech stack
+
+**Frontend** - Next.js, React, Typescript, Tailwindcss, shadcn
+
+**Backend & data** - Prisma, PostgreSQL, NextAuth.js
+
+**Testing** - Vitest, React testing library, jsdom
+
+**Other** - chart.js, sonner, date-fns
+
 ## Project structure
+
+```
+    job-tracker/
+    ├── app/
+    │   ├── _components/     
+    │   ├── api/         
+    │   ├── applications/   
+    │   ├── dashboard/       
+    │   └── login/         
+    │
+    ├── components/
+    ├── types.js
+    ├── types.js         
+    │   └── utils.js         
+    │
+    ├── lib/
+    │   ├── application.js   
+    │   ├── auth.js           
+    │   ├── dashboard.js     
+    │   ├── prisma.js        
+    │   ├── types.js         
+    │   └── utils.js      
+    │
+    ├── prisma/
+    │   ├── schema.prisma     
+    │   └── seed.ts         
+    │
+    ├── test/
+    │   └── createApplication.ts
+    │
+    ├── public/           
+    ├── .gitignore
+    └── package.json
+
+```
+
+
+
 ## Environment variables
 ## Testing
 ## Design/UI
