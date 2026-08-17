@@ -5,6 +5,8 @@ A full-stack Next.js application for managing and tracking job application acros
 - Manage application details, notes and contacts for each application
 - Overview stats showing counts by stage and recent activity
 
+## Why i build it
+
 ## Features
 
 * **Application management** — Add, edit, delete, and view individual applications.
@@ -77,10 +79,21 @@ A full-stack Next.js application for managing and tracking job application acros
 <br/>
 **Sorting** - Sort applications by relevant fields
 
-## Design/UI
+## Design & UI
+
+The UI was designed around clear visual hierarchy, consistency, and the relationship between elements.
+
+### Design Decisions
+
+- **Typography**: Font size is determined by the role and importance of the text on the page
+
+- **Color**: Colors communicate the importance, state, and role of elements
+
+- **Spacing**: Spacing is used to communicate relationships between elements
+
 
 ## Environment variables
 ## Testing
 
 
-## Why i build it
+
