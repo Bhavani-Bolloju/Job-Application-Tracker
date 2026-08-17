@@ -65,11 +65,22 @@ A full-stack Next.js application for managing and tracking job application acros
     └── package.json
 
 ```
+## Future Improvements
 
+**Interaction tracker** - Timeline of actions 
+<br/>
+**Calendar view** - Calendar based view for applied date and follow-up date
+<br/>
+**Sidebar navigation** - Dedicated sidebar for navigation, user profile and logout
+<br/>
+**Advanced dashboard** - More details stats - comparisons across weeks and months
+<br/>
+**Sorting** - Sort applications by relevant fields
 
+## Design/UI
 
 ## Environment variables
 ## Testing
-## Design/UI
-## Future Improvements
+
+
 ## Why i build it
