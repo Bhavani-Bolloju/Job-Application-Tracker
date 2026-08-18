@@ -98,6 +98,7 @@ This is my first full-stack Next.js project, built to explore how a real-world a
 **Advanced dashboard** - More details stats - comparisons across weeks and months
 <br/>
 **Sorting** - Sort applications by relevant fields
+**Pagination** - Add pagination to the table data
 
 ## Design & UI
 
