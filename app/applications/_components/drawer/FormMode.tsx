@@ -64,7 +64,7 @@ function FormMode({ application, onClose }: Props) {
         body: JSON.stringify(data)
       });
 
-      console.log(res, "application res")
+      
       
       if (!res.ok) {
         throw new Error();
@@ -74,8 +74,8 @@ function FormMode({ application, onClose }: Props) {
         `${application ? "Application updated." : "Application added."}`,
         { position: "top-left" }
       );
-    } catch (error) {
-      console.log("error adding application", error);
+    } catch {
+      
       toast.error("Failed to add application.", { position: "top-left" });
     }
 

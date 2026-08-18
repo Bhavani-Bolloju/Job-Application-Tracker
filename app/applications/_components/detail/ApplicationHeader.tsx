@@ -65,7 +65,7 @@ function ApplicationHeader({ application }: Props) {
       </div>
       <div className="grid grid-cols-[auto_auto_1fr] my-5 gap-x-5 mt-8">
         <div className="col-start-1 col-end-2 row-start-1 row-end-4 px-10 flex items-center justify-center text-4xl uppercase rounded-md shadow-md shadow-border border border-border ">
-          {company[0]}
+          {company.trim()[0]}
         </div>
         <div className="col-start-2 col-end-3 row-start-1 row-end-2 self-start capitalize font-medium text-page-title text-text-secondary">
           {company}
