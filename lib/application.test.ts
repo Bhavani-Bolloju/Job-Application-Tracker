@@ -2,7 +2,8 @@ import { filterApplications } from "./applications";
 
 import { Application } from "./types";
 
-import createApplication from "@/test/factories/createApplication";
+import createApplication from "@/test/createApplication";
+
 
 
 const applications: Application[] = [

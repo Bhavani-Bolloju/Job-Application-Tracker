@@ -5,7 +5,7 @@ import FormMode from "./FormMode";
 
 import userEvent from "@testing-library/user-event";
 
-import createApplication from "@/test/factories/createApplication";
+import createApplication from "@/test/createApplication";
 
 const application = createApplication({
   company: "Microsoft",

@@ -1,7 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import ApplicationDrawer from "./ApplicationDrawer";
 
-import createApplication from "@/test/factories/createApplication";
+
+
+import createApplication from "@/test/createApplication";
 
 import FormMode from "../applications/_components/drawer/FormMode";
 
