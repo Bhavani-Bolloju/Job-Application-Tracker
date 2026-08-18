@@ -7,16 +7,26 @@ A full-stack Next.js application for managing and tracking job application acros
 
 ## Why i build it
 
+Job searching is not always straightforward. It involves different stages, follow-ups, new approaches to reaching out, reflecting on what worked or didn't, and adjusting along the way. I felt this process needed a space of its own.
+
+This is my first full-stack Next.js project, built to explore how a real-world application can model that workflow while focusing on:
+
+**User experience**: design consistency, User feedback, and accessibility <br/>
+**Component architecture**: reusable UI built with shadcn/ui <br/>
+**Data modeling & backend**: Prisma with a structured database design <br/>
+**Authentication**: NextAuth for secure user sessions <br/>
+**Testing**: unit and component-level testing practices
+
 ## Features
 
-* **Application management** — Add, edit, delete, and view individual applications.
-* **Search & filtering** — Search and filter applications by specific criteria.
-* **Application tracking** — Track by application platform, applied date, follow-up date, and status.
-* **Application details** — For communication and follow-ups add notes and contact details.
-* **Authentication** — Google authentication, guest access for quick exploration, and logout feature.
-* **Dashboard** — Overview of application activity and total count.
-* **Accessibility** — Keyboard-accessible interactions and screen-reader considerations.
-* **Validation & feedback** — Form validation errors and status update feedback.
+* **Application management**: Add, edit, delete, and view individual applications.
+* **Search & filtering**: Search and filter applications by specific criteria.
+* **Application tracking**: Track by application platform, applied date, follow-up date, and status.
+* **Application details**: For communication and follow-ups add notes and contact details.
+* **Authentication**: Google authentication, guest access for quick exploration, and logout feature.
+* **Dashboard**: Overview of application activity and total count.
+* **Accessibility**: Keyboard-accessible interactions and screen-reader considerations.
+* **Validation & feedback**: Form validation errors and status update feedback.
 
 
 ## Screenshots
@@ -91,9 +101,74 @@ The UI was designed around clear visual hierarchy, consistency, and the relation
 
 - **Spacing**: Spacing is used to communicate relationships between elements
 
+## Getting Started
+### Prerequisites
+
+Make sure you have:
+```
+Node.js
+npm
+A configured database
+Google OAuth credentials
+```
+
+### Installation
+
+**Clone the repository:**
+
+```
+git clone <repository-url>
+cd job-tracker
+```
+**Install dependencies:**
+
+```
+npm install
+```
+
+Create a local environment file:
+
+cp .env.example .env
+
+Configure the required environment variables.
+
+Run the Prisma setup:
+
+npx prisma generate
+
+Apply the database schema:
+
+npx prisma migrate dev
+
+Start the development server:
+
+npm run dev
+
+The application will then be available at:
+
+http://localhost:3000
 
 ## Environment variables
+
+The application requires environment variables for authentication and database access.
+
+Example:
+
+DATABASE_URL=
+AUTH_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+
+Do not commit .env or other files containing secrets to version control.
+
 ## Testing
+
+The project includes component-level tests for important user interactions. <br/>
+For example, the application drawer tests cover interactions such as adding an application and updating application information.<br/>
+Run the test suite with:
+```npm test
+```
+
 
 
 
