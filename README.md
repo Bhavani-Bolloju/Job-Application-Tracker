@@ -41,6 +41,16 @@ This is my first full-stack Next.js project, built to explore how a real-world a
 
 **Other** - chart.js, sonner, date-fns
 
+## Accessibility
+
+- Explicit labels associated with form controls
+- Keyboard-accessible controls
+- Visible focus indicators
+- Accessible form validation
+- aria-invalid for invalid form controls
+- aria-hidden for decorative icons and visual-only indicators
+
+
 ## Project structure
 
 ```
@@ -102,15 +112,14 @@ The UI was designed around clear visual hierarchy, consistency, and the relation
 - **Spacing**: Spacing is used to communicate relationships between elements
 
 ## Getting Started
+
 ### Prerequisites
 
-Make sure you have:
-```
-Node.js
-npm
-A configured database
-Google OAuth credentials
-```
+**Make sure you have:**
+
+- Node.js
+- Neon PostgreSQL database
+- Google OAuth credentials
 
 ### Installation
 
@@ -119,54 +128,63 @@ Google OAuth credentials
 ```
 git clone <repository-url>
 cd job-tracker
-```
-**Install dependencies:**
-
-```
 npm install
 ```
 
-Create a local environment file:
-
-cp .env.example .env
-
-Configure the required environment variables.
-
-Run the Prisma setup:
-
-npx prisma generate
-
-Apply the database schema:
-
-npx prisma migrate dev
-
-Start the development server:
-
-npm run dev
-
-The application will then be available at:
-
-http://localhost:3000
-
-## Environment variables
+**Environment variables**
 
 The application requires environment variables for authentication and database access.
+Create a .env file in the project root:
 
-Example:
+**Example:**
+```
+    DATABASE_URL= 
+    AUTH_SECRET=
+    GOOGLE_CLIENT_ID=
+    GOOGLE_CLIENT_SECRET=
+```
+`DATABASE_URL`: PostgreSQL connection string from Neon project. <br/>
+`AUTH_SECRET`: Generate a secure random secret.<br/>
+`GOOGLE_CLIENT_ID`: Create OAuth credentials in Google Cloud Console.<br/>
+`GOOGLE_CLIENT_SECRET`: Provided with the Google OAuth credentials.<br/>
 
-DATABASE_URL=
-AUTH_SECRET=
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
+<i>Do not commit .env or other files containing secrets to version control.</i>
 
-Do not commit .env or other files containing secrets to version control.
+
+**Run the Prisma setup:**
+```
+npx prisma generate
+```
+
+**Apply the database schema:**
+```
+npx prisma migrate dev
+```
+
+**Seed the database**
+```
+npx prisma db seed
+```
+
+**Start the development server:**
+```
+npm run dev
+```
+
+**The application will then be available at:**
+```
+http://localhost:3000
+```
+
+
 
 ## Testing
 
 The project includes component-level tests for important user interactions. <br/>
 For example, the application drawer tests cover interactions such as adding an application and updating application information.<br/>
 Run the test suite with:
-```npm test
+```
+npm test
 ```
 
 
