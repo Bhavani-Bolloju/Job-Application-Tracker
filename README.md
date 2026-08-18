@@ -37,12 +37,9 @@ This is my first full-stack Next.js project, built to explore how a real-world a
 
 ## Tech stack
 
-**Frontend** - Next.js, React, Typescript, Tailwindcss, shadcn
-
-**Backend & data** - Prisma, PostgreSQL, NextAuth.js
-
-**Testing** - Vitest, React testing library, jsdom
-
+**Frontend** - Next.js, React, Typescript, Tailwindcss, shadcn <br/>
+**Backend & data** - Prisma, PostgreSQL, NextAuth.js<br/>
+**Testing** - Vitest, React testing library, jsdom<br/>
 **Other** - chart.js, sonner, date-fns
 
 ## Accessibility
