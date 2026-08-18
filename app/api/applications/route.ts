@@ -30,7 +30,6 @@ export async function POST(request: Request) {
 
   const userId = session?.user.id;
   
-  console.log(userId, "userId post req")
   
   if (!userId) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

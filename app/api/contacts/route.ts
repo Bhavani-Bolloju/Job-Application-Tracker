@@ -6,7 +6,6 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   const session = await auth();
 
-  console.log("calling post");
 
   if (!session?.user) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });

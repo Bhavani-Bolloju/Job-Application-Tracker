@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 // PUT update application
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const session = await auth();
 
@@ -39,7 +39,7 @@ export async function PUT(
 // DELETE application
 export async function DELETE(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }>  }
 ) {
   const session = await auth();
   const { id } = await params;  
@@ -53,4 +53,5 @@ export async function DELETE(
 
   return NextResponse.json({ success: true });
 }
+
 
