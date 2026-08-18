@@ -28,8 +28,12 @@ This is my first full-stack Next.js project, built to explore how a real-world a
 * **Accessibility**: Keyboard-accessible interactions and screen-reader considerations.
 * **Validation & feedback**: Form validation errors and status update feedback.
 
-
 ## Screenshots
+[View Applications page](./docs/images/Applications.png) <br/>
+[View Add application](./docs/images/AddApplication.png) <br/>
+[View Detail application page](./docs/images/DetailApplication.png) <br/>
+[View Dashboard page](./docs/images/Dashboard.png) <br/>
+
 
 ## Tech stack
 
