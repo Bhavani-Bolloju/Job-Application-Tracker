@@ -6,6 +6,7 @@ import Credentials from "next-auth/providers/credentials";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
+  trustHost: true,
   session: {
     strategy: "jwt"
   },
@@ -40,8 +41,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
 
     session({ session, token }) {
-      if (session.user ) {
-        session.user.id = token.id as string;
+      if (session.user) {
+        session.user.id = token.id as string; 
       }
       return session;
     }
@@ -50,6 +51,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     signIn: "/login"
   }
 });
+
 
 
 
