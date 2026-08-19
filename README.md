@@ -152,9 +152,6 @@ Create a .env file in the project root:
 `GOOGLE_CLIENT_ID`: Create OAuth credentials in Google Cloud Console.<br/>
 `GOOGLE_CLIENT_SECRET`: Provided with the Google OAuth credentials.<br/>
 
-<i>Do not commit .env or other files containing secrets to version control.</i>
-
-
 **Run the Prisma setup:**
 ```
 npx prisma generate
@@ -179,7 +176,6 @@ npm run dev
 ```
 http://localhost:3000
 ```
-
 
 
 ## Testing
