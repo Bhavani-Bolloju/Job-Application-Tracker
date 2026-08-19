@@ -1,9 +1,11 @@
-# Job Tracker
+# [Job Tracker](https://comfy-lolly-d77c5b.netlify.app/login)
 
 A full-stack Next.js application for managing and tracking job application across different stages of hiring process in one place.
 
 - Manage application details, notes and contacts for each application
 - Overview stats showing counts by stage and recent activity
+
+[Deployed site link](https://comfy-lolly-d77c5b.netlify.app/login)
 
 ## Why i build it
 
@@ -150,9 +152,6 @@ Create a .env file in the project root:
 `GOOGLE_CLIENT_ID`: Create OAuth credentials in Google Cloud Console.<br/>
 `GOOGLE_CLIENT_SECRET`: Provided with the Google OAuth credentials.<br/>
 
-<i>Do not commit .env or other files containing secrets to version control.</i>
-
-
 **Run the Prisma setup:**
 ```
 npx prisma generate
@@ -177,7 +176,6 @@ npm run dev
 ```
 http://localhost:3000
 ```
-
 
 
 ## Testing
