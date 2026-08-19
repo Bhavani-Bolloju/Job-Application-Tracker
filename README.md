@@ -1,9 +1,11 @@
-# Job Tracker
+# [Job Tracker](https://comfy-lolly-d77c5b.netlify.app/login)
 
 A full-stack Next.js application for managing and tracking job application across different stages of hiring process in one place.
 
 - Manage application details, notes and contacts for each application
 - Overview stats showing counts by stage and recent activity
+
+[Deployed site link](https://comfy-lolly-d77c5b.netlify.app/login)
 
 ## Why i build it
 
