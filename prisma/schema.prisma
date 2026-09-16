@@ -12,7 +12,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 enum Status {
   APPLIED
   INTERVIEWED
@@ -32,6 +31,7 @@ model User {
   applications   Application[] 
   accounts       Account[]
   sessions       Session[] 
+  jobPortals     JobPortal[]
 }
 
 model Application {
@@ -42,7 +42,7 @@ model Application {
   appliedDate  DateTime  @default(now())
   followupDate DateTime?  
   url          String?
-  salary       String?
+  salary       String? 
   location     String?
   notes        Note[]
   type         String? 
@@ -107,4 +107,17 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+
+model JobPortal {
+    id          String   @id @default(cuid())
+    name        String
+    link        String
+    userId      String
+    user        User    @relation(fields:[userId], references:[id], onDelete:Cascade )
+    
+    
+    @@unique([userId, name])
+    @@unique([userId, link])
 }

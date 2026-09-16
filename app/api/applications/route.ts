@@ -21,8 +21,6 @@ export async function GET() {
 // POST new application
 export async function POST(request: Request) {
   const session = await auth();
-  
-  console.log(session, "post req application add")
 
   if (!session?.user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -50,9 +48,8 @@ export async function POST(request: Request) {
       appliedDate: body.appliedDate ? new Date(body.appliedDate) : new Date(),
       followupDate: body.followupDate ? new Date(body.followupDate) : null,
       userId
-    }
+    }n
   });
-
   return NextResponse.json(application, { status: 201 });
 }
 
