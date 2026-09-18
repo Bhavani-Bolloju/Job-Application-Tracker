@@ -48,7 +48,7 @@ export async function POST(request: Request) {
       appliedDate: body.appliedDate ? new Date(body.appliedDate) : new Date(),
       followupDate: body.followupDate ? new Date(body.followupDate) : null,
       userId
-    }n
+    }
   });
   return NextResponse.json(application, { status: 201 });
 }

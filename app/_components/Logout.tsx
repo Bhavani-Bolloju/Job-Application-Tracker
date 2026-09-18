@@ -1,12 +1,16 @@
+import React from "react";
+
 import { logout } from "./actions/auth";
 import ConfirmAlertDialog from "./ConfirmAlertDialog";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
-function Logout() {
+function Logout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   const handleLogout = async function () {
+    // e.stopPropagation();
+    console.log("confirm alert dialog");
     await logout();
     router.replace("/login");
   };
@@ -21,23 +25,14 @@ function Logout() {
       failureMsg="Failed to sign out. Please try again."
     >
       <Button
-        className="capitalize hover:cursor-pointer hover:bg-bg--2 border-2 border-accent-2"
+        className="capitalize hover:cursor-pointer hover:bg-bg--2 border-none rounded-none h-full  w-full"
         variant="outline"
       >
-        Logout
+        {children}
       </Button>
     </ConfirmAlertDialog>
   );
 }
 
 export default Logout;
-
-
-
-
-
-
-
-
-
 

@@ -21,6 +21,8 @@ export default async function Dashboard() {
       status: true
     }
   });
+  
+  // console.log(statusCount, "status count")
 
   const recentApplications = await prisma.application.findMany({
     where: { userId: session.user.id },
