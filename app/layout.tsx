@@ -42,16 +42,10 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-geist-sans">
-        <ApplicationSidebar user={session?.user}>
-          {children}
-        </ApplicationSidebar>
+        <ApplicationSidebar user={session?.user}>{children}</ApplicationSidebar>
         <Toaster />
       </body>
     </html>
   );
 }
-
-
-
-
 

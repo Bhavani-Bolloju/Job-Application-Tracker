@@ -73,6 +73,7 @@ function NavUser({ user }: Props) {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
+              className=""
               onClick={(e) => {
                 e.preventDefault();
               }}
@@ -90,4 +91,5 @@ function NavUser({ user }: Props) {
 }
 
 export default NavUser;
+
 

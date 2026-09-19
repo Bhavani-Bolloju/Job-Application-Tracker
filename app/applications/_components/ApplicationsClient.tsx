@@ -11,10 +11,6 @@ import FilterSection from "./filter/FilterSection";
 import { FilterProvider } from "../context/FilterContext";
 
 
-import Breadcrumbs from "@/app/_components/Breadcrumbs";
-
-import Logout from "@/app/_components/Logout";
-
 import ApplicationHeader from "./ApplicationHeader";
 
 type Props = {
@@ -65,10 +61,7 @@ function ApplicationsClient({ applications }: Props) {
 
   return (
     <div className="py-8 px-12 max-md:px-8">
-      <div className="flex justify-between items-center mb-8">
-        <Breadcrumbs />
-        <Logout />
-      </div>
+
 
       <ApplicationHeader
         onAddNew={handleAddNewApplication}

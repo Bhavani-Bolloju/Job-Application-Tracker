@@ -25,7 +25,7 @@ function Logout({ children }: { children: React.ReactNode }) {
       failureMsg="Failed to sign out. Please try again."
     >
       <Button
-        className="capitalize hover:cursor-pointer hover:bg-bg--2 border-none rounded-none h-full  w-full"
+        className="capitalize hover:cursor-pointer hover:bg-bg--2 border-none rounded-none h-full w-full flex gap-2 justify-start items-center"
         variant="outline"
       >
         {children}
@@ -35,4 +35,6 @@ function Logout({ children }: { children: React.ReactNode }) {
 }
 
 export default Logout;
+
+
 
