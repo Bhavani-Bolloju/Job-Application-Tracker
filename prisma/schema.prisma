@@ -114,6 +114,7 @@ model JobPortal {
     id          String   @id @default(cuid())
     name        String
     link        String
+    description String?
     userId      String
     user        User    @relation(fields:[userId], references:[id], onDelete:Cascade )
     

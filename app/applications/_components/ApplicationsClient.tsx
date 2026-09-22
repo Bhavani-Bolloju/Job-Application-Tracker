@@ -7,9 +7,7 @@ import ApplicationTable from "./ApplicationTable";
 import { useRouter, redirect } from "next/navigation";
 import FilterSection from "./filter/FilterSection";
 
-
 import { FilterProvider } from "../context/FilterContext";
-
 
 import ApplicationHeader from "./ApplicationHeader";
 
@@ -61,8 +59,6 @@ function ApplicationsClient({ applications }: Props) {
 
   return (
     <div className="py-8 px-12 max-md:px-8">
-
-
       <ApplicationHeader
         onAddNew={handleAddNewApplication}
         isOpen={isOpen}

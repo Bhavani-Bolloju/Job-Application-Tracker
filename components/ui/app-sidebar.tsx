@@ -24,8 +24,8 @@ import NavUser from "@/components/ui/nav-user";
 import {
   BriefcaseBusiness,
   LayoutDashboard,
-  LayoutGrid,
-  Form,
+  Globe,
+  // Form,
   ClipboardMinus
 } from "lucide-react";
 
@@ -81,7 +81,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
               className="py-6"
             >
               <Link href="/job_portals">
-                <Form />
+                <Globe />
                 <span>Job Portals</span>
               </Link>
             </SidebarMenuButton>
@@ -95,4 +95,5 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
     </Sidebar>
   );
 }
+
 
