@@ -101,16 +101,10 @@ export type StatusCount = {
   };
 };
 
-export type JobPortalFormProps = {
-  name: string;
-  link: string;
-  description: string | null;
-};
-
 export type JobPortalProps = {
-  id: string;
+  id: string ;
   name: string;
   link: string;
   description: string | null;
-  userId: string;
+  userId: string | null;
 };

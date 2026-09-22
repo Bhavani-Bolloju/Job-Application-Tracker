@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { JobPortalProps } from "@/lib/types";
 
@@ -7,36 +7,39 @@ import JobPortalCard from "./JobPortalCard";
 import { Input } from "@/components/ui/input";
 
 type Props = {
-  onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  // onSearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
   jobPortals: JobPortalProps[];
-  onEdit: () => void;
-  searchKeyword: string;
+  onEdit: (value: JobPortalProps) => void;
+  // searchKeyword: string;
   onDelete: (id: string) => void;
 };
-function JobPortals({
-  onSearch,
-  jobPortals,
-  onEdit,
-  onDelete,
-  searchKeyword
-}: Props) {
+function JobPortals({ jobPortals, onEdit, onDelete }: Props) {
+  const [inputSearch, setInputSearch] = useState("");
+
+  const handleSearch = function (e: React.ChangeEvent<HTMLInputElement>) {
+    setInputSearch(e.target.value);
+  };
+
+  const filteredJobPortals = jobPortals.filter((jobPortal) =>
+    (jobPortal.name.toLowerCase()).includes(inputSearch)
+  );
+
+  console.log(filteredJobPortals);
+
   return (
     <div className="border-2">
       <div>
         <div>portal count</div>
         <div>
-          <Input type="text" onChange={onSearch} value={searchKeyword} />
+          <Input type="text" onChange={handleSearch} value={inputSearch} />
         </div>
       </div>
       <ul>
-        {jobPortals?.length > 0 &&
-          jobPortals.map((jobPortal) => (
+        {filteredJobPortals?.length > 0 &&
+          filteredJobPortals.map((jobPortal) => (
             <JobPortalCard
               key={jobPortal.id}
-              name={jobPortal.name}
-              link={jobPortal.link}
-              description={jobPortal.description}
-              id={jobPortal.id}
+              jobPortal={jobPortal}
               onEdit={onEdit}
               onDelete={onDelete}
             />

@@ -19,23 +19,26 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { Plus } from "lucide-react";
 
-import {  JobPortalFormProps } from "@/lib/types";
+import { JobPortalProps } from "@/lib/types";
+
 
 type Props = {
   open: boolean;
   onPortalDialogStatus: (status: boolean) => void;
-  onPortalFormSubmit: (value: JobPortalFormProps) => void;
+  onPortalFormSubmit: () => void;
+  jobPortal: JobPortalProps | null;
 };
 
 function AddJobPortalForm({
   open,
   onPortalDialogStatus,
-  onPortalFormSubmit
+  onPortalFormSubmit,
+  jobPortal
 }: Props) {
   const [inputPortal, setInputPortal] = useState({
-    name: "",
-    link: "",
-    description: ""
+    name: jobPortal?.name ?? "",
+    link: jobPortal?.link ?? "",
+    description: jobPortal?.description ?? ""
   });
 
   const handleChange = (
@@ -47,10 +50,30 @@ function AddJobPortalForm({
   };
 
   // console.log(inputPortal, "input portal");
-  const handleSubmit = function (e: React.SubmitEvent) {
+  const handleSubmit = async function (e: React.SubmitEvent) {
     e.preventDefault();
-    onPortalDialogStatus(false);
-    onPortalFormSubmit(inputPortal);
+
+    const url =
+      jobPortal ? `api/job_portals/${jobPortal.id}` : "api/job_portals/";
+    const method = jobPortal ? "PUT" : "POST";
+
+    try {
+      const req = await fetch(url, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(inputPortal)
+      });
+      console.log(req, "req");
+    } catch {
+      console.error("error");
+    } finally {
+      setInputPortal({
+        name: "",
+        link: "",
+        description: ""
+      });
+      onPortalFormSubmit();
+    }
   };
 
   return (
@@ -77,10 +100,7 @@ function AddJobPortalForm({
           </DialogHeader>
           <FieldGroup>
             <Field>
-              <Label
-                htmlFor="name"
-                className="text-text-tertiary mb-1 capit"
-              >
+              <Label htmlFor="name" className="text-text-tertiary mb-1 capit">
                 Portal name
               </Label>
               <Input
@@ -114,9 +134,8 @@ function AddJobPortalForm({
                 id="description"
                 name="description"
                 onChange={handleChange}
-              >
-                eg: startup companies hiring
-              </Textarea>
+                value={inputPortal.description}
+              ></Textarea>
             </Field>
           </FieldGroup>
           <DialogFooter className="mt-5">

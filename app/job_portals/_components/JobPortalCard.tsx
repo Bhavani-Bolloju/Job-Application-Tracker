@@ -3,23 +3,22 @@ import React from "react";
 import { Trash, Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import { JobPortalProps } from "@/lib/types";
+import ConfirmAlertDialog from "@/app/_components/ConfirmAlertDialog";
+
 type Props = {
-  onEdit: () => void;
+  onEdit: (value: JobPortalProps) => void;
   onDelete: (id: string) => void;
-  name: string;
-  link: string;
-  description: string | null;
-  id: string;
+  jobPortal: JobPortalProps;
 };
 
-function JobPortalCard({
-  name,
-  link,
-  description,
-  id,
-  onEdit,
-  onDelete
-}: Props) {
+function JobPortalCard({ jobPortal, onEdit, onDelete }: Props) {
+  const { name, link, description, id } = jobPortal;
+
+  const handleDelete = async function () {
+    await onDelete(id);
+  };
+
   return (
     <li>
       <div>{name[0]}</div>
@@ -27,10 +26,18 @@ function JobPortalCard({
       <div>{link}</div>
       {description && <div>{description}</div>}
       <div>
-        <Button onClick={onEdit}>
-          <Trash />
-        </Button>
-        <Button onClick={() => onDelete(id)}>
+        <ConfirmAlertDialog
+          onConfirm={handleDelete}
+          title="Delete Job portal?"
+          description="This Job portal will be permanently removed from your saved list."
+          successMsg="Job portal deleted successfully."
+          failureMsg="Failed to delete Job portal. Please try again."
+        >
+          <Button>
+            <Trash />
+          </Button>
+        </ConfirmAlertDialog>
+        <Button onClick={() => onEdit(jobPortal)}>
           <Pencil />
         </Button>
       </div>

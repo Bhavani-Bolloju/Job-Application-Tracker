@@ -6,46 +6,60 @@ import JobPortalHeader from "./JobPortalHeader";
 
 import JobPortals from "./JobPortals";
 
-import { JobPortalProps, JobPortalFormProps } from "@/lib/types";
+import { JobPortalProps } from "@/lib/types";
+
+import { useRouter } from "next/navigation";
 
 // onSearch, jobPortals, onEdit, onDelete
 function JobPortalClient({ jobPortals }: { jobPortals: JobPortalProps[] }) {
   const [isDialogOpen, setDialogOpen] = useState(false);
-  const [inputSearch, setInputSearch] = useState("");
+  const [jobPortal, setJobPortal] = useState<null | JobPortalProps>(null);
+  
 
-  const handleSubmit = function (value: JobPortalFormProps) {
-    
-    console.log(value)
+  
+  const router = useRouter();
+
+  const handlePortalSubmit = async function () {
+    setDialogOpen(false);
+    router.refresh();
   };
 
   const handlePortalDialogStatus = function (status: boolean) {
     setDialogOpen(status);
   };
 
-  const handleEdit = function () {
-    console.log("edit button");
+  const handleEdit = function (value: JobPortalProps) {
+    setJobPortal(value);
+    setDialogOpen(true);
   };
-  const handleDelete = function (id: string) {
-    console.log("handleDelete", id);
+  const handleDelete = async function (id: string) {
+    const url = `/api/job_portals/${id}`;
+
+    const response = await fetch(url, {
+      method: "DELETE"
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to delete application");
+    }
+
+    router.refresh();
   };
 
-  const handleSearch = function (e: React.ChangeEvent<HTMLInputElement>) {
-    setInputSearch(e.target.value)
-  };
+
 
   return (
     <div>
       <JobPortalHeader
         open={isDialogOpen}
         onPortalDialogStatus={handlePortalDialogStatus}
-        onPortalFormSubmit={handleSubmit}
+        onPortalFormSubmit={handlePortalSubmit}
+        jobPortal={jobPortal}
       />
 
       <JobPortals
         onEdit={handleEdit}
         onDelete={handleDelete}
-        onSearch={handleSearch}
-        searchKeyword={inputSearch}
         jobPortals={jobPortals}
       />
     </div>

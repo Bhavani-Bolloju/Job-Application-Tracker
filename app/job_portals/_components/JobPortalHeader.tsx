@@ -2,20 +2,20 @@ import React from "react";
 
 import AddJobPortalForm from "./AddJobPortalForm";
 
-import { JobPortalFormProps } from "@/lib/types";
-
-
+import { JobPortalProps } from "@/lib/types";
 
 type Props = {
   open: boolean;
   onPortalDialogStatus: (status: boolean) => void;
-  onPortalFormSubmit: (value: JobPortalFormProps) => void;
+  onPortalFormSubmit: () => void;
+  jobPortal: JobPortalProps | null
 };
 
 function JobPortalHeader({
   open,
   onPortalDialogStatus,
-  onPortalFormSubmit
+  onPortalFormSubmit,
+  jobPortal
 }: Props) {
   return (
     <div>
@@ -28,6 +28,8 @@ function JobPortalHeader({
         open={open}
         onPortalDialogStatus={onPortalDialogStatus}
         onPortalFormSubmit={onPortalFormSubmit}
+        jobPortal = {jobPortal}
+        key = {jobPortal?.id}
       />
     </div>
   );

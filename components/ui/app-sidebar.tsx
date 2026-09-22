@@ -37,7 +37,7 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter((segment) => segment);
 
-  console.log(segments, "segments", segments[0]);
+
 
   return (
     <Sidebar {...props}>
