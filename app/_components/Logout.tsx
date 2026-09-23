@@ -12,7 +12,7 @@ function Logout({ children }: { children: React.ReactNode }) {
     // e.stopPropagation();
     console.log("confirm alert dialog");
     await logout();
-    router.replace("/login");
+    router.replace("/");
   };
 
   return (

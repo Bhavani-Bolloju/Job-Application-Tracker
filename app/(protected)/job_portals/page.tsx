@@ -3,22 +3,19 @@ import JobPortalClient from "./_components/JobPortalClient";
 import { auth } from "@/lib/auth";
 
 import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
 async function JobPortalsPage() {
   const session = await auth();
+
   if (!session?.user) {
-    //throw error
-    return null;
+    redirect("/");
   }
 
   const userId = session.user.id;
 
   const jobPortals = await prisma.jobPortal.findMany({
-    where: { userId}
+    where: { userId }
   });
-
-  //   .findMany({
-  //   where: { id: session?.user.id }
-  // });
 
   return (
     <div>
@@ -28,6 +25,4 @@ async function JobPortalsPage() {
 }
 
 export default JobPortalsPage;
-
-
 

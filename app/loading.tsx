@@ -1,9 +1,14 @@
 import React from "react";
-import StatusCardsSkeleton from "./dashboard/_components/StatusCardsSkeleton";
-import DashboardHeaderSkeleton from "./dashboard/_components/DashboardHeaderSkeleton";
-import StatusChartSkeleton from "./dashboard/_components/StatusChartSkeleton";
-import RecentActivitySkeleton from "./dashboard/_components/RecentActivitySkeleton";
-import DashboardFooter from "./dashboard/_components/DashboardFooter";
+import StatusCardsSkeleton from "./(protected)/dashboard/_components/StatusCardsSkeleton";
+import DashboardHeaderSkeleton from "./(protected)/dashboard/_components/DashboardHeaderSkeleton";
+import StatusChartSkeleton from "./(protected)/dashboard/_components/StatusChartSkeleton";
+// import StatusCardsSkeleton from "./dashboard/_components/StatusCardsSkeleton";
+// import DashboardHeaderSkeleton from "./dashboard/_components/DashboardHeaderSkeleton";
+// import StatusChartSkeleton from "./dashboard/_components/StatusChartSkeleton";
+// import RecentActivitySkeleton from "./dashboard/_components/RecentActivitySkeleton";
+// import DashboardFooter from "./dashboard/_components/DashboardFooter";
+import RecentActivitySkeleton from "./(protected)/dashboard/_components/RecentActivitySkeleton";
+import DashboardFooter from "./(protected)/dashboard/_components/DashboardFooter";
 
 export default function Loading() {
   return (
