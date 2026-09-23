@@ -38,10 +38,17 @@ function DetailRow({ title, value }: RowProps) {
       <span
         className={`flex-1 py-3 ${title === "job URL" && value && "text-accent-1 flex items-center gap-2 hover:cursor-pointer hover:text-accent-2 hover:underline text-base "} border-l-2 border-border p-4 text-text-secondary wrap-anywhere`}
       >
-        <span>{content}</span>
-        {title === "job URL" && value && (
-          <ExternalLink className="h-6 w-auto text-accent-2" />
-        )}
+        {title === "job URL" && value && typeof content === "string" ?
+          <a
+            href={content}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1"
+          >
+            <span>{content}</span>
+            <ExternalLink className="size-4 w-auto text-accent-2" />
+          </a>
+        : <span>{content}</span>}
       </span>
     </li>
   );
