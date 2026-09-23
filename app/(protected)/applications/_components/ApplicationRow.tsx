@@ -42,7 +42,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
   
   
   return (
-    <TableRow 
+    <TableRow
       onClick={() => {
         onRowClick(id);
       }}
@@ -68,7 +68,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
         {followupDate ? format(new Date(followupDate), "MMM d") : "—"}{" "}
       </TableCell>
       <TableCell className="text-right ">
-        <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown} >
+        <DropdownMenu open={openDropDown} onOpenChange={setOpenDropDown}>
           <DropdownMenuTrigger asChild>
             <Button
               variant="ghost"
@@ -84,15 +84,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem
-              className="w-full"
-              onClick={(e) => {
-                e.stopPropagation();
-                onEdit(application);
-              }}
-            >
-              Edit
-            </DropdownMenuItem>
+            <DropdownMenuItem className="w-full">Edit</DropdownMenuItem>
 
             <DropdownMenuSeparator />
 

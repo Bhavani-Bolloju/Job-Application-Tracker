@@ -12,8 +12,7 @@ export const cardColors = {
   OFFER: { "icon-text": "text-emerald-600", "icon-bg": "bg-emerald-100" },
   REJECTED: {
     "icon-text": "text-red-600",
-    
-    
+
     "icon-bg": "bg-red-100"
   },
   WISHLIST: { "icon-text": "text-violet-600", "icon-bg": "bg-violet-100" }
@@ -100,4 +99,12 @@ export type StatusCount = {
   _count: {
     status: number;
   };
+};
+
+export type JobPortalProps = {
+  id: string ;
+  name: string;
+  link: string;
+  description: string | null;
+  userId: string | null;
 };

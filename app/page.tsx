@@ -1,45 +1,58 @@
-import DashboardClient from "./dashboard/_components/DashboardClient";
-import { auth } from "@/lib/auth";
-import { prisma } from "@/lib/prisma";
+import { signIn, auth } from "@/lib/auth";
+import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
 
-export default async function Dashboard() {
+export default async function LoginPage() {
   const session = await auth();
 
   // console.log(session, "session home page");
 
-  if (!session?.user) {
-    redirect("/login");
+  if (session?.user) {
+    redirect("/dashboard");
   }
 
-  const statusCount = await prisma.application.groupBy({
-    by: ["status"],
-    where: {
-      userId: session.user.id
-    },
-    _count: {
-      status: true
-    }
-  });
-
-  const recentApplications = await prisma.application.findMany({
-    where: { userId: session.user.id },
-    orderBy: { updatedAt: "desc" },
-    take: 5,
-    include: {
-      notes: true,
-      contacts: true
-    }
-  });
-
-  // console.log(recentApplications, "recent applications");
-
   return (
+    <div className="min-h-screen flex flex-col items-center justify-center font-geist">
+      <h1 className="text-page-title! font-bold">Job Tracker</h1>
+      <p className="text-text-muted mb-5">Track your job search in one place</p>
+      <form
+        action={async () => {
+          "use server";
+          await signIn("google", { redirectTo: "/dashboard" });
+        }}
+        className="flex justify-center"
+      >
+        <Button
+          type="submit"
+          className="flex bg-accent-2 items-center gap-2 rounded-lg px-6 py-5 shadow-sm hover:shadow-md transition hover:cursor-pointer hover:bg-accent-3 text-background "
+        >
+          Sign in with Google
+        </Button>
+      </form>
+      <div className="my-2">or</div>
 
-    <DashboardClient
-      user={session?.user}
-      statusCount={statusCount}
-      recentApplications={recentApplications}
-    />
+      <form
+        action={async () => {
+          "use server";
+
+          try {
+            await signIn("credentials", {
+              redirectTo: "/dashboard"
+            });
+          } catch (error) {
+            console.error(error);
+            throw error;
+          }
+        }}
+      >
+        <Button
+          type="submit"
+          variant="outline"
+          className="hover:cursor-pointer py-5 border-accent-2"
+        >
+          Continue as Guest
+        </Button>
+      </form>
+    </div>
   );
 }

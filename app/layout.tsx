@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Toaster } from "@/components/ui/sonner";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
 
@@ -17,7 +18,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Job Application Tracker",
-  description: "Application for managing and tracking job applications across different stages of the hiring process"
+  description:
+    "Application for managing and tracking job applications across different stages of the hiring process"
 };
 
 export default function RootLayout({

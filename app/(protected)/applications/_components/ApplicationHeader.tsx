@@ -1,4 +1,3 @@
-import { BriefcaseBusiness } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 import { Plus } from "lucide-react";
@@ -24,12 +23,8 @@ function ApplicationHeader({
 }: Props) {
   return (
     <div className="flex items-center justify-between mb-5 flex-wrap">
-      <h1 className="mb-4 flex items-center gap-3 text-accent-2">
-        <BriefcaseBusiness className="w-8 h-auto" />
-        <span className="capitalize text-page-title text-text-secondary">
-          {" "}
-          my applications
-        </span>
+      <h1 className="mb-4 gap-3 capitalize text-page-title text-text-secondary">
+        my applications
       </h1>
       <Button
         onClick={onAddNew}
@@ -51,10 +46,4 @@ function ApplicationHeader({
 }
 
 export default ApplicationHeader;
-
-
-
-
-
-
 

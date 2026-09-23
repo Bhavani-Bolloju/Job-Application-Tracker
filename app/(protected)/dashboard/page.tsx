@@ -1,0 +1,48 @@
+import { auth } from "@/lib/auth";
+import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
+// import DashboardClient from "./(protected)/dashboard/_components/DashboardClient";
+
+// import DashboardClient from "./dashboard/_components/DashboardClient";
+import DashboardClient from "./_components/DashboardClient";
+export default async function Dashboard() {
+  const session = await auth();
+
+  // console.log(session, "session home page");
+
+  if (!session?.user) {
+    redirect("/");
+  }
+
+  const statusCount = await prisma.application.groupBy({
+    by: ["status"],
+    where: {
+      userId: session.user.id
+    },
+    _count: { 
+      status: true
+    }
+  });
+  
+  // console.log(statusCount, "status count")
+
+  const recentApplications = await prisma.application.findMany({
+    where: { userId: session.user.id },
+    orderBy: { updatedAt: "desc" },
+    take: 5,
+    include: {
+      notes: true,
+      contacts: true
+    }
+  });
+
+  // console.log(recentApplications, "recent applications");
+
+  return (
+    <DashboardClient
+      user={session?.user}
+      statusCount={statusCount}
+      recentApplications={recentApplications}
+    />
+  );
+}

@@ -9,7 +9,7 @@ async function ApplicationsPage() {
   const session = await auth();
 
   if (!session?.user) {
-    redirect("/login");
+    redirect("/");
   }
 
   const applications = await prisma.application.findMany({
