@@ -49,7 +49,7 @@ function JobPortalClient({ jobPortals }: { jobPortals: JobPortalProps[] }) {
 
 
   return (
-    <div>
+    <div className="py-8 px-12 max-md:px-8">
       <JobPortalHeader
         open={isDialogOpen}
         onPortalDialogStatus={handlePortalDialogStatus}

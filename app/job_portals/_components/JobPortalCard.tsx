@@ -20,30 +20,65 @@ function JobPortalCard({ jobPortal, onEdit, onDelete }: Props) {
   };
 
   return (
-    <li>
-      <div>{name[0]}</div>
-      <div>{name}</div>
-      <div>{link}</div>
-      {description && <div>{description}</div>}
-      <div>
-        <ConfirmAlertDialog
-          onConfirm={handleDelete}
-          title="Delete Job portal?"
-          description="This Job portal will be permanently removed from your saved list."
-          successMsg="Job portal deleted successfully."
-          failureMsg="Failed to delete Job portal. Please try again."
-        >
-          <Button>
-            <Trash />
-          </Button>
-        </ConfirmAlertDialog>
-        <Button onClick={() => onEdit(jobPortal)}>
-          <Pencil />
-        </Button>
+    <li className="grid grid-cols-[45px_1fr_auto_auto] grid-rows-2 gap-x-5 gap-y-1 pb-5 ">
+      <div className="col-span-1 col-start-1 row-start-1 row-span-2 border rounded-sm flex items-center justify-center text-2xl font-semibold  shadow-md ">
+        {name.trim()[0]}
       </div>
+
+      <a
+        href={link}
+        target="_blank"
+        className="col-start-2 col-span-1 font-medium"
+      >
+        {name}
+      </a>
+      {description && (
+        <div className="col-start-2 col-span-1 row-start-2 row-span-1 text-sm text-text-muted">
+          {description}
+        </div>
+      )}
+
+      <ConfirmAlertDialog
+        onConfirm={handleDelete}
+        title="Delete Job portal?"
+        description="This Job portal will be permanently removed from your saved list."
+        successMsg="Job portal deleted successfully."
+        failureMsg="Failed to delete Job portal. Please try again."
+      >
+        <Button className="col-start-3 col-end-4 row-start-1 row-end-3 text-center bg-red-100 hover:bg-red-200 hover:cursor-pointer">
+          <Trash className="text-red-500" />
+        </Button>
+      </ConfirmAlertDialog>
+      <Button
+        onClick={() => onEdit(jobPortal)}
+        className="col-start-4 col-span-1 row-start-1 row-span-2 text-center bg-accent-3/10 hover:bg-accent-3/20 hover:cursor-pointer"
+      >
+        <Pencil className="text-accent-3" />
+      </Button>
     </li>
   );
 }
 
 export default JobPortalCard;
+
+{
+  /* <li className="grid grid-cols-[45px_1fr_auto] grid-rows-2 gap-x-5 gap-y-1 pb-5 ">
+      <div className="col-span-1 col-start-1 row-start-1 row-span-2 border rounded-sm flex items-center justify-center text-2xl font-semibold  shadow-md ">
+        {(company.trim())[0]}
+      </div>
+      <div className="col-start-2 col-span-1 font-medium">{role}</div>
+      <div className="col-start-2 col-span-1 row-start-2 row-span-1 text-sm text-text-muted">
+        {company}
+      </div>
+      <div className={`col-start-3 col-span-1 row-start-1 text-center`}>
+        <Badge
+          className={`${cardColors[status]["icon-text"]} ${cardColors[status]["icon-bg"]} font-medium`}
+        >
+          {status[0] + status.slice(1).toLowerCase()}
+        </Badge>
+      </div>
+
+      <div className="col-start-3 row-start-2 text-sm text-text-muted">{formatAppliedDate}</div>
+    </li> */
+}
 

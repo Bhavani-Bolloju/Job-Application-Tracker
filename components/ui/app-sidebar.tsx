@@ -37,28 +37,29 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
   const pathname = usePathname();
   const segments = pathname.split("/").filter((segment) => segment);
 
-
-
   return (
-    <Sidebar {...props}>
+    <Sidebar {...props} className="p-5">
       <SidebarHeader>
-        <p className="text-2xl font-bold mb-1 text-text-secondary flex items-center">
-          <BriefcaseBusiness className="w-7 h-auto text-accent-1" />
-          <span className="ml-2">Job</span>
-          <span className="text-accent-1">Tracker</span>
+        <p className="font-semibold mb-1 text-text-secondary flex items-center">
+          <BriefcaseBusiness className="text-accent-1 size-8" />
+          <span className="ml-2 text-2xl">Job</span>
+          <span className="text-accent-1 text-2xl">Tracker</span>
         </p>
       </SidebarHeader>
-      <SidebarContent className="p-5">
-        <SidebarMenu className="gap-1">
+      <SidebarContent className="">
+        <SidebarMenu className="gap-y-1 mt-5">
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
               isActive={segments?.[0] === undefined}
-              className="py-6"
+              className=""
             >
-              <Link href="/">
-                <LayoutDashboard />
-                <span>Dashboard</span>
+              <Link href="/" className="h-auto">
+                <LayoutDashboard
+                  className="size-5! text-text-tertiary"
+                  strokeWidth={1.5}
+                />
+                <span className="text-base">Dashboard</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -69,8 +70,11 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
               className="py-6"
             >
               <Link href="/applications">
-                <ClipboardMinus />
-                <span>Applications</span>
+                <ClipboardMinus
+                  className="size-5! text-text-tertiary"
+                  strokeWidth={1.5}
+                />
+                <span className="text-base">Applications</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -81,8 +85,11 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
               className="py-6"
             >
               <Link href="/job_portals">
-                <Globe />
-                <span>Job Portals</span>
+                <Globe
+                  className="size-5! text-text-tertiary"
+                  strokeWidth={1.5}
+                />
+                <span className="text-base">Job Portals</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -95,5 +102,6 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
     </Sidebar>
   );
 }
+
 
 

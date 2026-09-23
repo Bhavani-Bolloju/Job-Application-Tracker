@@ -21,7 +21,6 @@ import { Plus } from "lucide-react";
 
 import { JobPortalProps } from "@/lib/types";
 
-
 type Props = {
   open: boolean;
   onPortalDialogStatus: (status: boolean) => void;
@@ -82,10 +81,11 @@ function AddJobPortalForm({
         <Button
           variant="outline"
           onClick={() => onPortalDialogStatus(true)}
-          className="bg-accent-3 text-bg--1 hover:cursor-pointer hover:bg-accent-2 hover:text-bg--1 capitalize"
+          className="flex items-center gap-1 py-3 px-5 h-auto text-background hover:cursor-pointer bg-accent-2 hover:bg-accent-3 add-application focus-within:bg-accent-3"
+          id="btn-add-application"
         >
-          <Plus />
-          <span>Add portal</span>
+          <Plus aria-hidden="true" />
+          <span className="">Add portal</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-sm">

@@ -8,7 +8,7 @@ type Props = {
   open: boolean;
   onPortalDialogStatus: (status: boolean) => void;
   onPortalFormSubmit: () => void;
-  jobPortal: JobPortalProps | null
+  jobPortal: JobPortalProps | null;
 };
 
 function JobPortalHeader({
@@ -18,22 +18,28 @@ function JobPortalHeader({
   jobPortal
 }: Props) {
   return (
-    <div>
-      <h1>Portals</h1>
-      <p>
-        Manage your job portals and keep track of where you&apos;re applying.
-      </p>
+    <div className="flex items-center justify-between mb-5 flex-wrap">
+      <div>
+        <h1 className="text-page-title font-bold text-text-secondary">
+          Portals
+        </h1>
+        <p className="text-text-muted">
+          Manage your job portals and keep track of where you&apos;re applying.
+        </p>
+      </div>
 
       <AddJobPortalForm
         open={open}
         onPortalDialogStatus={onPortalDialogStatus}
         onPortalFormSubmit={onPortalFormSubmit}
-        jobPortal = {jobPortal}
-        key = {jobPortal?.id}
+        jobPortal={jobPortal}
+        key={jobPortal?.id}
       />
     </div>
   );
 }
 
 export default JobPortalHeader;
+
+
 

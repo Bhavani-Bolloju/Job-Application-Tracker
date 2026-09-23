@@ -24,9 +24,9 @@ export default function ApplicationSidebar({ children, user }: Props) {
     <SidebarProvider>
       <AppSidebar user={user} />
       <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12  relative">
-          <div className="fixed h-12 w-full top-0 z-50">
-            <div className="flex items-center gap-2 h-12 bg-bg--2 w-full px-4">
+        <header className="flex h-15 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-15  relative">
+          <div className="fixed h-15 w-full top-0 z-50">
+            <div className="flex items-center gap-2 h-15 bg-bg--3 w-full px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator
                 orientation="vertical"
@@ -41,6 +41,12 @@ export default function ApplicationSidebar({ children, user }: Props) {
     </SidebarProvider>
   );
 }
+
+
+
+
+
+
 
 
 
