@@ -62,7 +62,7 @@ function AddJobPortalForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(inputPortal)
       });
-      console.log(req, "req");
+     
     } catch {
       console.error("error");
     } finally {
@@ -118,6 +118,7 @@ function AddJobPortalForm({
                 Portal URL
               </Label>
               <Input
+                type="url"
                 id="link"
                 name="link"
                 onChange={handleChange}
@@ -162,4 +163,5 @@ function AddJobPortalForm({
 }
 
 export default AddJobPortalForm;
+
 

@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { JobPortalProps } from "@/lib/types";
 import ConfirmAlertDialog from "@/app/_components/ConfirmAlertDialog";
 
+import { ExternalLink } from "lucide-react";
+
 type Props = {
   onEdit: (value: JobPortalProps) => void;
   onDelete: (id: string) => void;
@@ -25,18 +27,17 @@ function JobPortalCard({ jobPortal, onEdit, onDelete }: Props) {
         {name.trim()[0]}
       </div>
 
-      <a
-        href={link}
-        target="_blank"
-        className="col-start-2 col-span-1 font-medium"
-      >
-        {name}
+      <div className="col-start-2 col-span-1 font-medium ">
+        <span>{name}</span>
+        {description && (
+          <span className="text-text-muted"> {`(${description})`} </span>
+        )}
+      </div>
+
+      <a className="col-start-2 col-span-1 row-start-2 row-span-1 text-sm  text-accent-3 flex gap-2 items-center" href={link} target="_blank">
+        <span>{link}</span>
+        <ExternalLink className="size-4" />
       </a>
-      {description && (
-        <div className="col-start-2 col-span-1 row-start-2 row-span-1 text-sm text-text-muted">
-          {description}
-        </div>
-      )}
 
       <ConfirmAlertDialog
         onConfirm={handleDelete}

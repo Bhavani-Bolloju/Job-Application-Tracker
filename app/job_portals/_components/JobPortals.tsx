@@ -56,7 +56,7 @@ function JobPortals({ jobPortals, onEdit, onDelete }: Props) {
         </div> */}
       </div>
       <ul className="divide-y-2 space-y-5 p-5 rounded-md shadow-sm shadow-border border border-border bg-bg--1">
-        {filteredJobPortals?.length > 0 &&
+        {filteredJobPortals?.length > 0 ?
           filteredJobPortals.map((jobPortal) => (
             <JobPortalCard
               key={jobPortal.id}
@@ -64,17 +64,13 @@ function JobPortals({ jobPortals, onEdit, onDelete }: Props) {
               onEdit={onEdit}
               onDelete={onDelete}
             />
-          ))}
+          ))
+        : <p className="text-text-muted text-center"> No records </p>}
       </ul>
     </div>
   );
 }
 
 export default JobPortals;
-
-
-
-
-
 
 
