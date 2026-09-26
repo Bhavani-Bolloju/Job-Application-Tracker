@@ -9,7 +9,6 @@ function Logout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   const handleLogout = async function () {
-    // e.stopPropagation();
     console.log("confirm alert dialog");
     await logout();
     router.replace("/");
