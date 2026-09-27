@@ -36,11 +36,6 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
     await onDelete(id);
   };
 
-  const closeDropDownHandler = function(){
-   setOpenDropDown(false) 
-  }
-  
-  
   return (
     <TableRow
       onClick={() => {
@@ -77,6 +72,7 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
               onClick={(e) => {
                 e.stopPropagation();
                 setOpenDropDown(true);
+                
               }}
             >
               <Ellipsis />
@@ -84,7 +80,19 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem className="w-full">Edit</DropdownMenuItem>
+            <DropdownMenuItem
+              className="w-full"
+              onClick={(e) => {
+                e.stopPropagation();
+                onEdit(application);
+                setOpenDropDown(false);
+              }}
+              onSelect={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Edit
+            </DropdownMenuItem>
 
             <DropdownMenuSeparator />
 

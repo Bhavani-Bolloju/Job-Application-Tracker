@@ -84,7 +84,7 @@ export type Mode = "view" | "edit" | "add";
 export type FormValues = {
   company: string;
   role: string;
-  status: string;
+  status: Status;
   platform: string;
   type: string;
   location: string;

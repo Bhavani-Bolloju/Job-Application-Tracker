@@ -20,6 +20,7 @@ type Props = {
   applications: Application[];
   onRowClick: (id: string) => void;
   onEdit: (app: Application) => void;
+
   onDelete: (id: string) => Promise<void>;
 };
 
@@ -37,22 +38,21 @@ function ApplicationTable({
     draftFollowupDate
   } = useFilter();
 
- const filteredApplications = filterApplications(applications, {
-   company: searchQuery,
-   status: selectedStatus,
-   platform: selectedPlatform,
-   appliedDate: draftAppliedDate,
-   followupDate: draftFollowupDate
- });
+  const filteredApplications = filterApplications(applications, {
+    company: searchQuery,
+    status: selectedStatus,
+    platform: selectedPlatform,
+    appliedDate: draftAppliedDate,
+    followupDate: draftFollowupDate
+  });
 
- if (filteredApplications.length == 0) {
-   return (
-     <div className="text-center py-12 text-gray-500">
-       No applications yet. Add your first one!
-     </div>
-   );
- }
-  
+  if (filteredApplications.length == 0) {
+    return (
+      <div className="text-center py-12 text-gray-500">
+        No applications yet. Add your first one!
+      </div>
+    );
+  }
 
   return (
     <div className="rounded-md shadow-sm shadow-gray-200 border border-border">

@@ -11,23 +11,25 @@ import {
 // import FormMode from "../applications/_components/drawer/FormMode";
 import FormMode from "../(protected)/applications/_components/drawer/FormMode";
 
-import { Mode } from "@/lib/types";
+import { Mode, FormValues } from "@/lib/types";
 
 type Props = {
   isOpen: boolean;
   mode: Mode;
   application: Application | null;
   onClose: () => void;
+  onOptimisticUIUpdate: (app: FormValues, id: string) => void;
+  onUpdateFailure: () => void;
 };
 
 export default function ApplicationDrawer({
   isOpen,
   mode,
   application,
-  onClose
+  onClose,
+  onOptimisticUIUpdate,
+  onUpdateFailure
 }: Props) {
-
-
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
       <SheetContent className="w-full sm:w-135 px-3 overflow-y-auto">
@@ -38,7 +40,12 @@ export default function ApplicationDrawer({
         </SheetHeader>
 
         <div className="px-4 mb-5">
-          <FormMode application={application} onClose={onClose} />
+          <FormMode
+            application={application}
+            onClose={onClose}
+            onOptimisticUIUpdate={onOptimisticUIUpdate}
+            onUpdateFailure = {onUpdateFailure}
+          />
         </div>
       </SheetContent>
     </Sheet>

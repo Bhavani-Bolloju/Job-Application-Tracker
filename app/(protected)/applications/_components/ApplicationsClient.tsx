@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Application, Mode } from "@/lib/types";
+import { useState, useRef } from "react";
+import { Application, Mode, FormValues } from "@/lib/types";
 import ApplicationTable from "./ApplicationTable";
 
 import { useRouter, redirect } from "next/navigation";
@@ -15,10 +15,14 @@ type Props = {
   applications: Application[];
 };
 
-function ApplicationsClient({ applications }: Props) {
+function ApplicationsClient({ applications: applicationsData }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<Mode>("add");
   const [selected, setSelected] = useState<Application | null>(null);
+  const [applications, setApplications] = useState(applicationsData);
+
+  const snapShotApplication = useRef<null | Application>(null);
+  const applicationIndex = useRef<null | number>(null);
 
   const router = useRouter();
 
@@ -28,9 +32,39 @@ function ApplicationsClient({ applications }: Props) {
 
   function handleApplicationEdit(app: Application) {
     setSelected(app);
+    snapShotApplication.current = app;
     setMode("edit");
     setIsOpen(true);
   }
+
+  const handleOptimisticUIUpdate = function (app: FormValues, id: string) {
+    const index = applications.findIndex(
+      (application) => application.id === id
+    );
+    applicationIndex.current = index;
+    setApplications((prev) => {
+      const application = prev[index];
+      const updatedApplication = { ...application, ...app };
+      prev[index] = updatedApplication;
+      return prev;
+    });
+
+    setIsOpen(false);
+  };
+
+  const handleUpdateFailure = function () {
+    console.log(snapShotApplication.current, applicationIndex.current);
+
+    setApplications((prev) => {
+      if (!snapShotApplication.current || applicationIndex.current === null ) {
+        return prev;
+      }
+      const applications = [...prev];
+      applications[applicationIndex.current] = snapShotApplication.current;
+      return applications;
+    });
+
+  };
 
   function handleAddNewApplication() {
     setSelected(null);
@@ -54,7 +88,7 @@ function ApplicationsClient({ applications }: Props) {
 
   function handleClose() {
     setIsOpen(false);
-    router.refresh();
+    // router.refresh();
   }
 
   return (
@@ -65,6 +99,8 @@ function ApplicationsClient({ applications }: Props) {
         mode={mode}
         application={selected}
         onClose={handleClose}
+        onOptimisticUIUpdate={handleOptimisticUIUpdate}
+        onUpdateFailure={handleUpdateFailure}
       />
 
       <FilterProvider>

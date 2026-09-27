@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 
 import ApplicationDrawer from "@/app/_components/ApplicationDrawer";
 
-import { Mode, Application } from "@/lib/types";
+import { Mode, Application, FormValues } from "@/lib/types";
 
 type Props = {
   onAddNew: () => void;
@@ -12,6 +12,8 @@ type Props = {
   mode: Mode;
   application: Application | null;
   onClose: () => void;
+  onOptimisticUIUpdate: (app: FormValues, id: string) => void;
+  onUpdateFailure: () => void;
 };
 
 function ApplicationHeader({
@@ -19,7 +21,9 @@ function ApplicationHeader({
   isOpen,
   mode,
   application,
-  onClose
+  onClose,
+  onOptimisticUIUpdate,
+  onUpdateFailure
 }: Props) {
   return (
     <div className="flex items-center justify-between mb-5 flex-wrap">
@@ -40,10 +44,11 @@ function ApplicationHeader({
         mode={mode}
         application={application}
         onClose={onClose}
+        onOptimisticUIUpdate={onOptimisticUIUpdate}
+        onUpdateFailure={onUpdateFailure}
       />
     </div>
   );
 }
 
 export default ApplicationHeader;
-

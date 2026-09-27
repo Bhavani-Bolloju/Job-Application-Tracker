@@ -24,9 +24,16 @@ import { toast } from "sonner";
 type Props = {
   application: Application | null;
   onClose: () => void;
+  onOptimisticUIUpdate: (app: FormValues, id: string) => void;
+  onUpdateFailure: () => void;
 };
 
-function FormMode({ application, onClose }: Props) {
+function FormMode({
+  application,
+  onClose,
+  onOptimisticUIUpdate,
+  onUpdateFailure
+}: Props) {
   const {
     register,
     control,
@@ -58,14 +65,18 @@ function FormMode({ application, onClose }: Props) {
         : "/api/applications";
       const method = application ? "PUT" : "POST";
 
+      if (application) {
+        onOptimisticUIUpdate(data, application.id);
+      }
+
       const res = await fetch(url, {
         method,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
 
-      
-      
+      console.log(res);
+
       if (!res.ok) {
         throw new Error();
       }
@@ -75,11 +86,15 @@ function FormMode({ application, onClose }: Props) {
         { position: "top-left" }
       );
     } catch {
-      
-      toast.error("Failed to add application.", { position: "top-left" });
+      onUpdateFailure();
+      toast.error(`Failed to ${application ? "update" : "add"} application"`, {
+        position: "top-left"
+      });
     }
 
-    onClose();
+    if (!application) {
+      onClose();
+    }
   }
 
   // console.log("form mode");
