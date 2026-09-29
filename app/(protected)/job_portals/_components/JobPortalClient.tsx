@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useOptimistic, startTransition } from "react";
 
 import JobPortalHeader from "./JobPortalHeader";
 
@@ -9,14 +9,23 @@ import JobPortals from "./JobPortals";
 import { JobPortalProps } from "@/lib/types";
 
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
-// onSearch, jobPortals, onEdit, onDelete
-function JobPortalClient({ jobPortals }: { jobPortals: JobPortalProps[] }) {
+function updateFn(jobPortals: JobPortalProps[], id: string) {
+  return jobPortals.filter((jobPortal) => jobPortal.id !== id);
+}
+
+function JobPortalClient({
+  jobPortals: jobPortalsData
+}: {
+  jobPortals: JobPortalProps[];
+}) {
   const [isDialogOpen, setDialogOpen] = useState(false);
   const [jobPortal, setJobPortal] = useState<null | JobPortalProps>(null);
-  
+  const [jobPortals, setJobPortals] = useState(jobPortalsData);
 
-  
+  const [optimisticState, addOptimistic] = useOptimistic(jobPortals, updateFn);
+
   const router = useRouter();
 
   const handlePortalSubmit = async function () {
@@ -32,22 +41,31 @@ function JobPortalClient({ jobPortals }: { jobPortals: JobPortalProps[] }) {
     setJobPortal(value);
     setDialogOpen(true);
   };
-  
+
   const handleDelete = async function (id: string) {
-    const url = `/api/job_portals/${id}`;
+    startTransition(async () => {
+      addOptimistic(id);
 
-    const response = await fetch(url, {
-      method: "DELETE"
+      try {
+        const url = `/api/job_portals/${id}`;
+        const response = await fetch(url, {
+          method: "DELETE"
+        });
+
+        if (!response.ok) {
+          throw new Error();
+        }
+
+        setJobPortals((jobPortals) =>
+          jobPortals.filter((jobPortal) => jobPortal.id !== id)
+        );
+
+        toast.success("Deleted Portal", { position: "top-left" });
+      } catch {
+        toast.error("Failed to delete portal", { position: "top-left" });
+      }
     });
-
-    if (!response.ok) {
-      throw new Error("Failed to delete application");
-    }
-
-    router.refresh();
   };
-
-
 
   return (
     <div className="py-8 px-12 max-md:px-8">
@@ -61,11 +79,10 @@ function JobPortalClient({ jobPortals }: { jobPortals: JobPortalProps[] }) {
       <JobPortals
         onEdit={handleEdit}
         onDelete={handleDelete}
-        jobPortals={jobPortals}
+        jobPortals={optimisticState}
       />
     </div>
   );
 }
 
 export default JobPortalClient;
-
