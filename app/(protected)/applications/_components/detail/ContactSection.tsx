@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useOptimistic, startTransition } from "react";
 import { ContactRound } from "lucide-react";
 import AddContactCardForm from "./AddContactCardForm";
 
@@ -17,8 +17,16 @@ type Props = {
   applicationId: string;
 };
 
-function ContactSection({ contacts, applicationId }: Props) {
+const updateFn = function (contacts: Contact[], id: string) {
+  return contacts.filter((contact) => contact.id !== id);
+};
+
+function ContactSection({ contacts: data, applicationId }: Props) {
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
+
+  const [contacts, setContacts] = useState(data);
+
+  const [optimisticState, addOptimistic] = useOptimistic(contacts, updateFn);
 
   const router = useRouter();
 
@@ -49,11 +57,23 @@ function ContactSection({ contacts, applicationId }: Props) {
   };
 
   const handleDelete = async function (id: string) {
-    const response = await fetch(`/api/contacts/${id}`, { method: "DELETE" });
+    startTransition(async () => {
+      addOptimistic(id);
+      
+      try {
+        const response = await fetch(`/api/contacts/${id}`, {
+          method: "DELETE"
+        });
 
-    if (!response.ok) throw new Error("Failed to Delete.");
+        if (!response.ok) throw new Error("");
 
-    router.refresh();
+        setContacts((prev) => prev.filter((contact) => contact.id !== id));
+
+        toast.success("Contact deleted successfully", { position: "top-left" });
+      } catch {
+        toast.error("Failed to Delete.", { position: "top-left" });
+      }
+    });
   };
 
   // console.log(contacts, applicationId, "contact details -- section");
@@ -74,16 +94,17 @@ function ContactSection({ contacts, applicationId }: Props) {
       <ul className="divide-y-2 divide-border">
         {contacts?.length > 0 ?
           <>
-            {contacts.map((contact) => (
-              <ContactCard
-                name={contact.name}
-                key={contact.id}
-                role={contact.role}
-                contactURL={contact.contactURL}
-                onDelete={handleDelete}
-                id={contact.id}
-              />
-            ))}
+            {optimisticState?.length > 0 &&
+              optimisticState.map((contact) => (
+                <ContactCard
+                  name={contact.name}
+                  key={contact.id}
+                  role={contact.role}
+                  contactURL={contact.contactURL}
+                  onDelete={handleDelete}
+                  id={contact.id}
+                />
+              ))}
           </>
         : <div className="text-center p-3 capitalize text-sm">empty list</div>}
       </ul>
