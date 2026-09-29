@@ -36,8 +36,6 @@ type Props = {
 
 function ConfirmAlertDialog({
   onConfirm,
-  successMsg,
-  failureMsg,
   title,
   description,
   confirmVariant = "default",
@@ -45,7 +43,6 @@ function ConfirmAlertDialog({
   children
 }: Props) {
   const [open, setOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const confirmHandler = async function (
     e: React.MouseEvent<HTMLButtonElement>
@@ -53,21 +50,7 @@ function ConfirmAlertDialog({
     e.preventDefault();
     e.stopPropagation();
 
-    // console.log("....confirmation handler....");
     await onConfirm();
-
-    // try {
-    //   setIsLoading(true);
-    //   await onConfirm();
-    //   console.log("confirmation dialog --- success");
-    //   // toast.success(successMsg, { position: "top-left" });
-    // } catch {
-    //   console.log("confirmation error");
-    //   toast.error(failureMsg, { position: "top-left" });
-    // } finally {
-    //   setIsLoading(false);
-    //   setOpen(false);
-    // }
   };
 
   return (
@@ -93,16 +76,15 @@ function ConfirmAlertDialog({
               e.stopPropagation();
               setOpen(false);
             }}
-            className={`${isLoading ? "pointer-events-none" : "hover:cursor-pointer"}`}
+            className="hover:cursor-pointer"
           >
             Cancel
           </AlertDialogCancel>
           <AlertDialogAction
             variant={confirmVariant === "default" ? "destructive" : "default"}
             onClick={confirmHandler}
-            className={`${isLoading ? "pointer-events-none" : "hover:cursor-pointer"}`}
+            className="hover:cursor-pointer"
           >
-            {isLoading && <Spinner />}
             <span className="capitalize">{confirmLabel}</span>
           </AlertDialogAction>
         </AlertDialogFooter>

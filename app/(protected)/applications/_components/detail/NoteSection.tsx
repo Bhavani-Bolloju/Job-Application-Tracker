@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useOptimistic, startTransition } from "react";
 import NoteCard from "./NoteCard";
 import { Note } from "@/lib/types";
 
@@ -15,8 +15,15 @@ type Props = {
   applicationId: string;
 };
 
-function NoteSection({ notes, applicationId }: Props) {
+function updateFn(notes: Note[], id: string) {
+  return notes.filter((note) => note.id !== id);
+}
+
+function NoteSection({ notes: notesData, applicationId }: Props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [notes, setNotes] = useState(notesData);
+
+  const [optimisticState, addOptimistic] = useOptimistic(notes, updateFn);
 
   const router = useRouter();
 
@@ -35,6 +42,7 @@ function NoteSection({ notes, applicationId }: Props) {
       toast.success("Added Note successfully", { position: "top-left" });
 
       router.refresh();
+      
     } catch {
       toast.error("Failed to add Note", { position: "top-left" });
     }
@@ -45,13 +53,23 @@ function NoteSection({ notes, applicationId }: Props) {
   };
 
   const handleDelete = async function (id: string) {
-    const response = await fetch(`/api/notes/${id}`, { method: "DELETE" });
+    startTransition(async () => {
+      addOptimistic(id);
 
-    if (!response.ok) {
-      throw new Error("Failed to delete note.");
-    }
+      try {
+        const response = await fetch(`/api/notes/${id}`, { method: "DELETE" });
 
-    router.refresh();
+        if (!response.ok) {
+          throw new Error("");
+        }
+
+        setNotes((notes) => notes.filter((note) => note.id !== id));
+
+        toast.error("Notes deleted", { position: "top-left" });
+      } catch {
+        toast.error("Failed to delete notes", { position: "top-left" });
+      }
+    });
   };
 
   return (
@@ -68,9 +86,9 @@ function NoteSection({ notes, applicationId }: Props) {
         />
       </div>
       <ul className="divide-y-2 divide-border">
-        {notes.length > 0 ?
+        {optimisticState.length > 0 ?
           <>
-            {notes.map((note) => (
+            {optimisticState.map((note) => (
               <NoteCard
                 key={note.id}
                 id={note.id}

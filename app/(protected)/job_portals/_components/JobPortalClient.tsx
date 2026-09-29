@@ -32,6 +32,7 @@ function JobPortalClient({ jobPortals }: { jobPortals: JobPortalProps[] }) {
     setJobPortal(value);
     setDialogOpen(true);
   };
+  
   const handleDelete = async function (id: string) {
     const url = `/api/job_portals/${id}`;
 
