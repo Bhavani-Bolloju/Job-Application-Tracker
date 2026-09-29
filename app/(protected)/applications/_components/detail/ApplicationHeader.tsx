@@ -19,6 +19,8 @@ function ApplicationHeader({ application }: Props) {
   const { company, role, appliedDate, url, status } = application;
   const [isOpen, setIsOpen] = useState(false);
   const [mode, setMode] = useState<Mode>("add");
+  
+  
 
   const formatDate = format(new Date(appliedDate), "PP");
 
@@ -33,6 +35,24 @@ function ApplicationHeader({ application }: Props) {
     setIsOpen(false);
     router.refresh();
   }
+  
+  function handleOptimisticUIUpdateForEdit() {
+    
+  }
+  
+    const handleOptimisticUIUpdateForEditFail = function () {
+    // console.log(snapShotApplication.current, applicationIndex.current);
+
+    // setApplications((prev) => {
+    //   if (!snapShotApplication.current || applicationIndex.current === null ) {
+    //     return prev;
+    //   }
+    //   const applications = [...prev];
+    //   applications[applicationIndex.current] = snapShotApplication.current;
+    //   return applications;
+    // });
+
+  }; 
 
   return (
     <div className="">
@@ -93,6 +113,8 @@ function ApplicationHeader({ application }: Props) {
         mode={mode}
         application={application}
         onClose={handleClose}
+        onOptimisticUIUpdateEdit = {handleOptimisticUIUpdateForEdit}
+        onOptimisticUIUpdateEditFail={handleOptimisticUIUpdateForEditFail}
       />
     </div>
   );

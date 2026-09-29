@@ -72,7 +72,6 @@ function ApplicationRow({ application, onEdit, onDelete, onRowClick }: Props) {
               onClick={(e) => {
                 e.stopPropagation();
                 setOpenDropDown(true);
-                
               }}
             >
               <Ellipsis />

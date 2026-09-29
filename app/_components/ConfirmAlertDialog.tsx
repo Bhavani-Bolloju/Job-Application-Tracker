@@ -53,17 +53,21 @@ function ConfirmAlertDialog({
     e.preventDefault();
     e.stopPropagation();
 
-    try {
-      setIsLoading(true);
-      await onConfirm();
-      toast.success(successMsg, { position: "top-left" });
-    } catch (error) {
-      console.log(error, "logout error msg");
-      toast.error(failureMsg, { position: "top-left" });
-    } finally {
-      setIsLoading(false);
-      setOpen(false);
-    }
+    // console.log("....confirmation handler....");
+    await onConfirm();
+
+    // try {
+    //   setIsLoading(true);
+    //   await onConfirm();
+    //   console.log("confirmation dialog --- success");
+    //   // toast.success(successMsg, { position: "top-left" });
+    // } catch {
+    //   console.log("confirmation error");
+    //   toast.error(failureMsg, { position: "top-left" });
+    // } finally {
+    //   setIsLoading(false);
+    //   setOpen(false);
+    // }
   };
 
   return (
@@ -108,5 +112,4 @@ function ConfirmAlertDialog({
 }
 
 export default ConfirmAlertDialog;
-
 

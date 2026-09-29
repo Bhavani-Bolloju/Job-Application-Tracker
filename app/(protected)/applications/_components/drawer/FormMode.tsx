@@ -24,15 +24,15 @@ import { toast } from "sonner";
 type Props = {
   application: Application | null;
   onClose: () => void;
-  onOptimisticUIUpdate: (app: FormValues, id: string) => void;
-  onUpdateFailure: () => void;
+  onOptimisticUIUpdateEdit: (app: FormValues, id: string) => void;
+  onOptimisticUIUpdateEditFail: () => void;
 };
 
 function FormMode({
   application,
   onClose,
-  onOptimisticUIUpdate,
-  onUpdateFailure
+  onOptimisticUIUpdateEdit,
+  onOptimisticUIUpdateEditFail
 }: Props) {
   const {
     register,
@@ -66,7 +66,7 @@ function FormMode({
       const method = application ? "PUT" : "POST";
 
       if (application) {
-        onOptimisticUIUpdate(data, application.id);
+        onOptimisticUIUpdateEdit(data, application.id);
       }
 
       const res = await fetch(url, {
@@ -86,7 +86,7 @@ function FormMode({
         { position: "top-left" }
       );
     } catch {
-      onUpdateFailure();
+      onOptimisticUIUpdateEditFail();
       toast.error(`Failed to ${application ? "update" : "add"} application"`, {
         position: "top-left"
       });

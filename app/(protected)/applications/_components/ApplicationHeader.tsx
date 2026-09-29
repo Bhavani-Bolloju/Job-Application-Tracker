@@ -12,8 +12,8 @@ type Props = {
   mode: Mode;
   application: Application | null;
   onClose: () => void;
-  onOptimisticUIUpdate: (app: FormValues, id: string) => void;
-  onUpdateFailure: () => void;
+  onOptimisticUIUpdateEdit: (app: FormValues, id: string) => void;
+  onOptimisticUIUpdateEditFail: () => void;
 };
 
 function ApplicationHeader({
@@ -22,8 +22,8 @@ function ApplicationHeader({
   mode,
   application,
   onClose,
-  onOptimisticUIUpdate,
-  onUpdateFailure
+  onOptimisticUIUpdateEdit,
+  onOptimisticUIUpdateEditFail
 }: Props) {
   return (
     <div className="flex items-center justify-between mb-5 flex-wrap">
@@ -44,8 +44,8 @@ function ApplicationHeader({
         mode={mode}
         application={application}
         onClose={onClose}
-        onOptimisticUIUpdate={onOptimisticUIUpdate}
-        onUpdateFailure={onUpdateFailure}
+        onOptimisticUIUpdateEdit={onOptimisticUIUpdateEdit}
+        onOptimisticUIUpdateEditFail={onOptimisticUIUpdateEditFail}
       />
     </div>
   );

@@ -18,8 +18,8 @@ type Props = {
   mode: Mode;
   application: Application | null;
   onClose: () => void;
-  onOptimisticUIUpdate: (app: FormValues, id: string) => void;
-  onUpdateFailure: () => void;
+  onOptimisticUIUpdateEdit: (app: FormValues, id: string) => void;
+  onOptimisticUIUpdateEditFail: () => void;
 };
 
 export default function ApplicationDrawer({
@@ -27,8 +27,8 @@ export default function ApplicationDrawer({
   mode,
   application,
   onClose,
-  onOptimisticUIUpdate,
-  onUpdateFailure
+  onOptimisticUIUpdateEdit,
+  onOptimisticUIUpdateEditFail
 }: Props) {
   return (
     <Sheet open={isOpen} onOpenChange={onClose}>
@@ -43,8 +43,8 @@ export default function ApplicationDrawer({
           <FormMode
             application={application}
             onClose={onClose}
-            onOptimisticUIUpdate={onOptimisticUIUpdate}
-            onUpdateFailure = {onUpdateFailure}
+            onOptimisticUIUpdateEdit={onOptimisticUIUpdateEdit}
+            onOptimisticUIUpdateEditFail = {onOptimisticUIUpdateEditFail}
           />
         </div>
       </SheetContent>
